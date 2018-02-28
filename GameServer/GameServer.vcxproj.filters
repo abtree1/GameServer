@@ -25,6 +25,15 @@
     <Filter Include="Player">
       <UniqueIdentifier>{8c70dfbe-ca55-4c30-87c1-a847205f99fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player\Components">
+      <UniqueIdentifier>{3610b9fc-14d3-4103-b44b-d63b3fd3fdcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\NextData">
+      <UniqueIdentifier>{57ebf87f-3dfa-4da9-b8ff-c7e6a3a8550d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\RankList">
+      <UniqueIdentifier>{ee94e6e9-74a0-4821-b725-578c9b60d507}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -66,6 +75,39 @@
     <ClInclude Include="ProtoBuff\IProto.h">
       <Filter>ProtoBuff</Filter>
     </ClInclude>
+    <ClInclude Include="Player\Components\IPlayerData.h">
+      <Filter>Player\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\CPlayer.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\CPlayerMgr.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Components\CBaseData.h">
+      <Filter>Player\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\CTime.h">
+      <Filter>Share</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtoBuff\msgserver.pb.h">
+      <Filter>ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\NextData\CNextData.h">
+      <Filter>Share\NextData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\NextData\CNextDataMgr.h">
+      <Filter>Share\NextData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\RankList\RankListLogic.h">
+      <Filter>Share\RankList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\IRankListSync.h">
+      <Filter>Share\RankList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\IRankListASync.h">
+      <Filter>Share\RankList</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -95,12 +137,36 @@
     <ClCompile Include="Player\PlayerMsg.cpp">
       <Filter>Player</Filter>
     </ClCompile>
+    <ClCompile Include="Player\CPlayer.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\CPlayerMgr.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Components\CBaseData.cpp">
+      <Filter>Player\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\CTime.cpp">
+      <Filter>Share</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtoBuff\msgserver.pb.cc">
+      <Filter>ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\NextData\CNextData.cpp">
+      <Filter>Share\NextData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\NextData\CNextDataMgr.cpp">
+      <Filter>Share\NextData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ProtoBuff\msg.proto">
       <Filter>ProtoBuff</Filter>
     </None>
     <None Include="ProtoBuff\msgtype.proto">
+      <Filter>ProtoBuff</Filter>
+    </None>
+    <None Include="ProtoBuff\msgserver.proto">
       <Filter>ProtoBuff</Filter>
     </None>
   </ItemGroup>

@@ -86,7 +86,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>E:\Github\googleprotobuf\install\include</AdditionalIncludeDirectories>
     </ClCompile>
@@ -102,7 +102,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>E:\Github\googleprotobuf\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -151,13 +151,24 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Share\CTime.h" />
+    <ClInclude Include="..\Share\IRankListASync.h" />
+    <ClInclude Include="..\Share\IRankListSync.h" />
+    <ClInclude Include="..\Share\NextData\CNextData.h" />
+    <ClInclude Include="..\Share\NextData\CNextDataMgr.h" />
+    <ClInclude Include="..\Share\RankList\RankListLogic.h" />
     <ClInclude Include="..\Share\Singleton.h" />
     <ClInclude Include="Network\CSession.h" />
     <ClInclude Include="Network\CSessionHandle.h" />
     <ClInclude Include="Network\CSessionMgr.h" />
+    <ClInclude Include="Player\Components\CBaseData.h" />
+    <ClInclude Include="Player\Components\IPlayerData.h" />
+    <ClInclude Include="Player\CPlayer.h" />
+    <ClInclude Include="Player\CPlayerMgr.h" />
     <ClInclude Include="Player\PlayerMsg.h" />
     <ClInclude Include="ProtoBuff\IProto.h" />
     <ClInclude Include="ProtoBuff\msg.pb.h" />
+    <ClInclude Include="ProtoBuff\msgserver.pb.h" />
     <ClInclude Include="ProtoBuff\msgtype.pb.h" />
     <ClInclude Include="ProtoBuff\pb.h" />
     <ClInclude Include="ProtoBuff\ProtoMgr.h" />
@@ -165,12 +176,19 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Share\CTime.cpp" />
+    <ClCompile Include="..\Share\NextData\CNextData.cpp" />
+    <ClCompile Include="..\Share\NextData\CNextDataMgr.cpp" />
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="Network\CSession.cpp" />
     <ClCompile Include="Network\CSessionHandle.cpp" />
     <ClCompile Include="Network\CSessionMgr.cpp" />
+    <ClCompile Include="Player\Components\CBaseData.cpp" />
+    <ClCompile Include="Player\CPlayer.cpp" />
+    <ClCompile Include="Player\CPlayerMgr.cpp" />
     <ClCompile Include="Player\PlayerMsg.cpp" />
     <ClCompile Include="ProtoBuff\msg.pb.cc" />
+    <ClCompile Include="ProtoBuff\msgserver.pb.cc" />
     <ClCompile Include="ProtoBuff\msgtype.pb.cc" />
     <ClCompile Include="ProtoBuff\ProtoMgr.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -182,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ProtoBuff\msg.proto" />
+    <None Include="ProtoBuff\msgserver.proto" />
     <None Include="ProtoBuff\msgtype.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
