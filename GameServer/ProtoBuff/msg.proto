@@ -1,0 +1,7 @@
+package NetProto;
+
+message NetLogin{
+	optional string name = 1;
+	optional string account = 2;
+	optional string password = 3;
+}

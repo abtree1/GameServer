@@ -1,0 +1,13 @@
+Debug/*
+x64/*
+*.sdf
+*.suo
+*.opensdf
+*.db
+*.opendb
+GameServer/Debug/*
+GameServer/x64/*
+Dependences/*
+NetIOCP/Debug/*
+NetIOCP/x64/*
+UnlockQueue/*
