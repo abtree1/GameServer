@@ -4,6 +4,7 @@
 
 //这个类做成纯静态类 方便使用
 class CTime {
+public:
 	//获取当前时间戳
 	static time_t GetTimeStamp();
 	//时间转时间戳

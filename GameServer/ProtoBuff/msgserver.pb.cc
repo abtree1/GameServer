@@ -23,13 +23,18 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<CSPNextData>
      _instance;
 } _CSPNextData_default_instance_;
+class CTimeTaskDataDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<CTimeTaskData>
+     _instance;
+} _CTimeTaskData_default_instance_;
 
 namespace protobuf_msgserver_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[1];
+::google::protobuf::Metadata file_level_metadata[2];
 
 }  // namespace
 
@@ -44,6 +49,7 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
 };
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
     TableStruct::schema[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
 };
 
@@ -63,13 +69,30 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   0,
   ~0u,
   ~0u,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, ivalue_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, svalue_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, ivalue_arr_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, svalue_arr_),
+  1,
+  2,
+  0,
+  ~0u,
+  ~0u,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 10, sizeof(CSPNextData)},
+  { 15, 25, sizeof(CTimeTaskData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_CSPNextData_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_CTimeTaskData_default_instance_),
 };
 
 namespace {
@@ -90,7 +113,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
 }
 
 }  // namespace
@@ -100,7 +123,9 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::InitProtobufDefaults();
   _CSPNextData_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_CSPNextData_default_instance_);}
+      &_CSPNextData_default_instance_);_CTimeTaskData_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_CTimeTaskData_default_instance_);}
 
 void InitDefaults() {
   static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
@@ -113,10 +138,12 @@ void AddDescriptorsImpl() {
       "\n\017msgserver.proto\022\010NetProto\"c\n\013CSPNextDa"
       "ta\022\014\n\004type\030\001 \001(\r\022\016\n\006ivalue\030\002 \001(\005\022\016\n\006sval"
       "ue\030\003 \001(\t\022\022\n\nivalue_arr\030\004 \003(\005\022\022\n\nsvalue_a"
-      "rr\030\005 \003(\t"
+      "rr\030\005 \003(\t\"e\n\rCTimeTaskData\022\014\n\004type\030\001 \001(\r\022"
+      "\016\n\006ivalue\030\002 \001(\005\022\016\n\006svalue\030\003 \001(\t\022\022\n\nivalu"
+      "e_arr\030\004 \003(\005\022\022\n\nsvalue_arr\030\005 \003(\t"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 128);
+      descriptor, 231);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msgserver.proto", &protobuf_RegisterTypes);
 }
@@ -790,6 +817,665 @@ CSPNextData::svalue_arr() const {
 ::google::protobuf::RepeatedPtrField< ::std::string>*
 CSPNextData::mutable_svalue_arr() {
   // @@protoc_insertion_point(field_mutable_list:NetProto.CSPNextData.svalue_arr)
+  return &svalue_arr_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CTimeTaskData::kTypeFieldNumber;
+const int CTimeTaskData::kIvalueFieldNumber;
+const int CTimeTaskData::kSvalueFieldNumber;
+const int CTimeTaskData::kIvalueArrFieldNumber;
+const int CTimeTaskData::kSvalueArrFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CTimeTaskData::CTimeTaskData()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_msgserver_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NetProto.CTimeTaskData)
+}
+CTimeTaskData::CTimeTaskData(const CTimeTaskData& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _has_bits_(from._has_bits_),
+      _cached_size_(0),
+      ivalue_arr_(from.ivalue_arr_),
+      svalue_arr_(from.svalue_arr_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  svalue_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.has_svalue()) {
+    svalue_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.svalue_);
+  }
+  ::memcpy(&type_, &from.type_,
+    static_cast<size_t>(reinterpret_cast<char*>(&ivalue_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(ivalue_));
+  // @@protoc_insertion_point(copy_constructor:NetProto.CTimeTaskData)
+}
+
+void CTimeTaskData::SharedCtor() {
+  _cached_size_ = 0;
+  svalue_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&type_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&ivalue_) -
+      reinterpret_cast<char*>(&type_)) + sizeof(ivalue_));
+}
+
+CTimeTaskData::~CTimeTaskData() {
+  // @@protoc_insertion_point(destructor:NetProto.CTimeTaskData)
+  SharedDtor();
+}
+
+void CTimeTaskData::SharedDtor() {
+  svalue_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void CTimeTaskData::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CTimeTaskData::descriptor() {
+  protobuf_msgserver_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_msgserver_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CTimeTaskData& CTimeTaskData::default_instance() {
+  protobuf_msgserver_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+CTimeTaskData* CTimeTaskData::New(::google::protobuf::Arena* arena) const {
+  CTimeTaskData* n = new CTimeTaskData;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CTimeTaskData::Clear() {
+// @@protoc_insertion_point(message_clear_start:NetProto.CTimeTaskData)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ivalue_arr_.Clear();
+  svalue_arr_.Clear();
+  if (has_svalue()) {
+    GOOGLE_DCHECK(!svalue_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
+    (*svalue_.UnsafeRawStringPointer())->clear();
+  }
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 6u) {
+    ::memset(&type_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&ivalue_) -
+        reinterpret_cast<char*>(&type_)) + sizeof(ivalue_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool CTimeTaskData::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NetProto.CTimeTaskData)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 type = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+          set_has_type();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &type_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 ivalue = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+          set_has_ivalue();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &ivalue_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional string svalue = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_svalue()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->svalue().data(), static_cast<int>(this->svalue().length()),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetProto.CTimeTaskData.svalue");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated int32 ivalue_arr = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 32u, input, this->mutable_ivalue_arr())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_ivalue_arr())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string svalue_arr = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_svalue_arr()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->svalue_arr(this->svalue_arr_size() - 1).data(),
+            static_cast<int>(this->svalue_arr(this->svalue_arr_size() - 1).length()),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetProto.CTimeTaskData.svalue_arr");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NetProto.CTimeTaskData)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NetProto.CTimeTaskData)
+  return false;
+#undef DO_
+}
+
+void CTimeTaskData::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NetProto.CTimeTaskData)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional uint32 type = 1;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->type(), output);
+  }
+
+  // optional int32 ivalue = 2;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->ivalue(), output);
+  }
+
+  // optional string svalue = 3;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->svalue().data(), static_cast<int>(this->svalue().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetProto.CTimeTaskData.svalue");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->svalue(), output);
+  }
+
+  // repeated int32 ivalue_arr = 4;
+  for (int i = 0, n = this->ivalue_arr_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+      4, this->ivalue_arr(i), output);
+  }
+
+  // repeated string svalue_arr = 5;
+  for (int i = 0, n = this->svalue_arr_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->svalue_arr(i).data(), static_cast<int>(this->svalue_arr(i).length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetProto.CTimeTaskData.svalue_arr");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->svalue_arr(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NetProto.CTimeTaskData)
+}
+
+::google::protobuf::uint8* CTimeTaskData::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:NetProto.CTimeTaskData)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional uint32 type = 1;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->type(), target);
+  }
+
+  // optional int32 ivalue = 2;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->ivalue(), target);
+  }
+
+  // optional string svalue = 3;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->svalue().data(), static_cast<int>(this->svalue().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetProto.CTimeTaskData.svalue");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->svalue(), target);
+  }
+
+  // repeated int32 ivalue_arr = 4;
+  target = ::google::protobuf::internal::WireFormatLite::
+    WriteInt32ToArray(4, this->ivalue_arr_, target);
+
+  // repeated string svalue_arr = 5;
+  for (int i = 0, n = this->svalue_arr_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->svalue_arr(i).data(), static_cast<int>(this->svalue_arr(i).length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetProto.CTimeTaskData.svalue_arr");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(5, this->svalue_arr(i), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NetProto.CTimeTaskData)
+  return target;
+}
+
+size_t CTimeTaskData::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NetProto.CTimeTaskData)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  // repeated int32 ivalue_arr = 4;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->ivalue_arr_);
+    total_size += 1 *
+                  ::google::protobuf::internal::FromIntSize(this->ivalue_arr_size());
+    total_size += data_size;
+  }
+
+  // repeated string svalue_arr = 5;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->svalue_arr_size());
+  for (int i = 0, n = this->svalue_arr_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->svalue_arr(i));
+  }
+
+  if (_has_bits_[0 / 32] & 7u) {
+    // optional string svalue = 3;
+    if (has_svalue()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->svalue());
+    }
+
+    // optional uint32 type = 1;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->type());
+    }
+
+    // optional int32 ivalue = 2;
+    if (has_ivalue()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->ivalue());
+    }
+
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CTimeTaskData::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:NetProto.CTimeTaskData)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CTimeTaskData* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CTimeTaskData>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:NetProto.CTimeTaskData)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:NetProto.CTimeTaskData)
+    MergeFrom(*source);
+  }
+}
+
+void CTimeTaskData::MergeFrom(const CTimeTaskData& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:NetProto.CTimeTaskData)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  ivalue_arr_.MergeFrom(from.ivalue_arr_);
+  svalue_arr_.MergeFrom(from.svalue_arr_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 7u) {
+    if (cached_has_bits & 0x00000001u) {
+      set_has_svalue();
+      svalue_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.svalue_);
+    }
+    if (cached_has_bits & 0x00000002u) {
+      type_ = from.type_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      ivalue_ = from.ivalue_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void CTimeTaskData::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:NetProto.CTimeTaskData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CTimeTaskData::CopyFrom(const CTimeTaskData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NetProto.CTimeTaskData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CTimeTaskData::IsInitialized() const {
+  return true;
+}
+
+void CTimeTaskData::Swap(CTimeTaskData* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CTimeTaskData::InternalSwap(CTimeTaskData* other) {
+  using std::swap;
+  ivalue_arr_.InternalSwap(&other->ivalue_arr_);
+  svalue_arr_.InternalSwap(&other->svalue_arr_);
+  svalue_.Swap(&other->svalue_);
+  swap(type_, other->type_);
+  swap(ivalue_, other->ivalue_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CTimeTaskData::GetMetadata() const {
+  protobuf_msgserver_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_msgserver_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CTimeTaskData
+
+// optional uint32 type = 1;
+bool CTimeTaskData::has_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void CTimeTaskData::set_has_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void CTimeTaskData::clear_has_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void CTimeTaskData::clear_type() {
+  type_ = 0u;
+  clear_has_type();
+}
+::google::protobuf::uint32 CTimeTaskData::type() const {
+  // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.type)
+  return type_;
+}
+void CTimeTaskData::set_type(::google::protobuf::uint32 value) {
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.type)
+}
+
+// optional int32 ivalue = 2;
+bool CTimeTaskData::has_ivalue() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void CTimeTaskData::set_has_ivalue() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void CTimeTaskData::clear_has_ivalue() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void CTimeTaskData::clear_ivalue() {
+  ivalue_ = 0;
+  clear_has_ivalue();
+}
+::google::protobuf::int32 CTimeTaskData::ivalue() const {
+  // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.ivalue)
+  return ivalue_;
+}
+void CTimeTaskData::set_ivalue(::google::protobuf::int32 value) {
+  set_has_ivalue();
+  ivalue_ = value;
+  // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.ivalue)
+}
+
+// optional string svalue = 3;
+bool CTimeTaskData::has_svalue() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void CTimeTaskData::set_has_svalue() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void CTimeTaskData::clear_has_svalue() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void CTimeTaskData::clear_svalue() {
+  svalue_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_svalue();
+}
+const ::std::string& CTimeTaskData::svalue() const {
+  // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.svalue)
+  return svalue_.GetNoArena();
+}
+void CTimeTaskData::set_svalue(const ::std::string& value) {
+  set_has_svalue();
+  svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.svalue)
+}
+#if LANG_CXX11
+void CTimeTaskData::set_svalue(::std::string&& value) {
+  set_has_svalue();
+  svalue_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:NetProto.CTimeTaskData.svalue)
+}
+#endif
+void CTimeTaskData::set_svalue(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_svalue();
+  svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetProto.CTimeTaskData.svalue)
+}
+void CTimeTaskData::set_svalue(const char* value, size_t size) {
+  set_has_svalue();
+  svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetProto.CTimeTaskData.svalue)
+}
+::std::string* CTimeTaskData::mutable_svalue() {
+  set_has_svalue();
+  // @@protoc_insertion_point(field_mutable:NetProto.CTimeTaskData.svalue)
+  return svalue_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* CTimeTaskData::release_svalue() {
+  // @@protoc_insertion_point(field_release:NetProto.CTimeTaskData.svalue)
+  clear_has_svalue();
+  return svalue_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void CTimeTaskData::set_allocated_svalue(::std::string* svalue) {
+  if (svalue != NULL) {
+    set_has_svalue();
+  } else {
+    clear_has_svalue();
+  }
+  svalue_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), svalue);
+  // @@protoc_insertion_point(field_set_allocated:NetProto.CTimeTaskData.svalue)
+}
+
+// repeated int32 ivalue_arr = 4;
+int CTimeTaskData::ivalue_arr_size() const {
+  return ivalue_arr_.size();
+}
+void CTimeTaskData::clear_ivalue_arr() {
+  ivalue_arr_.Clear();
+}
+::google::protobuf::int32 CTimeTaskData::ivalue_arr(int index) const {
+  // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.ivalue_arr)
+  return ivalue_arr_.Get(index);
+}
+void CTimeTaskData::set_ivalue_arr(int index, ::google::protobuf::int32 value) {
+  ivalue_arr_.Set(index, value);
+  // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.ivalue_arr)
+}
+void CTimeTaskData::add_ivalue_arr(::google::protobuf::int32 value) {
+  ivalue_arr_.Add(value);
+  // @@protoc_insertion_point(field_add:NetProto.CTimeTaskData.ivalue_arr)
+}
+const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+CTimeTaskData::ivalue_arr() const {
+  // @@protoc_insertion_point(field_list:NetProto.CTimeTaskData.ivalue_arr)
+  return ivalue_arr_;
+}
+::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+CTimeTaskData::mutable_ivalue_arr() {
+  // @@protoc_insertion_point(field_mutable_list:NetProto.CTimeTaskData.ivalue_arr)
+  return &ivalue_arr_;
+}
+
+// repeated string svalue_arr = 5;
+int CTimeTaskData::svalue_arr_size() const {
+  return svalue_arr_.size();
+}
+void CTimeTaskData::clear_svalue_arr() {
+  svalue_arr_.Clear();
+}
+const ::std::string& CTimeTaskData::svalue_arr(int index) const {
+  // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.svalue_arr)
+  return svalue_arr_.Get(index);
+}
+::std::string* CTimeTaskData::mutable_svalue_arr(int index) {
+  // @@protoc_insertion_point(field_mutable:NetProto.CTimeTaskData.svalue_arr)
+  return svalue_arr_.Mutable(index);
+}
+void CTimeTaskData::set_svalue_arr(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.svalue_arr)
+  svalue_arr_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+void CTimeTaskData::set_svalue_arr(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.svalue_arr)
+  svalue_arr_.Mutable(index)->assign(std::move(value));
+}
+#endif
+void CTimeTaskData::set_svalue_arr(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  svalue_arr_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:NetProto.CTimeTaskData.svalue_arr)
+}
+void CTimeTaskData::set_svalue_arr(int index, const char* value, size_t size) {
+  svalue_arr_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NetProto.CTimeTaskData.svalue_arr)
+}
+::std::string* CTimeTaskData::add_svalue_arr() {
+  // @@protoc_insertion_point(field_add_mutable:NetProto.CTimeTaskData.svalue_arr)
+  return svalue_arr_.Add();
+}
+void CTimeTaskData::add_svalue_arr(const ::std::string& value) {
+  svalue_arr_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:NetProto.CTimeTaskData.svalue_arr)
+}
+#if LANG_CXX11
+void CTimeTaskData::add_svalue_arr(::std::string&& value) {
+  svalue_arr_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:NetProto.CTimeTaskData.svalue_arr)
+}
+#endif
+void CTimeTaskData::add_svalue_arr(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  svalue_arr_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:NetProto.CTimeTaskData.svalue_arr)
+}
+void CTimeTaskData::add_svalue_arr(const char* value, size_t size) {
+  svalue_arr_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:NetProto.CTimeTaskData.svalue_arr)
+}
+const ::google::protobuf::RepeatedPtrField< ::std::string>&
+CTimeTaskData::svalue_arr() const {
+  // @@protoc_insertion_point(field_list:NetProto.CTimeTaskData.svalue_arr)
+  return svalue_arr_;
+}
+::google::protobuf::RepeatedPtrField< ::std::string>*
+CTimeTaskData::mutable_svalue_arr() {
+  // @@protoc_insertion_point(field_mutable_list:NetProto.CTimeTaskData.svalue_arr)
   return &svalue_arr_;
 }
 

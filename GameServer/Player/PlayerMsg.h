@@ -10,6 +10,6 @@ public:
 	static void Register();
 public:
 	//µÇÂ¼ÏûÏ¢
-	MsgHandle(NET_C2S_Login, new NetLogin());
+	MsgHandle(NET_C2S_Login, new NetLogin())
 
 };

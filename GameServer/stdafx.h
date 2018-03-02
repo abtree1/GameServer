@@ -43,3 +43,11 @@ using namespace NetProto;
 #include "../Share/NextData/CNextDataMgr.h"
 //RankList
 #include "../Share/RankList/RankListLogic.h"
+#include "../Share/RankList/IRankListData.h"
+#include "../Share/RankList/IRankListSync.h"
+#include "../Share/RankList/IRankListASync.h"
+//Timer Task
+#include "../Share/TimerTask/CTimerTaskHandle.h"
+#include "../Share/TimerTask/CTimerTaskEvent.h"
+#include "../Share/TimerTask/CTimerTaskMgr.h"
+#include "Logic/TimerTask/TimerTask.h"

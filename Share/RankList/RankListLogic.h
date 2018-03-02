@@ -1,31 +1,31 @@
 #pragma once
-template<typename T>
-using CompareFunc = bool(*)(const T&, const T&);
-template<typename T, typename U>
-using GetValueFunc = U(*)(const T&);
+//template<typename T>
+//using CompareFunc = bool(*)(const T&, const T&);
+//template<typename T, typename U>
+//using GetValueFunc = U(*)(const T&);
 
 template<typename T, typename U>
 class CRankListLogic {
 public:
 	//时时排行 获取名次变化
-	int getRankTo(int from, CompareFunc<T> func) {
+	int getRankTo(int from) {
 		int size = mRankList.size();
 		int to = from;
-		if (from > 0 && func(mRankList[from], mRankList[from - 1])) {
+		if (from > 0 && mRankList[from] > mRankList[from - 1]) {
 			//向前移动
 			to = 0;
 			for (int i = from - 2; i >= 0; --i) {
-				if (!func(mRankList[from], mRankList[i])) {
+				if (mRankList[from] <= mRankList[i]) {
 					to = i + 1;
 					break;
 				}
 			}
 		}
-		else if (from < size - 1 && !func(mRankList[from], mRankList[from + 1])) {
+		else if (from < size - 1 && mRankList[from] <= mRankList[from + 1]) {
 			//向后移动
 			to = size - 1;
 			for (int i = from + 1; i < size; ++i) {
-				if (func(mRankList[from], mRankList[i])) {
+				if (mRankList[from] > mRankList[i]) {
 					to = i - 1;
 					break;
 				}
@@ -34,41 +34,41 @@ public:
 		return to;
 	}
 	//时时排行 移动排行榜
-	void moveRankList(int from, int to, GetValueFunc<T, U> func) {
+	void moveRankList(int from, int to) {
 		T data = mRankList[from];
 		if (from > to) {
 			for (int i = from; i > to; --i) {
 				mRankList[i] = mRankList[i - 1];
-				mRankListKV[func(mRankList[i])] = i;
+				mRankListKV[mRankList[i].GetId()] = i;
 			}
 			mRankList[to] = data;
-			mRankListKV[func(data)] = to;
+			mRankListKV[data.GetId()] = to;
 		}
 		else if (from < to) {
 			for (int i = from; i < to; ++i) {
 				mRankList[i] = mRankList[i + 1];
-				mRankListKV[func(mRankList[i])] = i;
+				mRankListKV[mRankList[i].GetId()] = i;
 			}
 			mRankList[to] = data;
-			mRankListKV[func(data)] = to;
+			mRankListKV[data.GetId()] = to;
 		}
 		if (mRankListSize > 0) {
 			while (mRankList.size() > mRankListSize) {
-				mRankListKV.erase(func(mRankList[mRankList.size() - 1]));
+				mRankListKV.erase(mRankList[mRankList.size() - 1].GetId());
 				mRankList.pop_back();
 			}
 		}
 	}
 	//在排行榜末尾添加数据
-	void puahBack(T& data, GetValueFunc<T, U> func) {
+	void puahBack(T& data) {
 		if (mbHasRank)
-			data.rank = mRankList.size();
+			data.SetRank(mRankList.size());
 		mRankList.push_back(data);
-		mRankListKV[func(data)] = mRankList.size() - 1;
+		mRankListKV[data.GetId()] = mRankList.size() - 1;
 	}
 	//异步排行 数据变化
-	void updateRankList(T& data, U& key) {
-		mRankListHelp[key] = data;
+	void updateRankList(T& data) {
+		mRankListHelp[data.GetId()] = data;
 	}
 
 	//异步排序 更新排行榜数据
@@ -92,8 +92,8 @@ public:
 	}
 
 	//重新生成排行榜
-	void resort(CompareFunc<T> func, bool resetRank = false) {
-		std::sort(mRankList.begin(), mRankList.end(), func);
+	void resort(bool resetRank = false) {
+		std::sort(mRankList.begin(), mRankList.end());
 		if (mRankListSize > 0 && mRankList.size() > mRankListSize)
 			mRankList._Pop_back_n(mRankList.size() - mRankListSize);
 		//如果有rank字段而且需要强制重排
@@ -106,11 +106,11 @@ public:
 		}
 	}
 	//根据排行榜重新生成KV
-	void resortKV(GetValueFunc<T, U> func) {
+	void resortKV() {
 		mRankListKV.clear();
 		int pos = 0;
 		for (auto &it : mRankList) {
-			mRankListKV[func(it)] = pos;
+			mRankListKV[it.GetId()] = pos;
 			++pos;
 		}
 	}
@@ -127,6 +127,7 @@ public:
 		mRankListHelp.clear();
 		mRankListKV.clear();
 	}
+
 public:
 	vector<T> mRankList;      //排行榜数据
 	map<U, int> mRankListKV;  //用于标识Key和rank对应

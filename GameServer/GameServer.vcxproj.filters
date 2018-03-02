@@ -34,6 +34,15 @@
     <Filter Include="Share\RankList">
       <UniqueIdentifier>{ee94e6e9-74a0-4821-b725-578c9b60d507}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Share\TimerTask">
+      <UniqueIdentifier>{488ab0c8-c72a-4c13-b39c-ad3f52d1b260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{1fde4b73-d7dd-48c8-a5ec-0a5109abec5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\TimerTask">
+      <UniqueIdentifier>{67269f72-013f-4a77-9444-f225384c9abd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -102,11 +111,26 @@
     <ClInclude Include="..\Share\RankList\RankListLogic.h">
       <Filter>Share\RankList</Filter>
     </ClInclude>
-    <ClInclude Include="..\Share\IRankListSync.h">
+    <ClInclude Include="..\Share\RankList\IRankListASync.h">
       <Filter>Share\RankList</Filter>
     </ClInclude>
-    <ClInclude Include="..\Share\IRankListASync.h">
+    <ClInclude Include="..\Share\RankList\IRankListData.h">
       <Filter>Share\RankList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\RankList\IRankListSync.h">
+      <Filter>Share\RankList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\TimerTask\CTimerTaskHandle.h">
+      <Filter>Share\TimerTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\TimerTask\CTimerTaskMgr.h">
+      <Filter>Share\TimerTask</Filter>
+    </ClInclude>
+    <ClInclude Include="Logic\TimerTask\TimerTask.h">
+      <Filter>Logic\TimerTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\TimerTask\CTimerTaskEvent.h">
+      <Filter>Share\TimerTask</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +181,21 @@
     </ClCompile>
     <ClCompile Include="..\Share\NextData\CNextDataMgr.cpp">
       <Filter>Share\NextData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\RankList\IRankListData.cpp">
+      <Filter>Share\RankList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\TimerTask\CTimerTaskHandle.cpp">
+      <Filter>Share\TimerTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\TimerTask\CTimerTaskMgr.cpp">
+      <Filter>Share\TimerTask</Filter>
+    </ClCompile>
+    <ClCompile Include="Logic\TimerTask\TimerTask.cpp">
+      <Filter>Logic\TimerTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\TimerTask\CTimerTaskEvent.cpp">
+      <Filter>Share\TimerTask</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

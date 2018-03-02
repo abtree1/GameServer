@@ -7,4 +7,12 @@ message CSPNextData
 	optional string svalue = 3;
 	repeated int32 ivalue_arr = 4;
 	repeated string svalue_arr = 5;
+}
+
+message CTimeTaskData{
+	optional uint32 type = 1;  //TimeTask¿‡–Õ
+	optional int32 ivalue = 2;
+	optional string svalue = 3;
+	repeated int32 ivalue_arr = 4;
+	repeated string svalue_arr = 5;
 } 

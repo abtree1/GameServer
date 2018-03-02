@@ -152,12 +152,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Share\CTime.h" />
-    <ClInclude Include="..\Share\IRankListASync.h" />
-    <ClInclude Include="..\Share\IRankListSync.h" />
     <ClInclude Include="..\Share\NextData\CNextData.h" />
     <ClInclude Include="..\Share\NextData\CNextDataMgr.h" />
+    <ClInclude Include="..\Share\RankList\IRankListASync.h" />
+    <ClInclude Include="..\Share\RankList\IRankListData.h" />
+    <ClInclude Include="..\Share\RankList\IRankListSync.h" />
     <ClInclude Include="..\Share\RankList\RankListLogic.h" />
     <ClInclude Include="..\Share\Singleton.h" />
+    <ClInclude Include="..\Share\TimerTask\CTimerTaskEvent.h" />
+    <ClInclude Include="..\Share\TimerTask\CTimerTaskHandle.h" />
+    <ClInclude Include="..\Share\TimerTask\CTimerTaskMgr.h" />
+    <ClInclude Include="Logic\TimerTask\TimerTask.h" />
     <ClInclude Include="Network\CSession.h" />
     <ClInclude Include="Network\CSessionHandle.h" />
     <ClInclude Include="Network\CSessionMgr.h" />
@@ -179,7 +184,12 @@
     <ClCompile Include="..\Share\CTime.cpp" />
     <ClCompile Include="..\Share\NextData\CNextData.cpp" />
     <ClCompile Include="..\Share\NextData\CNextDataMgr.cpp" />
+    <ClCompile Include="..\Share\RankList\IRankListData.cpp" />
+    <ClCompile Include="..\Share\TimerTask\CTimerTaskEvent.cpp" />
+    <ClCompile Include="..\Share\TimerTask\CTimerTaskHandle.cpp" />
+    <ClCompile Include="..\Share\TimerTask\CTimerTaskMgr.cpp" />
     <ClCompile Include="GameServer.cpp" />
+    <ClCompile Include="Logic\TimerTask\TimerTask.cpp" />
     <ClCompile Include="Network\CSession.cpp" />
     <ClCompile Include="Network\CSessionHandle.cpp" />
     <ClCompile Include="Network\CSessionMgr.cpp" />
