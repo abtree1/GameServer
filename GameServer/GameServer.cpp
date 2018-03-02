@@ -3,6 +3,12 @@
 
 #include "stdafx.h"
 
+void Destory() {
+	CTimerTaskMgr::DestroyInstance();
+	CProtoMgr::DestroyInstance();
+	CNextDataMgr::DestroyInstance();
+	CSessionMgr::DestroyInstance();
+}
 
 int main()
 {
@@ -11,7 +17,7 @@ int main()
 		CSessionMgr::GetInstance()->Update();
 	}
 	//Ïú»Ù¶ÔÏó
-	CSessionMgr::DestroyInstance();
+	Destory();
     return 0;
 }
 

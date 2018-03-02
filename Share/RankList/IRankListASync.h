@@ -30,10 +30,10 @@ class IRankListAsync {
 		}
 	}
 private:
-	T *___t; //该变量只用于获取Id字段的类型(目前我没找到其它方法获取)
+	T *_type_; //该变量只用于获取Id字段的类型(目前我没找到其它方法获取)
 public:
 	//保存排行榜数据和操作
-	CRankListLogic<T, decltype(___t->GetId())> mRankListHandle;
+	CRankListLogic<T, decltype(_type_->GetId())> mRankListHandle;
 	//上次更新排行榜时间
 	time_t mNextUpdateTime{ 0 };
 	UINT mTimeSpan{ 0 };
