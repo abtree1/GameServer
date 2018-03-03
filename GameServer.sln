@@ -13,7 +13,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetIOCP", "NetIOCP\NetIOCP.
 		{86870AC7-4A91-490A-A126-AFD6B0B24B7E} = {86870AC7-4A91-490A-A126-AFD6B0B24B7E}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmarks", "UnlockQueue\build\msvc14\benchmarks.vcxproj", "{86870AC7-4A91-490A-A126-AFD6B0B24B7E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmarks", "Dependences\UnlockQueue\build\msvc14\benchmarks.vcxproj", "{86870AC7-4A91-490A-A126-AFD6B0B24B7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
