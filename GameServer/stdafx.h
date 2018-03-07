@@ -12,8 +12,10 @@
 
 // TODO:  在此处引用程序需要的其他头文件
 #include <iostream>
+#include <string>
 //thread
 #include <thread>
+#include <mutex>
 //Collection
 #include <vector>
 #include <map>
@@ -51,3 +53,14 @@ using namespace NetProto;
 #include "../Share/TimerTask/CTimerTaskEvent.h"
 #include "../Share/TimerTask/CTimerTaskMgr.h"
 #include "Logic/TimerTask/TimerTask.h"
+//Mysql
+#include "mysql_connection.h"
+#include "mysql_driver.h"
+#include "cppconn/statement.h"
+#include "cppconn/resultset.h"
+#include "cppconn/prepared_statement.h"
+//DB
+#include "DB/IDBTask.h"
+#include "DB/IThread.h"
+#include "DB/CThreadSave.h"
+#include "DB/CThreadLoad.h"

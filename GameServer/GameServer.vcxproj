@@ -88,13 +88,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win32\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;mysqlcppconn.lib;mysqlcppconn-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win32\Debug;..\Dependences\MysqlConnector\Win32\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -104,13 +104,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win64\Debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win64\Debug;..\Dependences\MysqlConnector\Win64\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;mysqlcppconn.lib;mysqlcppconn-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -162,6 +162,10 @@
     <ClInclude Include="..\Share\TimerTask\CTimerTaskEvent.h" />
     <ClInclude Include="..\Share\TimerTask\CTimerTaskHandle.h" />
     <ClInclude Include="..\Share\TimerTask\CTimerTaskMgr.h" />
+    <ClInclude Include="DB\CThreadLoad.h" />
+    <ClInclude Include="DB\CThreadSave.h" />
+    <ClInclude Include="DB\IDBTask.h" />
+    <ClInclude Include="DB\IThread.h" />
     <ClInclude Include="Logic\TimerTask\TimerTask.h" />
     <ClInclude Include="Network\CSession.h" />
     <ClInclude Include="Network\CSessionHandle.h" />
@@ -188,6 +192,8 @@
     <ClCompile Include="..\Share\TimerTask\CTimerTaskEvent.cpp" />
     <ClCompile Include="..\Share\TimerTask\CTimerTaskHandle.cpp" />
     <ClCompile Include="..\Share\TimerTask\CTimerTaskMgr.cpp" />
+    <ClCompile Include="DB\CThreadLoad.cpp" />
+    <ClCompile Include="DB\CThreadSave.cpp" />
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="Logic\TimerTask\TimerTask.cpp" />
     <ClCompile Include="Network\CSession.cpp" />

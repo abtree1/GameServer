@@ -43,6 +43,9 @@
     <Filter Include="Logic\TimerTask">
       <UniqueIdentifier>{67269f72-013f-4a77-9444-f225384c9abd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{94ccd515-4fb8-41fb-a5f4-6b3f3f3e160c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -132,6 +135,18 @@
     <ClInclude Include="..\Share\TimerTask\CTimerTaskEvent.h">
       <Filter>Share\TimerTask</Filter>
     </ClInclude>
+    <ClInclude Include="DB\CThreadSave.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\CThreadLoad.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\IThread.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\IDBTask.h">
+      <Filter>DB</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -196,6 +211,12 @@
     </ClCompile>
     <ClCompile Include="..\Share\TimerTask\CTimerTaskEvent.cpp">
       <Filter>Share\TimerTask</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\CThreadLoad.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\CThreadSave.cpp">
+      <Filter>DB</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
