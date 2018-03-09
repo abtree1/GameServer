@@ -18,3 +18,5 @@ typedef unsigned long long UINT64;
 typedef unsigned char u8;
 typedef UINT u32;
 typedef UINT64 u64;
+
+#define  CLASS_FUNC(cla, func) &cla::func

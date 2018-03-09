@@ -94,7 +94,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;mysqlcppconn.lib;mysqlcppconn-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win32\Debug;..\Dependences\MysqlConnector\Win32\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win32\Debug;..\Dependences\MysqlConnector\Win32\lib;..\..\boost_1_65_1\vc14x32\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -151,6 +151,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Share\Configs\ConfBlock.h" />
+    <ClInclude Include="..\Share\Configs\ConfigFile.h" />
+    <ClInclude Include="..\Share\Configs\IConfData.h" />
+    <ClInclude Include="..\Share\Configs\IConfigMgr.h" />
     <ClInclude Include="..\Share\CTime.h" />
     <ClInclude Include="..\Share\NextData\CNextData.h" />
     <ClInclude Include="..\Share\NextData\CNextDataMgr.h" />
@@ -162,6 +166,7 @@
     <ClInclude Include="..\Share\TimerTask\CTimerTaskEvent.h" />
     <ClInclude Include="..\Share\TimerTask\CTimerTaskHandle.h" />
     <ClInclude Include="..\Share\TimerTask\CTimerTaskMgr.h" />
+    <ClInclude Include="..\Share\Util.h" />
     <ClInclude Include="DB\CThreadLoad.h" />
     <ClInclude Include="DB\CThreadSave.h" />
     <ClInclude Include="DB\IDBTask.h" />
@@ -185,6 +190,9 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Share\Configs\ConfBlock.cpp" />
+    <ClCompile Include="..\Share\Configs\ConfigFile.cpp" />
+    <ClCompile Include="..\Share\Configs\IConfigMgr.cpp" />
     <ClCompile Include="..\Share\CTime.cpp" />
     <ClCompile Include="..\Share\NextData\CNextData.cpp" />
     <ClCompile Include="..\Share\NextData\CNextDataMgr.cpp" />
@@ -192,6 +200,7 @@
     <ClCompile Include="..\Share\TimerTask\CTimerTaskEvent.cpp" />
     <ClCompile Include="..\Share\TimerTask\CTimerTaskHandle.cpp" />
     <ClCompile Include="..\Share\TimerTask\CTimerTaskMgr.cpp" />
+    <ClCompile Include="..\Share\Util.cpp" />
     <ClCompile Include="DB\CThreadLoad.cpp" />
     <ClCompile Include="DB\CThreadSave.cpp" />
     <ClCompile Include="GameServer.cpp" />

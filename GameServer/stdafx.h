@@ -13,13 +13,20 @@
 // TODO:  在此处引用程序需要的其他头文件
 #include <iostream>
 #include <string>
+#include <sstream>
 //thread
 #include <thread>
 #include <mutex>
 //Collection
 #include <vector>
 #include <map>
+#include <set>
 using namespace std;
+//boost
+#include "boost/filesystem.hpp"
+#include "boost/variant.hpp"
+//Util
+#include "../Share/Util.h"
 //Singleton
 #include "../Share/Singleton.h"
 //Time
@@ -34,6 +41,17 @@ using namespace NetProto;
 #include "Network/CSession.h"
 #include "Network/CSessionHandle.h"
 #include "Network/CSessionMgr.h"
+//Mysql
+#include "mysql_connection.h"
+#include "mysql_driver.h"
+#include "cppconn/statement.h"
+#include "cppconn/resultset.h"
+#include "cppconn/prepared_statement.h"
+//Configs
+#include "../Share/Configs/IConfData.h"
+#include "../Share/Configs/ConfBlock.h"
+#include "../Share/Configs/ConfigFile.h"
+#include "../Share/Configs/IConfigMgr.h"
 //Player
 #include "Player/Components/IPlayerData.h"
 #include "Player/Components/CBaseData.h"
@@ -53,12 +71,6 @@ using namespace NetProto;
 #include "../Share/TimerTask/CTimerTaskEvent.h"
 #include "../Share/TimerTask/CTimerTaskMgr.h"
 #include "Logic/TimerTask/TimerTask.h"
-//Mysql
-#include "mysql_connection.h"
-#include "mysql_driver.h"
-#include "cppconn/statement.h"
-#include "cppconn/resultset.h"
-#include "cppconn/prepared_statement.h"
 //DB
 #include "DB/IDBTask.h"
 #include "DB/IThread.h"

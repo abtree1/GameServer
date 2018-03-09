@@ -46,6 +46,12 @@
     <Filter Include="DB">
       <UniqueIdentifier>{94ccd515-4fb8-41fb-a5f4-6b3f3f3e160c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Share\Configs">
+      <UniqueIdentifier>{cd0ee79b-1c3e-427c-b16b-a1bfcd8bba72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configs">
+      <UniqueIdentifier>{d99b9442-0f63-47f5-aeef-07a9bd005889}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -147,6 +153,21 @@
     <ClInclude Include="DB\IDBTask.h">
       <Filter>DB</Filter>
     </ClInclude>
+    <ClInclude Include="..\Share\Configs\IConfData.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\ConfBlock.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\IConfigMgr.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\ConfigFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Util.h">
+      <Filter>Share</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -217,6 +238,18 @@
     </ClCompile>
     <ClCompile Include="DB\CThreadSave.cpp">
       <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\ConfBlock.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\IConfigMgr.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\ConfigFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Util.cpp">
+      <Filter>Share</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

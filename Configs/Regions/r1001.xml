@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<BornBos PosX='-1.12' PosY='301.52' PosZ='15.42' Yaw='180' />
+	<RoomList>
+		<Room RoomID='1' TriggerId='2' OnceTime = "true" RoomEnterScriptFunName="RegionLogic/RegionShow_1"/>
+	</RoomList>
+	<CityPlayEntryList> <!-- 3=竞技场，26=金币副本，27=经验副本，28=密室特训，29=雪地救援，30=往生涅槃，32=守卫青山院，1002=秘宝争夺战 1003碟者协战 1004天梯赛-->
+		<CityPlayEntry CityPlayEntryID='1' TriggerId='1' BindPlayID='2' CityPlayEntryEnterScriptFunName="RegionLogic/CityPlayEntry" EffectResourcename='eff_scenes_chuansongmen_01' PosX='0.39' PosY='1002.35' PosZ='20' ScaleX='1' ScaleY='1' ScaleZ='1'/>
+		<CityPlayEntry CityPlayEntryID='2' TriggerId='3' BindPlayID='1002,1003,1004,1006,36' CityPlayEntryEnterScriptFunName="RegionLogic/CityPlayEntry" EffectResourcename='eff_scenes_chuansongmen_01' PosX='26.2' PosY='1002.35' PosZ='-9' ScaleX='1' ScaleY='1' ScaleZ='1' />
+		<CityPlayEntry CityPlayEntryID='3' TriggerId='4' BindPlayID='3,28,30,26,27,29,32,33,35' CityPlayEntryEnterScriptFunName="RegionLogic/CityPlayEntry" EffectResourcename='eff_scenes_chuansongmen_01' PosX='-29.89' PosY='1002.35' PosZ='-4.3' ScaleX='1' ScaleY='1' ScaleZ='1' />
+		<CityPlayEntry CityPlayEntryID='4' TriggerId='0' BindPlayID='' CityPlayEntryEnterScriptFunName="" EffectResourcename='HF_SD_01' PosX='0.52' PosY='1000' PosZ='6.43' ScaleX='2' ScaleY='2' ScaleZ='2' />
+	</CityPlayEntryList>
+	<NpcList>
+	    <Npc ID='1' ResID='1' PosX='-37.86' PosY='1001' PosZ='-6.33' Yaw='109.4' TriggerId='0'/>
+	    <Npc ID='2' ResID='2' PosX='11.19' PosY='1001' PosZ='-35.53' Yaw='147' TriggerId='0'/>
+	    <Npc ID='3' ResID='7' PosX='-5.4' PosY='1001' PosZ='11.76' Yaw='152.7' TriggerId='0'/>
+		<Npc ID='4' ResID='4' PosX='-50.28' PosY='1001' PosZ='-11.5' Yaw='172.43' TriggerId='0'/>
+	    <Npc ID='5' ResID='4' PosX='-53.93' PosY='1001' PosZ='-11.26' Yaw='172.43' TriggerId='0'/>
+	    <Npc ID='6' ResID='5' PosX='-52.05' PosY='1001' PosZ='-10.11' Yaw='172.43' TriggerId='0'/>
+	    <Npc ID='7' ResID='6' PosX='16.35' PosY='1001' PosZ='-11.33' Yaw='-170.42' TriggerId='0'/>	
+		<Npc ID='8' ResID='8' PosX='-5.99' PosY='1001' PosZ='-4.97' Yaw='135.2' TriggerId='0'/>	
+	
+	<!--	<Npc ID='9' ResID='9' PosX='0.52' PosY='1000' PosZ='6.43' Yaw='0' TriggerId='0'/>		
+		<Npc ID='2' ResID='1' PosX='215.4' PosY='8.5' PosZ='-89.14' Yaw='-171.9746' TriggerId='0'/>		
+		<Npc ID='3' ResID='2' PosX='199.51' PosY='8.5' PosZ='-107.46' Yaw='131.8378' TriggerId='0'/>
+	    <Npc ID='4' ResID='2' PosX='192.98' PosY='8.5' PosZ='-113.92' Yaw='131.8378' TriggerId='0'/>		
+		<Npc ID='5' ResID='4' PosX='185.01' PosY='8.1' PosZ='-120.06' Yaw='60.94965' TriggerId='0'/>
+		<Npc ID='6' ResID='5' PosX='185.2375' PosY='8.1' PosZ='-118.6804' Yaw='168.6426' TriggerId='0'/>
+		<Npc ID='8' ResID='7' PosX='240.25' PosY='8.1' PosZ='-92.81' Yaw='-165.0664' TriggerId='0'/>
+		-->
+	</NpcList>
+	<AreaList>	
+	</AreaList>
+	<TriggerList>
+		<Trigger TriggerId="0" PosX='0' PosY='0' PosZ='0' Radius="0" />
+		<Trigger TriggerId="1" PosX='0.39' PosY='1000.1' PosZ='20' Radius="2.5" />
+		<Trigger TriggerId="2" PosX='0' PosY='1000.1' PosZ='0' Radius="50" />
+		<Trigger TriggerId="3" PosX='26.2' PosY='1000.1' PosZ='-9' Radius="2.5" />
+		<Trigger TriggerId="4" PosX='-29.89' PosY='1000.1' PosZ='-4.3' Radius="2.5" />	
+	</TriggerList>
+	<DynamicWallList>
+		<DynamicWall DynamicWallId="2" resourceName="DynamicWall01" PosX="-29.62" PosY="1000.02" PosZ="-1.29" RotX="0" RotY="0.824" RotZ="0" ScaX="1.5" ScaY="1" ScaZ="1" />
+		<DynamicWall DynamicWallId="3" resourceName="DynamicWall01" PosX="26.06" PosY="1000.02" PosZ="-8.94" RotX="0" RotY="0.824" RotZ="0" ScaX="1" ScaY="1" ScaZ="1" />
+		<DynamicWall DynamicWallId="4" resourceName="DynamicWall01" PosX="0.42" PosY="1000.02" PosZ="20.54" RotX="0" RotY="0.824" RotZ="0" ScaX="1" ScaY="1" ScaZ="1" />
+	</DynamicWallList>
+</root>
