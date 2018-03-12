@@ -6,6 +6,9 @@ public:
 	ConfDataBlock() = default;
 	~ConfDataBlock() = default;
 public:
+	bool Empty() { return mData.empty(); }
+	void Clear() { mData.clear(); }
+public:
 	void SetIntValue(string& name, INT value);
 	void SetFloatValue(string& name, float& value);
 	void SetDoubleValue(string& name, double& value);

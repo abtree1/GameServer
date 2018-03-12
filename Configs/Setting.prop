@@ -1,10 +1,14 @@
-	描述	key	value	valuetype(int,string,float,double,char,bool)
-#	服务器区	serverzeroid	1	int
-#	服务器id	serverid	1	int
+	prop类配置由 配置项功能描述 配置项key:type 配置项内容组成
+	type支持 int string float double char bool
+	Setting 为默认特殊的配置文件 做最基础的设置
+	
+	描述	key:valuetype	value
+#	服务器区		serverzeroid:int	1
+#	服务器id		serverid:int		1	
 
-#	数据库IP	dbip	127.0.0.1	string
-#	数据库用户名	dbuser	root	string
-#	数据库密码	dbpasswd	root	string
-#	数据库名	dbname	cpptest	string
-#	数据库端口号	dbport	3306	int
-#	数据库维护表	dblogtable 	alter_log	string
+#	数据库IP		dbip:string			127.0.0.1
+#	数据库用户名	dbuser:string		root
+#	数据库密码		dbpasswd:string		root
+#	数据库名		dbname:string		cpptest
+#	数据库端口号	dbport:int			3306
+#	数据库维护表	dblogtable:string 	alter_log

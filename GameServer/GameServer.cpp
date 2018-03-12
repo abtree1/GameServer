@@ -2,6 +2,10 @@
 //
 
 #include "stdafx.h"
+#ifdef _DEBUG
+//用于测试
+#include "tests/TestConfigs.h"
+#endif
 
 //析构所有的单例对象
 void Destory() {
@@ -23,27 +27,10 @@ void Init() {
 int main()
 {
 	Init();
-//#ifdef _DEBUG
-//	ConfigFile* file = IConfigMgr::GetInstance()->GetConfFile("test");
-//	if (file) {
-//		ConfDataBlock* block = file->GetCfg(3);
-//		if (block) {
-//			int id = block->GetIntValue("id");
-//			string name = block->GetStringValue("name");
-//			float money = block->GetFloatValue("money");
-//			double power = block->GetDoubleValue("power");
-//			char dtype = block->GetCharValue("type");
-//			bool sex = block->GetBoolValue("sex");
-//
-//			cout << "id:" << id << " "
-//				<< "name:" << name.c_str() << " "
-//				<< "money:" << money << " "
-//				<< "power:" << power << " "
-//				<< "type:" << dtype << " "
-//				<< "sex:" << std::boolalpha << sex << endl;
-//		}
-//	}
-//#endif
+#ifdef _DEBUG
+	TestConfigs test;
+	test.TestLanguage();
+#endif
 	CSessionMgr::GetInstance()->Start("127.0.0.1", 8080);
 	while (true) {
 		CSessionMgr::GetInstance()->Update();

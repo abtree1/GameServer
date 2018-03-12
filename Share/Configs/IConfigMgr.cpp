@@ -8,8 +8,22 @@ IConfigMgr::IConfigMgr() {
 	RegisterType(".prop", CLASS_FUNC(IConfigMgr, ReadProp));
 	RegisterType(".dw", CLASS_FUNC(IConfigMgr, ReadDW));
 	RegisterType(".sqls", CLASS_FUNC(IConfigMgr, ReadSqls));
-	RegisterType(".xml", CLASS_FUNC(IConfigMgr, ReadXml));
+	RegisterType(".xml", nullptr); //该类型不注册处理函数
 	RegisterType(".lan", CLASS_FUNC(IConfigMgr, ReadLan));
+}
+
+IConfigMgr::~IConfigMgr() {
+	//屏蔽字
+	for (auto itDwFile : mDWFiles) {
+		if (itDwFile.second) {
+			itDwFile.second->Clear();
+			delete itDwFile.second;
+		}
+	}
+	mDWFiles.clear();
+	//多语言
+	if (mpLanguage)
+		delete mpLanguage;
 }
 
 bool IConfigMgr::IsRegisterType(string& type) {
@@ -40,6 +54,8 @@ bool IConfigMgr::Read(string basePath) {
 		auto ittype = mTypes.find(itpath.second.extension().string());
 		if(ittype == mTypes.end())
 			continue;   //非注册类型的文件
+		if(!ittype->second)  //注册了类型 但没注册处理函数
+			continue;
 		//读取该文件
 		bool ret = (this->*(ittype->second))(itpath.first, itpath.second.string());
 		if (!ret)
@@ -88,10 +104,107 @@ bool IConfigMgr::ReadConf(string filename, string fullpath) {
 }
 
 bool IConfigMgr::ReadProp(string filename, string fullpath) {
+	//清空老数据
+	ConfDataBlock& block = mProps[filename];
+	if (!block.Empty())
+		block.Clear();
+	//打开文件
+	ifstream ss;
+	ss.open(fullpath, ifstream::in);
+	if (!ss.is_open()) {
+		cerr << "Open File Failed " << filename.c_str() << endl;
+		return false;
+	}
+	string s;
+	vector<string> head;
+	//读取到 # 号处
+	while (ss >> s) {
+		if (s != "#")
+			continue;
+
+		//读取标题
+		ss >> s >> s;
+		head.clear();
+		SplitString(s, head, ':');
+		if (head.size() != 2)
+		{
+			cerr << "read title fail " << s.c_str() << endl;
+			return 0;
+		}
+		//读取数据
+		if (head[1] == "int") {
+			int i;
+			ss >> i;
+			block.SetIntValue(head[0], i);
+		}
+		else if (head[1] == "string") {
+			ss >> s;
+			block.SetStringValue(head[0], s);
+		}
+		else if (head[1] == "float") {
+			float f;
+			ss >> f;
+			block.SetFloatValue(head[0], f);
+		}
+		else if (head[1] == "double") {
+			double d;
+			ss >> d;
+			block.SetDoubleValue(head[0], d);
+		}
+		else if (head[1] == "char") {
+			char c;
+			ss >> c;
+			block.SetCharValue(head[0], c);
+		}
+		else if (head[1] == "bool") {
+			bool b;
+			ss >> std::boolalpha >> b;
+			block.SetBoolValue(head[0], b);
+		}
+		else {
+			//表示解析type 异常
+			cerr << "read title type fail " << head[1].c_str() << endl;
+			return false;
+		}
+	}
 	return true;
 }
 
 bool IConfigMgr::ReadDW(string filename, string fullpath) {
+	IDWFile* file = nullptr;
+	auto it = mDWFiles.find(filename);
+	if (it != mDWFiles.end()) {
+		if (it->second) {
+			file = it->second;
+			file->Clear();  //清空老数据
+		}
+		else {
+			//删除原来的
+			mDWFiles.erase(filename);
+			//新建一个屏蔽字文件
+			file = new CDWFile();
+			mDWFiles.insert({ filename, file });
+		}
+	}
+	else {
+		//新建一个屏蔽字文件
+		file = new CDWFile();
+		mDWFiles.insert({ filename, file });
+	}
+	
+	//打开文件
+	ifstream ss;
+	ss.open(fullpath, ifstream::in);
+	if (!ss.is_open()) {
+		cerr << "Open File Failed " << filename.c_str() << endl;
+		delete file;
+		return false;
+	}
+	string word;
+	//读取屏蔽字文件
+	while (ss >> word) {
+		file->Build(word);
+	}
 	return true;
 }
 
@@ -99,12 +212,17 @@ bool IConfigMgr::ReadSqls(string filename, string fullpath) {
 	return true;
 }
 
-bool IConfigMgr::ReadXml(string filename, string fullpath) {
-	return true;
-}
+//bool IConfigMgr::ReadXml(string filename, string fullpath) {
+//	return true;
+//}
 
 bool IConfigMgr::ReadLan(string filename, string fullpath) {
-	return true;
+	if (!mpLanguage) {
+		//初始化 并设置默认语言
+		mpLanguage = new CLanguage("chinese");
+	}
+	//读取配置
+	return mpLanguage->Read(fullpath);
 }
 
 ConfigFile* IConfigMgr::GetConfFile(string name) {
@@ -112,4 +230,26 @@ ConfigFile* IConfigMgr::GetConfFile(string name) {
 	if (it == mConfs.end())
 		return nullptr;
 	return &(it->second);
+}
+
+ConfDataBlock* IConfigMgr::GetPropFile(string name) {
+	auto it = mProps.find(name);
+	if (it == mProps.end())
+		return nullptr;
+	return &(it->second);
+}
+
+IDWFile* IConfigMgr::GetDWFile(string name) {
+	auto it = mDWFiles.find(name);
+	if (it == mDWFiles.end())
+		return nullptr;
+	return it->second;
+}
+
+INT IConfigMgr::MatchDWDef(string& source, string& matched) {
+	IDWFile* file = GetDefDWFile();
+	if (file) {
+		return file->Match(source, matched);
+	}
+	return -1; //匹配失败
 }

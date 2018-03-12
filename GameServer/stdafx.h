@@ -51,6 +51,10 @@ using namespace NetProto;
 #include "../Share/Configs/IConfData.h"
 #include "../Share/Configs/ConfBlock.h"
 #include "../Share/Configs/ConfigFile.h"
+#include "../Share/Configs/IDWNode.h"
+#include "../Share/Configs/CDWFile.h"
+#include "../Share/Configs/ILanguageFile.h"
+#include "../Share/Configs/CLanguageFile.h"
 #include "../Share/Configs/IConfigMgr.h"
 //Player
 #include "Player/Components/IPlayerData.h"

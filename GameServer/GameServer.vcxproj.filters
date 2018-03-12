@@ -52,6 +52,9 @@
     <Filter Include="Configs">
       <UniqueIdentifier>{d99b9442-0f63-47f5-aeef-07a9bd005889}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{129fed32-06c0-449f-b8f8-e908518f5a35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -168,6 +171,21 @@
     <ClInclude Include="..\Share\Util.h">
       <Filter>Share</Filter>
     </ClInclude>
+    <ClInclude Include="..\Share\Configs\CDWFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestConfigs.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\IDWNode.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\ILanguageFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\CLanguageFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -250,6 +268,15 @@
     </ClCompile>
     <ClCompile Include="..\Share\Util.cpp">
       <Filter>Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\CDWFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\ILanguageFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\CLanguageFile.cpp">
+      <Filter>Share\Configs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
