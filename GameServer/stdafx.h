@@ -21,6 +21,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <queue>
 using namespace std;
 //boost
 #include "boost/filesystem.hpp"
@@ -55,6 +56,7 @@ using namespace NetProto;
 #include "../Share/Configs/CDWFile.h"
 #include "../Share/Configs/ILanguageFile.h"
 #include "../Share/Configs/CLanguageFile.h"
+#include "../Share/Configs/CDBConfig.h"
 #include "../Share/Configs/IConfigMgr.h"
 //Player
 #include "Player/Components/IPlayerData.h"

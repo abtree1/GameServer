@@ -10,9 +10,33 @@ enum class EThreadState : u8 {
 template<typename T>
 class IThread {
 public:
-	virtual void AddTask(shared_ptr<T>& t) = 0;  //添加任务（主线程）
-	virtual void Run() = 0;	//子线程（处理任务）
-	virtual void Finish() = 0;  //主线程 获取结果
+	virtual void AddTask(shared_ptr<T>& t) {  //添加任务（主线程）
+		if (!t)
+			return;
+		std::lock_guard<std::mutex> lock(_mutex_task);
+		mTasks.push(t);
+	}
+	virtual void Run() {	//子线程（处理任务）
+		std::lock_guard<std::mutex> lock(_mutex_task);
+		std::lock_guard<std::mutex> lock1(_mutex_finishtask);
+		if (mTasks.empty())
+			return;
+		shared_ptr<IDBTask>& t = mTasks.front();
+		mTasks.pop();
+		if (t) {
+			t->Run();
+			mFinishTasks.push(t);
+		}
+	}
+	virtual void Finish() {  //主线程 获取结果
+		std::lock_guard<std::mutex> lock(_mutex_finishtask);
+		if (mFinishTasks.empty())
+			return;
+		shared_ptr<IDBTask>& t = mFinishTasks.front();
+		mFinishTasks.pop();
+		if(t)
+			t->Finish();
+	}
 	virtual void Close() {  //关闭线程（不再接收任务）
 		if (HasTask())
 			mState = EThreadState::ETS_WaitExit;
@@ -20,7 +44,7 @@ public:
 			mState = EThreadState::ETS_Exit;
 	}
 	virtual bool HasTask() { //是否还有任务
-		return !mTasks.empty();
+		return !(mTasks.empty() && mFinishTasks.empty());
 	}
 	virtual bool IsExit() {  //是否已经退出
 		return mState == EThreadState::ETS_Exit;
@@ -31,9 +55,10 @@ public:
 protected:
 	//是否退出
 	EThreadState mState{ EThreadState::ETS_None };
-	vector<shared_ptr<T>> mTasks;  //等待处理的任务
-	//vector<shared_ptr<T>> mWaitFinishTasks;  //等待完成处理的任务
-	std::mutex __mutex__; //用于线程的锁
+	queue<shared_ptr<T>> mTasks;  //等待处理的任务
+	queue<shared_ptr<T>> mFinishTasks;  //处理完成 等待完成处理的任务
+	std::mutex _mutex_task; //用于线程的锁
+	std::mutex _mutex_finishtask; //用于线程的锁
 };
 
 class IDBThread : public IThread<IDBTask>{
@@ -41,6 +66,17 @@ public:
 	//连接上DB
 	virtual void ConnectDB() = 0;
 	virtual bool IsConnectDB() { return mbDBConnect; }
+public:
+	virtual void Run() override {
+		std::lock_guard<std::mutex> lock(_mutex_task);
+		std::lock_guard<std::mutex> lock1(_mutex_finishtask);
+		if (mTasks.empty())
+			return;
+		shared_ptr<IDBTask>& t = mTasks.front();
+		mTasks.pop();
+		t->RunDB(mpConn, mpStmt);
+		mFinishTasks.push(t);
+	}
 protected:
 	//DB相关
 	sql::mysql::MySQL_Driver* mpDriver; //数据库driver

@@ -45,8 +45,10 @@ bool ConfigFile::Read(string& filepath) {
 		}
 	}
 	//没有标题行 为空配置
-	if (head.empty())
+	if (head.empty()) {
+		ss.close();
 		return false;
+	}
 	int size = head.size();
 	//读取配置内容
 	bool ret = true;
@@ -110,5 +112,6 @@ bool ConfigFile::Read(string& filepath) {
 		}
 		mFileData[key] = block;
 	}
+	ss.close();
 	return ret;
 }

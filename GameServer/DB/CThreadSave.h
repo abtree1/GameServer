@@ -7,8 +7,7 @@ private:
 	~CThreadSave();
 public:
 	void ConnectDB() override;
-public:
-	void AddTask(shared_ptr<IDBTask>& t) override;
-	void Run() override;
-	void Finish() override;
+private:
+	bool CheckDBInit();
+	bool StructDB();
 };

@@ -1,0 +1,26 @@
+1	#	CREATE TABLE `userbase` (
+  `pid` int(11) unsigned NOT NULL DEFAULT '0',
+  `pname` varchar(50) NOT NULL DEFAULT '',
+  `paccount` varchar(255) NOT NULL DEFAULT '',
+  `pplatform` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户登录平台（sdk）',
+  `timecreate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+  `timeonline` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '最后一次上线时间',
+  `timeoffline` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '最后一次离线时间',
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户基本数据';	#	
+2	#	CREATE TABLE `userextend` (
+  `pid` int(11) unsigned NOT NULL DEFAULT '0',
+  `plevel` int(11) unsigned NOT NULL DEFAULT '1',
+  `presid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户头像',
+  `pcoin` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '玩家游戏币',
+  `pexp` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '玩家经验',
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户次级基本数据';	#	
+3	#	CREATE TABLE `uservip` (
+  `pid` int(11) unsigned NOT NULL DEFAULT '0',
+  `pgem` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '玩家宝石数(充值获得)',
+  `ptotalgems` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '玩家总共充值宝石',
+  `ptotalcharge` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '玩家总共充值金额',
+  `timelastcharge` datetime DEFAULT NULL COMMENT '最后一次充值时间',
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户付费数据';

@@ -30,7 +30,7 @@ bool IConfigMgr::IsRegisterType(string& type) {
 	return (mTypes.find(type) != mTypes.end());
 }
 
-bool IConfigMgr::RegisterType(string type, ClassFunc func) {
+bool IConfigMgr::RegisterType(string type, ThisFunc func) {
 	if (IsRegisterType(type))
 		return false;
 	mTypes[type] = func;
@@ -62,6 +62,13 @@ bool IConfigMgr::Read(string basePath) {
 			return false;
 	}
 	return true;
+}
+
+boost::filesystem::path* IConfigMgr::GetFilePath(string filename) {
+	auto it = mFilePaths.find(filename);
+	if (it == mFilePaths.end())
+		return nullptr;
+	return &(it->second);
 }
 
 //获取路径下（包括子路径）所有文件
@@ -164,9 +171,11 @@ bool IConfigMgr::ReadProp(string filename, string fullpath) {
 		else {
 			//表示解析type 异常
 			cerr << "read title type fail " << head[1].c_str() << endl;
+			ss.close();
 			return false;
 		}
 	}
+	ss.close();
 	return true;
 }
 
@@ -205,11 +214,12 @@ bool IConfigMgr::ReadDW(string filename, string fullpath) {
 	while (ss >> word) {
 		file->Build(word);
 	}
+	ss.close();
 	return true;
 }
 
 bool IConfigMgr::ReadSqls(string filename, string fullpath) {
-	return true;
+	return mDBCfg.Read(fullpath);
 }
 
 //bool IConfigMgr::ReadXml(string filename, string fullpath) {

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-bool CLanguage::Read(string filepath) {
+bool CDBConfig::Read(string filepath) {
 	//打开文件
 	ifstream ss(filepath, ios::in | ios::ate);
 	if (!ss.is_open()) {
@@ -13,17 +13,12 @@ bool CLanguage::Read(string filepath) {
 	ss.seekg(0);
 	ss.read(&file[0], size);
 	ss.close();
-	if(file.empty()){
+	if (file.empty()) {
 		cerr << "Read File Failed " << filepath.c_str() << endl;
 		return false;
 	}
-	//获取并清空老数据
-	boost::filesystem::path path(filepath, boost::filesystem::native);
-	string lan = path.stem().string();
-	map<INT, string> &data = mDatas[lan];
-	if (!data.empty()) {
-		data.clear();
-	}
+	//清空老数据
+	mDBMerge.clear();
 	//填充新数据
 	vector<string> pai;
 	SplitString(file, pai, "\t#\t");
@@ -36,12 +31,12 @@ bool CLanguage::Read(string filepath) {
 				<< " \" with id \"" << pai[i] << " \" error"
 				<< endl;
 			++i;  //这里需要跳过他的 value 项
-			continue;
+			return false;
 		}
 		++i;
 		if (i < size) {
 			//添加数据
-			data.insert({ id, pai[i] });
+			mDBMerge.insert({ id, pai[i] });
 		}
 	}
 	return true;

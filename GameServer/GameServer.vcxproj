@@ -151,6 +151,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Share\Configs\CDBConfig.h" />
     <ClInclude Include="..\Share\Configs\CDWFile.h" />
     <ClInclude Include="..\Share\Configs\CLanguageFile.h" />
     <ClInclude Include="..\Share\Configs\ConfBlock.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Tests\TestConfigs.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Share\Configs\CDBConfig.cpp" />
     <ClCompile Include="..\Share\Configs\CDWFile.cpp" />
     <ClCompile Include="..\Share\Configs\CLanguageFile.cpp" />
     <ClCompile Include="..\Share\Configs\ConfBlock.cpp" />

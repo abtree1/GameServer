@@ -186,6 +186,9 @@
     <ClInclude Include="..\Share\Configs\CLanguageFile.h">
       <Filter>Share\Configs</Filter>
     </ClInclude>
+    <ClInclude Include="..\Share\Configs\CDBConfig.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -276,6 +279,9 @@
       <Filter>Share\Configs</Filter>
     </ClCompile>
     <ClCompile Include="..\Share\Configs\CLanguageFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\CDBConfig.cpp">
       <Filter>Share\Configs</Filter>
     </ClCompile>
   </ItemGroup>
