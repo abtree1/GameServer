@@ -28,6 +28,7 @@ using namespace std;
 #include "boost/variant.hpp"
 //Util
 #include "../Share/Util.h"
+#include "../Share/identity.h"
 //Singleton
 #include "../Share/Singleton.h"
 //Time
@@ -82,3 +83,4 @@ using namespace NetProto;
 #include "DB/IThread.h"
 #include "DB/CThreadSave.h"
 #include "DB/CThreadLoad.h"
+//DB Task

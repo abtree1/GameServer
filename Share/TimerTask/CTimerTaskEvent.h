@@ -15,4 +15,7 @@ public:
 	void DelEvent(int pos);  //删除指定位置的项
 	void DelTail(); //删除尾上的项（最先触发）
 	STimerTaskData* GetBack(); 
+public:
+	void SaveToDB(vector<STimerTaskData>& tasks);
+	void LoadFromDB(vector<STimerTaskData>& tasks);
 };

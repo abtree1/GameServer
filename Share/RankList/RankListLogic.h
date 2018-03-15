@@ -83,7 +83,7 @@ public:
 			}
 			else {
 				if (mbHasRank)
-					it.second.rank = mRankList.size();
+					it.second.SetRank(mRankList.size());
 				mRankList.push_back(it.second);
 			}
 		}
@@ -100,7 +100,7 @@ public:
 		if (mbHasRank && resetRank) {
 			int pos = 0;
 			for (auto &it : mRankList) {
-				it.rank = pos;
+				it.SetRank(pos);
 				++pos;
 			}
 		}

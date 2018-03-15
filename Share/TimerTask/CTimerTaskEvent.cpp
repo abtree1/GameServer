@@ -62,3 +62,20 @@ STimerTaskData* CTimerTaskEvent::GetBack() {
 		return nullptr;
 	return &mRankListHandle.mRankList[mRankListHandle.mRankList.size() - 1];
 }
+
+void CTimerTaskEvent::SaveToDB(vector<STimerTaskData>& tasks) {
+	tasks = mRankListHandle.mRankList;
+}
+
+void CTimerTaskEvent::LoadFromDB(vector<STimerTaskData>& tasks) {
+	mRankListHandle.clear();
+	//采用异步更新的方式 先全部添加进去
+	for (auto &dat : tasks) {
+		mRankListHandle.updateRankList(dat);
+	}
+	//再重新排序
+	if (mRankListHandle.dirtyRankList()) {
+		mRankListHandle.resort();
+		mRankListHandle.resortKV();
+	}
+}

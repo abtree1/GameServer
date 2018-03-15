@@ -55,6 +55,9 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{129fed32-06c0-449f-b8f8-e908518f5a35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DB\Task">
+      <UniqueIdentifier>{417b584f-aa84-44df-a7b6-f833f5aec044}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -189,6 +192,12 @@
     <ClInclude Include="..\Share\Configs\CDBConfig.h">
       <Filter>Share\Configs</Filter>
     </ClInclude>
+    <ClInclude Include="..\Share\identity.h">
+      <Filter>Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\MysqlTask.h">
+      <Filter>DB\Task</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -283,6 +292,15 @@
     </ClCompile>
     <ClCompile Include="..\Share\Configs\CDBConfig.cpp">
       <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\TestConfigs.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\identity.cpp">
+      <Filter>Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\MysqlTask.cpp">
+      <Filter>DB\Task</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

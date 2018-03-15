@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "TestConfigs.h"
+#include "rapidxml.hpp"
+
+using namespace rapidxml;
 
 bool TestConfigs::TestConf() {
 	ConfigFile* file = IConfigMgr::GetInstance()->GetConfFile("test");
@@ -83,6 +86,20 @@ bool TestConfigs::ReadXML(ifstream& file) {
 	if (text.empty()) {
 		return false;
 	}
-	//Ω‚ŒˆXML
+	//Ω‚Œˆxml
+	xml_document<> doc;
+	doc.parse<0>(const_cast<char*>(text.c_str()));
+
+	auto root = doc.first_node("root");
+	cout << root->name() << endl;
+	auto pos = root->first_node("BornBos");
+	auto attr = pos->first_attribute("PosX");
+	cout << atof(attr->value()) << endl;
+	attr = attr->next_attribute("PosY");
+	cout << atof(attr->value()) << endl;
+	attr = attr->next_attribute("PosZ");
+	cout << atof(attr->value()) << endl;
+	auto RoomList = pos->next_sibling("RoomList");
+	cout << RoomList->name() << endl;
 	return true;
 }

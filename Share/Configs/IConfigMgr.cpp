@@ -229,7 +229,7 @@ bool IConfigMgr::ReadSqls(string filename, string fullpath) {
 bool IConfigMgr::ReadLan(string filename, string fullpath) {
 	if (!mpLanguage) {
 		//初始化 并设置默认语言
-		mpLanguage = new CLanguage("chinese");
+		mpLanguage = new CLanguage(DEFLANGUAGE);
 	}
 	//读取配置
 	return mpLanguage->Read(fullpath);

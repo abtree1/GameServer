@@ -15,7 +15,7 @@ UINT CTimerTaskMgr::AddTimerTask(time_t time, ETimerTaskType type, CTimeTaskData
 }
 
 UINT CTimerTaskMgr::AddTimerTask(STimerTaskData& task) {
-	task.id = NewId();
+	task.id = CIdentity::NewId(EIdType::EID_TimerTask); //NewId();
 	//将新的Timer Task加入进去
 	mTimeTaskEvent.DealRankList(task);
 	return task.id;  //id为0时 表示注册timer task 失败
@@ -41,8 +41,12 @@ void CTimerTaskMgr::Update() {
 	}
 }
 
-void CTimerTaskMgr::SaveToDB() {
+void CTimerTaskMgr::SaveToDB(vector<string>& sqls) {
+	vector<STimerTaskData>* tasks;
+	mTimeTaskEvent.SaveToDB(tasks);
+	for (STimerTaskData &data : tasks) {
 
+	}
 }
 
 void CTimerTaskMgr::LoadFromDB() {

@@ -19,7 +19,7 @@ void Destory() {
 
 void Init() {
 	//读取配置文件
-	IConfigMgr::GetInstance()->Read("../Configs");
+	IConfigMgr::GetInstance()->Read(CONFIGPATH);
 	//开启数据库进程
 	while (!CThreadSave::GetInstance()->IsConnectDB()) {
 		//如果线程没有结束 就等到线程完成数据库连接

@@ -1,10 +1,10 @@
 #pragma once
 
 //next data 事件的类型列表
-enum ENextDataKeyType {
-	ENDKT_LoginSession = 0,
-	ENDKT_LoginAccount = 1
-};
+//enum ENextDataKeyType {
+//	ENDKT_LoginSession = 0,
+//	ENDKT_LoginAccount = 1
+//};
 /************************************************************************
 	Next Data 主要用于解决时序问题 或某些需要等待前置条件完成的逻辑
 ************************************************************************/

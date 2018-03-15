@@ -60,17 +60,17 @@ public:
 	}
 	template<typename T>
 	T GetSettingValue(string title) {
-		return GetPropValue<T>("Setting", title);
+		return GetPropValue<T>(DEFSETTING, title);
 	}
 public: //´¦Àí ÆÁ±Î×Ö(.dw) ÅäÖÃÎÄ¼þ
 	//»ñÈ¡ÆÁ±Î×ÖÅäÖÃÎÄ¼þ
 	IDWFile* GetDWFile(string name);
 	//»ñÈ¡Ä¬ÈÏÆÁ±Î×ÖÅäÖÃÎÄ¼þ
-	IDWFile* GetDefDWFile() { return GetDWFile("dirtyword"); }
+	IDWFile* GetDefDWFile() { return GetDWFile(DEFDIRTYWORD); }
 	//Æ¥ÅäÄ¬ÈÏÆÁ±Î×ÖÅäÖÃÎÄ¼þ
 	INT MatchDWDef(string& source, string& matched);
 public:
-	//»ñÈ¡ÆÁ±Î×ÖÅäÖÃ
+	//»ñÈ¡¶àÓïÑÔÅäÖÃ
 	ILanguage* GetLanConf() { return mpLanguage; }
 	//»ñÈ¡Ä¬ÈÏÓïÑÔÅäÖÃ
 	string GetLanDef(INT id) { return mpLanguage->GetDefData(id); }

@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1;..\Dependences\rapidxml_1_13</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,12 +104,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1;..\Dependences\rapidxml_1_13;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win64\Debug;..\Dependences\MysqlConnector\Win64\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win64\Debug;..\Dependences\MysqlConnector\Win64\lib;..\..\boost_1_65_1\vc14x64\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;mysqlcppconn.lib;mysqlcppconn-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -161,6 +161,8 @@
     <ClInclude Include="..\Share\Configs\IConfigMgr.h" />
     <ClInclude Include="..\Share\Configs\ILanguageFile.h" />
     <ClInclude Include="..\Share\CTime.h" />
+    <ClInclude Include="..\Share\identity.h" />
+    <ClInclude Include="..\Share\MysqlTask.h" />
     <ClInclude Include="..\Share\NextData\CNextData.h" />
     <ClInclude Include="..\Share\NextData\CNextDataMgr.h" />
     <ClInclude Include="..\Share\RankList\IRankListASync.h" />
@@ -204,6 +206,8 @@
     <ClCompile Include="..\Share\Configs\IConfigMgr.cpp" />
     <ClCompile Include="..\Share\Configs\ILanguageFile.cpp" />
     <ClCompile Include="..\Share\CTime.cpp" />
+    <ClCompile Include="..\Share\identity.cpp" />
+    <ClCompile Include="..\Share\MysqlTask.cpp" />
     <ClCompile Include="..\Share\NextData\CNextData.cpp" />
     <ClCompile Include="..\Share\NextData\CNextDataMgr.cpp" />
     <ClCompile Include="..\Share\RankList\IRankListData.cpp" />
@@ -232,6 +236,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Tests\TestConfigs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ProtoBuff\msg.proto" />

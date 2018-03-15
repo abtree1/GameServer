@@ -19,9 +19,9 @@ public:
 	//数据库操作
 	void SaveToDB();
 	void LoadFromDB();
-private:
+//private:
 	//获得一个新的task id
-	UINT NewId() { return ++mMaxId; }
+	//UINT NewId() { return ++mMaxId; }
 public:
 	//获取操作函数的句柄
 	CTimerTaskHandle* GetTimerTaskHandle() { return &mTimeTaskHandle; }
@@ -33,5 +33,5 @@ private:
 	//维护类型与id映射
 	multimap<ETimerTaskType, UINT> mTaskTypeToIds;
 	//id策略(当前使用的最大I的)
-	UINT mMaxId{ 0 };
+	//UINT mMaxId{ 0 };
 };
