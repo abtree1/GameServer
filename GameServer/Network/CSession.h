@@ -13,6 +13,8 @@ public:
 public:
 	//Session 关联 Player
 	void SetPlayer(CPlayer* player) { mpPlayer = player; }
+public:
+	int GetSessionId() { return mpSession->GetSessionId(); }
 private:
 	//保存底层的session 用于收发消息
 	NetIOCP::ISession* mpSession;

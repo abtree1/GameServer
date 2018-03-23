@@ -6,6 +6,7 @@
 #pragma once
 
 #include "targetver.h"
+#include "configdef.h"
 
 #include <stdio.h>
 #include <tchar.h>
@@ -61,7 +62,7 @@ using namespace NetProto;
 #include "../Share/Configs/IConfigMgr.h"
 //Player
 #include "Player/Components/IPlayerData.h"
-#include "Player/Components/CBaseData.h"
+#include "Player/Components/CVIPData.h"
 #include "Player/CPlayer.h"
 #include "Player/CPlayerMgr.h"
 #include "Player/PlayerMsg.h"
@@ -84,3 +85,4 @@ using namespace NetProto;
 #include "DB/CThreadSave.h"
 #include "DB/CThreadLoad.h"
 //DB Task
+#include "DB/Task/MysqlTask.h"

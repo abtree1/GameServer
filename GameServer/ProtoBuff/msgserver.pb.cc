@@ -23,6 +23,11 @@ public:
  ::google::protobuf::internal::ExplicitlyConstructed<CSPNextData>
      _instance;
 } _CSPNextData_default_instance_;
+class CIdentifyKeyDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<CIdentifyKey>
+     _instance;
+} _CIdentifyKey_default_instance_;
 class CTimeTaskDataDefaultTypeInternal {
 public:
  ::google::protobuf::internal::ExplicitlyConstructed<CTimeTaskData>
@@ -34,7 +39,7 @@ namespace protobuf_msgserver_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[2];
+::google::protobuf::Metadata file_level_metadata[3];
 
 }  // namespace
 
@@ -49,6 +54,7 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
 };
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
     TableStruct::schema[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
   { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
 };
@@ -69,6 +75,15 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   0,
   ~0u,
   ~0u,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CIdentifyKey, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CIdentifyKey, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CIdentifyKey, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CIdentifyKey, ivalue_),
+  0,
+  1,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CTimeTaskData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -87,11 +102,13 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 10, sizeof(CSPNextData)},
-  { 15, 25, sizeof(CTimeTaskData)},
+  { 15, 22, sizeof(CIdentifyKey)},
+  { 24, 34, sizeof(CTimeTaskData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_CSPNextData_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_CIdentifyKey_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_CTimeTaskData_default_instance_),
 };
 
@@ -113,7 +130,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
 }
 
 }  // namespace
@@ -123,7 +140,9 @@ void TableStruct::InitDefaultsImpl() {
   ::google::protobuf::internal::InitProtobufDefaults();
   _CSPNextData_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
-      &_CSPNextData_default_instance_);_CTimeTaskData_default_instance_._instance.DefaultConstruct();
+      &_CSPNextData_default_instance_);_CIdentifyKey_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_CIdentifyKey_default_instance_);_CTimeTaskData_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_CTimeTaskData_default_instance_);}
 
@@ -138,12 +157,13 @@ void AddDescriptorsImpl() {
       "\n\017msgserver.proto\022\010NetProto\"c\n\013CSPNextDa"
       "ta\022\014\n\004type\030\001 \001(\r\022\016\n\006ivalue\030\002 \001(\005\022\016\n\006sval"
       "ue\030\003 \001(\t\022\022\n\nivalue_arr\030\004 \003(\005\022\022\n\nsvalue_a"
-      "rr\030\005 \003(\t\"e\n\rCTimeTaskData\022\014\n\004type\030\001 \001(\r\022"
-      "\016\n\006ivalue\030\002 \001(\005\022\016\n\006svalue\030\003 \001(\t\022\022\n\nivalu"
-      "e_arr\030\004 \003(\005\022\022\n\nsvalue_arr\030\005 \003(\t"
+      "rr\030\005 \003(\t\",\n\014CIdentifyKey\022\014\n\004type\030\001 \001(\r\022\016"
+      "\n\006ivalue\030\002 \001(\005\"e\n\rCTimeTaskData\022\014\n\004type\030"
+      "\001 \001(\r\022\016\n\006ivalue\030\002 \001(\005\022\016\n\006svalue\030\003 \001(\t\022\022\n"
+      "\nivalue_arr\030\004 \003(\005\022\022\n\nsvalue_arr\030\005 \003(\t"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 231);
+      descriptor, 277);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msgserver.proto", &protobuf_RegisterTypes);
 }
@@ -818,6 +838,350 @@ CSPNextData::svalue_arr() const {
 CSPNextData::mutable_svalue_arr() {
   // @@protoc_insertion_point(field_mutable_list:NetProto.CSPNextData.svalue_arr)
   return &svalue_arr_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CIdentifyKey::kTypeFieldNumber;
+const int CIdentifyKey::kIvalueFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CIdentifyKey::CIdentifyKey()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_msgserver_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NetProto.CIdentifyKey)
+}
+CIdentifyKey::CIdentifyKey(const CIdentifyKey& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _has_bits_(from._has_bits_),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&type_, &from.type_,
+    static_cast<size_t>(reinterpret_cast<char*>(&ivalue_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(ivalue_));
+  // @@protoc_insertion_point(copy_constructor:NetProto.CIdentifyKey)
+}
+
+void CIdentifyKey::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(&type_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&ivalue_) -
+      reinterpret_cast<char*>(&type_)) + sizeof(ivalue_));
+}
+
+CIdentifyKey::~CIdentifyKey() {
+  // @@protoc_insertion_point(destructor:NetProto.CIdentifyKey)
+  SharedDtor();
+}
+
+void CIdentifyKey::SharedDtor() {
+}
+
+void CIdentifyKey::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CIdentifyKey::descriptor() {
+  protobuf_msgserver_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_msgserver_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CIdentifyKey& CIdentifyKey::default_instance() {
+  protobuf_msgserver_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+CIdentifyKey* CIdentifyKey::New(::google::protobuf::Arena* arena) const {
+  CIdentifyKey* n = new CIdentifyKey;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CIdentifyKey::Clear() {
+// @@protoc_insertion_point(message_clear_start:NetProto.CIdentifyKey)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 3u) {
+    ::memset(&type_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&ivalue_) -
+        reinterpret_cast<char*>(&type_)) + sizeof(ivalue_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool CIdentifyKey::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NetProto.CIdentifyKey)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 type = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+          set_has_type();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &type_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 ivalue = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+          set_has_ivalue();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &ivalue_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NetProto.CIdentifyKey)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NetProto.CIdentifyKey)
+  return false;
+#undef DO_
+}
+
+void CIdentifyKey::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NetProto.CIdentifyKey)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional uint32 type = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->type(), output);
+  }
+
+  // optional int32 ivalue = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->ivalue(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NetProto.CIdentifyKey)
+}
+
+::google::protobuf::uint8* CIdentifyKey::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:NetProto.CIdentifyKey)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional uint32 type = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->type(), target);
+  }
+
+  // optional int32 ivalue = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->ivalue(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NetProto.CIdentifyKey)
+  return target;
+}
+
+size_t CIdentifyKey::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NetProto.CIdentifyKey)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  if (_has_bits_[0 / 32] & 3u) {
+    // optional uint32 type = 1;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->type());
+    }
+
+    // optional int32 ivalue = 2;
+    if (has_ivalue()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->ivalue());
+    }
+
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CIdentifyKey::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:NetProto.CIdentifyKey)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CIdentifyKey* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CIdentifyKey>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:NetProto.CIdentifyKey)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:NetProto.CIdentifyKey)
+    MergeFrom(*source);
+  }
+}
+
+void CIdentifyKey::MergeFrom(const CIdentifyKey& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:NetProto.CIdentifyKey)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 3u) {
+    if (cached_has_bits & 0x00000001u) {
+      type_ = from.type_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ivalue_ = from.ivalue_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void CIdentifyKey::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:NetProto.CIdentifyKey)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CIdentifyKey::CopyFrom(const CIdentifyKey& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NetProto.CIdentifyKey)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CIdentifyKey::IsInitialized() const {
+  return true;
+}
+
+void CIdentifyKey::Swap(CIdentifyKey* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CIdentifyKey::InternalSwap(CIdentifyKey* other) {
+  using std::swap;
+  swap(type_, other->type_);
+  swap(ivalue_, other->ivalue_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CIdentifyKey::GetMetadata() const {
+  protobuf_msgserver_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_msgserver_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CIdentifyKey
+
+// optional uint32 type = 1;
+bool CIdentifyKey::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void CIdentifyKey::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void CIdentifyKey::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void CIdentifyKey::clear_type() {
+  type_ = 0u;
+  clear_has_type();
+}
+::google::protobuf::uint32 CIdentifyKey::type() const {
+  // @@protoc_insertion_point(field_get:NetProto.CIdentifyKey.type)
+  return type_;
+}
+void CIdentifyKey::set_type(::google::protobuf::uint32 value) {
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:NetProto.CIdentifyKey.type)
+}
+
+// optional int32 ivalue = 2;
+bool CIdentifyKey::has_ivalue() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void CIdentifyKey::set_has_ivalue() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void CIdentifyKey::clear_has_ivalue() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void CIdentifyKey::clear_ivalue() {
+  ivalue_ = 0;
+  clear_has_ivalue();
+}
+::google::protobuf::int32 CIdentifyKey::ivalue() const {
+  // @@protoc_insertion_point(field_get:NetProto.CIdentifyKey.ivalue)
+  return ivalue_;
+}
+void CIdentifyKey::set_ivalue(::google::protobuf::int32 value) {
+  set_has_ivalue();
+  ivalue_ = value;
+  // @@protoc_insertion_point(field_set:NetProto.CIdentifyKey.ivalue)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

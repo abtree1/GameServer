@@ -13,6 +13,10 @@ void thread_func(CThreadLoad* pMgr) {
 	}
 }
 
+//保存单例的引用
+//考虑到时序问题 全局变量的定义在GameServer的Init中统一实例化
+CThreadLoad* gDBLoadMgr = nullptr;
+
 CThreadLoad::CThreadLoad() {
 	//开启线程
 	std::thread th1(thread_func, this);

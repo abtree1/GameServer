@@ -3,10 +3,12 @@ package NetProto;
 enum Net_C2S_MsgType{
 	NET_C2S_Init = 0;  //客户端的初始化消息
 	NET_C2S_Login = 1;  //玩家登录消息
+	NET_C2S_CreateRole = 2; //创建新角色
 }
 
 enum Net_S2C_MsgType{
 	NET_S2C_Init = 0;  //服务器向客户端的初始化消息
+	NET_S2C_CreateRole = 1;  //创建角色消息
 }
 
 message NetMsgPack{

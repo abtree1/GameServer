@@ -1,7 +1,12 @@
 package NetProto;
 
 message NetLogin{
+	optional string account = 1;
+	optional int32 platform = 2;
+	optional string token = 3;
+	optional int32 serverid = 4;
+}
+
+message NetCreateRole{
 	optional string name = 1;
-	optional string account = 2;
-	optional string password = 3;
 }

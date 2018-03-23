@@ -23,4 +23,29 @@
   `ptotalcharge` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '玩家总共充值金额',
   `timelastcharge` datetime DEFAULT NULL COMMENT '最后一次充值时间',
   PRIMARY KEY (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户付费数据';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户付费数据';	#	
+4	#	CREATE PROCEDURE create_player(in _id int, in _name VARCHAR(50),in _account VARCHAR(255),in _serverid int, in _platform int)
+BEGIN
+  DECLARE vret int default 999;  -- 默认错误
+  DECLARE t_error INTEGER DEFAULT 0;
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET t_error=1;
+  IF EXISTS(SELECT * FROM userbase WHERE pname = _name) THEN
+    SET vret = 1;  -- 玩家名重复
+  ELSE
+    IF EXISTS(SELECT * FROM userbase WHERE paccount = _account AND pserverid = _serverid) THEN
+        SET vret = 2; -- 重复创建玩家 默认每个服只能创建一个玩家
+    ELSE
+        START TRANSACTION;
+            INSERT INTO userbase VALUES(_id, _name, _account, _serverid, _platform, NOW(), NOW(), NOW());
+            INSERT INTO userextend VALUES(_id, 1, 1, 0, 0);
+            INSERT INTO uservip(pid, pgem, ptotalgems, ptotalcharge) VALUES(_id, 0, 0, 0);
+          IF t_error = 1 THEN
+              ROLLBACK;
+          ELSE
+              COMMIT;
+              SET vret = 0; -- 创建成功了哈哈
+          END IF;
+    END IF;
+  END IF;
+  SELECT vret;
+END;

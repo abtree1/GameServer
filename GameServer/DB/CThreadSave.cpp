@@ -13,6 +13,10 @@ void thread_func(CThreadSave* pMgr) {
 	}
 }
 
+//保存单例的引用
+//考虑到时序问题 全局变量的定义在GameServer的Init中统一实例化
+CThreadSave* gDBSaveMgr = nullptr;
+
 CThreadSave::CThreadSave() {
 	//开启线程
 	std::thread th1(thread_func, this);
@@ -47,7 +51,7 @@ bool CThreadSave::CheckDBInit() {
 		mpDriver = sql::mysql::get_mysql_driver_instance();
 		//获取数据库连接
 		char buff[1024];
-		ConfDataBlock* block = IConfigMgr::GetInstance()->GetPropFile("Setting");
+		ConfDataBlock* block = gConfigMgr->GetPropFile("Setting");
 		string dbip = block->GetStringValue("dbip");
 		INT dbport = block->GetIntValue("dbport");
 		CDBConfig& dbConf = IConfigMgr::GetInstance()->GetDBConf();

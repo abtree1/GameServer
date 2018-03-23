@@ -8,3 +8,5 @@ public:
 public:
 	void ConnectDB() override;
 };
+
+extern CThreadLoad* gDBLoadMgr;

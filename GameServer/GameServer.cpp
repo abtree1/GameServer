@@ -9,6 +9,11 @@
 
 //析构所有的单例对象
 void Destory() {
+	/************************************************************************
+		析构没有关联的顺序要求
+	************************************************************************/
+	if (gIdentify)
+		delete gIdentify;
 	CTimerTaskMgr::DestroyInstance();
 	CProtoMgr::DestroyInstance();
 	CNextDataMgr::DestroyInstance();
@@ -18,18 +23,29 @@ void Destory() {
 }
 
 void Init() {
+	/************************************************************************
+		这里是有时序问题的
+		config必须在其它操作完成之前完成
+		DBSaveMgr 由于负责检查数据库结构 故需要在DBLoadMgr前完成
+	************************************************************************/
 	//读取配置文件
-	IConfigMgr::GetInstance()->Read(CONFIGPATH);
+	gConfigMgr = IConfigMgr::GetInstance();
+	if (!gConfigMgr->Read(CONFIGPATH))
+		return;
 	//开启数据库进程
-	while (!CThreadSave::GetInstance()->IsConnectDB()) {
+	gDBSaveMgr = CThreadSave::GetInstance();
+	while (!gDBSaveMgr->IsConnectDB()) {
 		//如果线程没有结束 就等到线程完成数据库连接
-		if (CThreadSave::GetInstance()->IsClose())
+		if (gDBSaveMgr->IsClose())
 			return;
 		else
 			this_thread::sleep_for(2s);
 	}
 	//只有save线程数据库连接成功 load线程才能连接数据库
-	CThreadLoad::GetInstance()->IsConnectDB();
+	gDBLoadMgr = CThreadLoad::GetInstance();
+	gDBLoadMgr->IsConnectDB();
+	//加载id
+	gIdentify->Load();
 	//开始socket监听
 	CSessionMgr::GetInstance()->Start("127.0.0.1", 8080);
 }
@@ -38,7 +54,7 @@ int main()
 {
 	Init();
 #ifdef _DEBUG
-	TestConfigs test;
+	//TestConfigs test;
 	//test.TestReadAuto();
 #endif
 	

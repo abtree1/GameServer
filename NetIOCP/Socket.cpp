@@ -88,9 +88,9 @@ namespace NetIOCP {
 	}*/
 
 	void Socket::pushInReads(IOBuffer* buffer) {
-		char* buffRecv = new char[buffer->GetUsed()]{0};
+		char* buffRecv = new char[buffer->GetUsed() + 1]{0};
 		memcpy(buffRecv, buffer->GetPointer(0), buffer->GetUsed());
-		buffRecv[buffer->GetUsed() - 1] = '\0';
+		buffRecv[buffer->GetUsed()] = '\0';
 		mPendingReadQueue.enqueue(buffRecv);
 		delete[] buffRecv;
 	}

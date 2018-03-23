@@ -35,6 +35,7 @@ namespace NetIOCP {
 	public:
 		bool __stdcall OnSend(string& data) override;
 		bool __stdcall OnRecv(string& data) override;
+		int __stdcall GetSessionId() override { return mSocket; }
 	public:
 		SOCKET AsSocket() const { return mSocket; }
 		void Close();

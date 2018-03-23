@@ -56,11 +56,12 @@ void InitDefaults();
 
 enum Net_C2S_MsgType {
   NET_C2S_Init = 0,
-  NET_C2S_Login = 1
+  NET_C2S_Login = 1,
+  NET_C2S_CreateRole = 2
 };
 bool Net_C2S_MsgType_IsValid(int value);
 const Net_C2S_MsgType Net_C2S_MsgType_MIN = NET_C2S_Init;
-const Net_C2S_MsgType Net_C2S_MsgType_MAX = NET_C2S_Login;
+const Net_C2S_MsgType Net_C2S_MsgType_MAX = NET_C2S_CreateRole;
 const int Net_C2S_MsgType_ARRAYSIZE = Net_C2S_MsgType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Net_C2S_MsgType_descriptor();
@@ -74,11 +75,12 @@ inline bool Net_C2S_MsgType_Parse(
     Net_C2S_MsgType_descriptor(), name, value);
 }
 enum Net_S2C_MsgType {
-  NET_S2C_Init = 0
+  NET_S2C_Init = 0,
+  NET_S2C_CreateRole = 1
 };
 bool Net_S2C_MsgType_IsValid(int value);
 const Net_S2C_MsgType Net_S2C_MsgType_MIN = NET_S2C_Init;
-const Net_S2C_MsgType Net_S2C_MsgType_MAX = NET_S2C_Init;
+const Net_S2C_MsgType Net_S2C_MsgType_MAX = NET_S2C_CreateRole;
 const int Net_S2C_MsgType_ARRAYSIZE = Net_S2C_MsgType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Net_S2C_MsgType_descriptor();

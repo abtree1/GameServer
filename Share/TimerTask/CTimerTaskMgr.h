@@ -17,7 +17,7 @@ public:
 	void Update();
 public:
 	//数据库操作
-	void SaveToDB();
+	void SaveToDB(vector<string>& sqls);
 	void LoadFromDB();
 //private:
 	//获得一个新的task id

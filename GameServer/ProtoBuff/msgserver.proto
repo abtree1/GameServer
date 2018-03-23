@@ -1,16 +1,22 @@
 package NetProto;
 
+//next data 的key结构
 message CSPNextData
 {
-	optional uint32 type = 1;		//类型定义
+	optional uint32 type = 1;		//类型定义 enum ENextDataKeyType
 	optional int32 ivalue = 2;
 	optional string svalue = 3;
 	repeated int32 ivalue_arr = 4;
 	repeated string svalue_arr = 5;
 }
 
+message CIdentifyKey{
+	optional uint32 type = 1;  // 类型 enum EIdType
+	optional int32 ivalue = 2;
+}
+
 message CTimeTaskData{
-	optional uint32 type = 1;  //TimeTask类型
+	optional uint32 type = 1;  //TimeTask类型 enum ETimerTaskType
 	optional int32 ivalue = 2;
 	optional string svalue = 3;
 	repeated int32 ivalue_arr = 4;

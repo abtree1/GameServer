@@ -9,8 +9,9 @@ CSessionMgr::CSessionMgr() {
 
 CSessionMgr::~CSessionMgr() {
 	//销毁所有连入的session
-	for (CSession* session : mpSessionVec) {
-		delete session;
+	for (auto it : mpSessionVec) {
+		if (it.second)
+			delete it.second;
 	}
 	
 	//销毁库实例
@@ -29,14 +30,15 @@ bool CSessionMgr::HandleConnect(NetIOCP::ISession* pSession) {
 	if (!session)
 		return false;
 
-	mpSessionVec.push_back(session);
+	mpSessionVec[pSession->GetSessionId()] = session;
 	return true;
 }
 
 void CSessionMgr::Update() {
 	for (auto &it : mpSessionVec) {
 		//接收消息
-		it->Recv();
+		if(it.second)
+			it.second->Recv();
 	}
 	std::this_thread::sleep_for(1s);
 }

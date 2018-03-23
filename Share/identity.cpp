@@ -1,11 +1,16 @@
 #include "stdafx.h"
 
-map<EIdType, u32> CIdentity::mIds;
+//这里采用数据库管理方式
+IIdentify* gIdentify = new CIdentityImpl();
 
 u32 CIdentity::NewId(EIdType type) {
-	auto it = mIds.find(type);
+	CIdentifyKey key;
+	key.set_type(type);
+	key.set_ivalue(gConfigMgr->GetSettingValue<INT>(SERVERID));
+	string keystr = key.SerializeAsString();
+	auto it = mIds.find(keystr);
 	if (it == mIds.end()) {
-		mIds.insert({ type, 0 });
+		mIds.insert({ keystr, 0 });
 		return 0;
 	}
 	u32 ret = ++it->second;
@@ -14,39 +19,44 @@ u32 CIdentity::NewId(EIdType type) {
 }
 
 void CIdentity::Clear(EIdType type) {
-	mIds[type] = 0;
+	CIdentifyKey key;
+	key.set_type(type);
+	key.set_ivalue(gConfigMgr->GetSettingValue<INT>(SERVERID));
+	mIds[key.SerializeAsString()] = 0;
 	CIdentity::Save();
 }
 
 void CIdentity::ClearAll() {
-	u8 id = (u8)EIdType::EID_TimerTask;
-	u8 max = (u8)EIdType::EID_MaxId;
-	for (; id < max; ++id) {
-		mIds[(EIdType)id] = 0;
+	for (auto &it : mIds) {
+		it.second = 0;
 	}
 	CIdentity::Save();
 }
 
-void CIdentity::Load() {	
-	u8 id = (u8)EIdType::EID_TimerTask;
-	u8 max = (u8)EIdType::EID_MaxId;
+void CIdentity::Load() {
 	mIds.clear();
+	
 	//如果文件已经存在 读取文件
-	ifstream ss(INDEXFILE, ifstream::in | ifstream::binary);	
+	ifstream ss(INDEXFILE, ifstream::in | ifstream::binary);
 	if (ss && ss.is_open()) {
+		int size = 0;
 		u32 idv = 0;
-		for (; id < max; ++id) {
-			ss.read(reinterpret_cast<char*>(&idv), sizeof(idv));  //以2进制方式读取
-			//ss >> idv; //以text方式读取
-			mIds[(EIdType)id] = idv;
+		while (!ss.eof()) {
+			ss.read(reinterpret_cast<char*>(&size), sizeof(int));  //以2进制方式读取
+			char buff[256];
+			ss.read(buff, size);
+			ss.read(reinterpret_cast<char*>(&idv), sizeof(u32));
+			mIds[string(buff)] = idv;
 		}
 		ss.close();
 	}
 	else {
 		//如果文件不存在
-		for (; id < max; ++id) {
-			mIds[(EIdType)id] = 0;
-		}
+		CIdentifyKey key;
+		u32 serverid = gConfigMgr->GetSettingValue<INT>(SERVERID);
+		key.set_type(EID_PlayerId);
+		key.set_ivalue(serverid);
+		mIds[key.SerializeAsString()] = serverid * PLAYER_MAX_COUNT;
 		//存储
 		CIdentity::Save();
 	}
@@ -56,13 +66,13 @@ void CIdentity::Save() {
 	//默认已覆盖方式打开
 	ofstream ss(INDEXFILE, ofstream::out | ofstream::binary);
 	if (ss.is_open()) {
-		u8 id = (u8)EIdType::EID_TimerTask;
-		u8 max = (u8)EIdType::EID_MaxId;
 		//逐个存储
-		for (; id < max; ++id) {
-			u32 idv = mIds[(EIdType)id];
+		for (auto it : mIds) {
 			//已二进制形式存储
-			ss.write(reinterpret_cast<char*>(&idv), sizeof(idv));
+			int size = it.first.size();
+			ss.write(reinterpret_cast<char*>(&size), sizeof(int));
+			ss << it.first.c_str();
+			ss.write(reinterpret_cast<char*>(&it.second), sizeof(u32));
 		}
 		ss.flush();
 		ss.close();
@@ -70,4 +80,39 @@ void CIdentity::Save() {
 	else {
 		cerr << "open file " << INDEXFILE << " failed" << endl;
 	}
+}
+//########################################################################
+u32 CIdentityImpl::NewId(EIdType type) {
+	CIdentifyKey key;
+	key.set_type(type);
+	key.set_ivalue(gConfigMgr->GetSettingValue<INT>(SERVERID));
+	string keystr = key.SerializeAsString();
+	auto it = mIds.find(keystr);
+	if (it == mIds.end()) {
+		mIds.insert({ keystr, 0 });
+		return 0;
+	}
+	u32 ret = ++it->second;
+	return ret;
+}
+
+void CIdentityImpl::Clear(EIdType type) {
+	CIdentifyKey key;
+	key.set_type(type);
+	key.set_ivalue(gConfigMgr->GetSettingValue<INT>(SERVERID));
+	mIds[key.SerializeAsString()] = 0;
+}
+
+void CIdentityImpl::ClearAll() {
+	for (auto &it : mIds) {
+		it.second = 0;
+	}
+}
+
+void CIdentityImpl::Load() {
+	CThreadLoad::GetInstance()->AddTask(new CLoadIds());
+}
+
+void CIdentityImpl::Save() {
+	//目前 并没有存储的需求
 }

@@ -15,8 +15,8 @@ public:
 		Run();  //子线程中调用Run
 	}
 protected:
-	sql::Connection* mpConn;  //数据库的连接句柄
-	sql::Statement* mpStmt;	 //数据库的操作句柄
-	sql::ResultSet* mpResult;  //接收操作结果
+	sql::Connection* mpConn{ nullptr };  //数据库的连接句柄
+	sql::Statement* mpStmt{ nullptr };	 //数据库的操作句柄
+	sql::ResultSet* mpResult{ nullptr };  //接收操作结果
 	vector<string> mSqls; //需要处理的sql
 };

@@ -11,5 +11,6 @@ public:
 public:
 	//登录消息
 	MsgHandle(NET_C2S_Login, new NetLogin())
-
+	//创建新角色
+	MsgHandle(NET_C2S_CreateRole, new NetCreateRole())
 };

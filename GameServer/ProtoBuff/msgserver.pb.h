@@ -31,6 +31,9 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace NetProto {
+class CIdentifyKey;
+class CIdentifyKeyDefaultTypeInternal;
+extern CIdentifyKeyDefaultTypeInternal _CIdentifyKey_default_instance_;
 class CSPNextData;
 class CSPNextDataDefaultTypeInternal;
 extern CSPNextDataDefaultTypeInternal _CSPNextData_default_instance_;
@@ -230,6 +233,124 @@ class CSPNextData : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
+class CIdentifyKey : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:NetProto.CIdentifyKey) */ {
+ public:
+  CIdentifyKey();
+  virtual ~CIdentifyKey();
+
+  CIdentifyKey(const CIdentifyKey& from);
+
+  inline CIdentifyKey& operator=(const CIdentifyKey& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CIdentifyKey(CIdentifyKey&& from) noexcept
+    : CIdentifyKey() {
+    *this = ::std::move(from);
+  }
+
+  inline CIdentifyKey& operator=(CIdentifyKey&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CIdentifyKey& default_instance();
+
+  static inline const CIdentifyKey* internal_default_instance() {
+    return reinterpret_cast<const CIdentifyKey*>(
+               &_CIdentifyKey_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(CIdentifyKey* other);
+  friend void swap(CIdentifyKey& a, CIdentifyKey& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CIdentifyKey* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CIdentifyKey* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CIdentifyKey& from);
+  void MergeFrom(const CIdentifyKey& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CIdentifyKey* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 type = 1;
+  bool has_type() const;
+  void clear_type();
+  static const int kTypeFieldNumber = 1;
+  ::google::protobuf::uint32 type() const;
+  void set_type(::google::protobuf::uint32 value);
+
+  // optional int32 ivalue = 2;
+  bool has_ivalue() const;
+  void clear_ivalue();
+  static const int kIvalueFieldNumber = 2;
+  ::google::protobuf::int32 ivalue() const;
+  void set_ivalue(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NetProto.CIdentifyKey)
+ private:
+  void set_has_type();
+  void clear_has_type();
+  void set_has_ivalue();
+  void clear_has_ivalue();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 type_;
+  ::google::protobuf::int32 ivalue_;
+  friend struct protobuf_msgserver_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class CTimeTaskData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:NetProto.CTimeTaskData) */ {
  public:
   CTimeTaskData();
@@ -271,7 +392,7 @@ class CTimeTaskData : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_CTimeTaskData_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
+    2;
 
   void Swap(CTimeTaskData* other);
   friend void swap(CTimeTaskData& a, CTimeTaskData& b) {
@@ -624,6 +745,58 @@ CSPNextData::mutable_svalue_arr() {
 
 // -------------------------------------------------------------------
 
+// CIdentifyKey
+
+// optional uint32 type = 1;
+inline bool CIdentifyKey::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CIdentifyKey::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CIdentifyKey::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CIdentifyKey::clear_type() {
+  type_ = 0u;
+  clear_has_type();
+}
+inline ::google::protobuf::uint32 CIdentifyKey::type() const {
+  // @@protoc_insertion_point(field_get:NetProto.CIdentifyKey.type)
+  return type_;
+}
+inline void CIdentifyKey::set_type(::google::protobuf::uint32 value) {
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:NetProto.CIdentifyKey.type)
+}
+
+// optional int32 ivalue = 2;
+inline bool CIdentifyKey::has_ivalue() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CIdentifyKey::set_has_ivalue() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CIdentifyKey::clear_has_ivalue() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CIdentifyKey::clear_ivalue() {
+  ivalue_ = 0;
+  clear_has_ivalue();
+}
+inline ::google::protobuf::int32 CIdentifyKey::ivalue() const {
+  // @@protoc_insertion_point(field_get:NetProto.CIdentifyKey.ivalue)
+  return ivalue_;
+}
+inline void CIdentifyKey::set_ivalue(::google::protobuf::int32 value) {
+  set_has_ivalue();
+  ivalue_ = value;
+  // @@protoc_insertion_point(field_set:NetProto.CIdentifyKey.ivalue)
+}
+
+// -------------------------------------------------------------------
+
 // CTimeTaskData
 
 // optional uint32 type = 1;
@@ -840,6 +1013,8 @@ CTimeTaskData::mutable_svalue_arr() {
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

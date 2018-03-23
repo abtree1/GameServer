@@ -33,11 +33,11 @@ void CSession::Recv() {
 }
 
 void CSession::Send(UINT type, ::google::protobuf::Message* msg) {
-	if (!msg)
-		return;
+	string msgstr = "";
+	if (msg)  //如果不是空消息 填充消息
+		msgstr = msg->SerializeAsString();
 	NetMsgPack sendMsg;
 	sendMsg.set_type(type);
-	sendMsg.set_msg(msg->SerializeAsString());
-	//sendMsg.set_code("");
+	sendMsg.set_msg(msgstr);
 	mpSession->OnSend(sendMsg.SerializeAsString());
 }

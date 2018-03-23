@@ -20,6 +20,7 @@ typedef UINT u32;
 typedef UINT64 u64;
 
 #define  CLASS_FUNC(cla, func) &cla::func
+#define  PLAYER_MAX_COUNT 10000000
 
 //默认设置文件
 #define DEFSETTING "Setting"
@@ -33,10 +34,9 @@ typedef UINT64 u64;
 #define INDEXFILE	"index.dat"
 
 //定义ID的枚举
-enum class EIdType : u8 {
-	EID_TimerTask,
+enum EIdType {
+	EID_TimerTask = 0,
 	EID_PlayerId,
-	EID_MaxId
 };
 //定义timer task的枚举
 enum ETimerTaskType {
@@ -44,6 +44,6 @@ enum ETimerTaskType {
 };
 //next data 事件的类型列表
 enum ENextDataKeyType {
-	ENDKT_LoginSession = 0,
+	ENDKT_LoginPrepare = 0,  //登录前准备工作
 	ENDKT_LoginAccount = 1
 };

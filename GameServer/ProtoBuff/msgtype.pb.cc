@@ -109,12 +109,13 @@ void AddDescriptorsImpl() {
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\rmsgtype.proto\022\010NetProto\"5\n\nNetMsgPack\022"
       "\014\n\004type\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\022\014\n\004code\030\003 \001(\t"
-      "*6\n\017Net_C2S_MsgType\022\020\n\014NET_C2S_Init\020\000\022\021\n"
-      "\rNET_C2S_Login\020\001*#\n\017Net_S2C_MsgType\022\020\n\014N"
-      "ET_S2C_Init\020\000"
+      "*N\n\017Net_C2S_MsgType\022\020\n\014NET_C2S_Init\020\000\022\021\n"
+      "\rNET_C2S_Login\020\001\022\026\n\022NET_C2S_CreateRole\020\002"
+      "*;\n\017Net_S2C_MsgType\022\020\n\014NET_S2C_Init\020\000\022\026\n"
+      "\022NET_S2C_CreateRole\020\001"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 173);
+      descriptor, 221);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msgtype.proto", &protobuf_RegisterTypes);
 }
@@ -141,6 +142,7 @@ bool Net_C2S_MsgType_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;
@@ -154,6 +156,7 @@ const ::google::protobuf::EnumDescriptor* Net_S2C_MsgType_descriptor() {
 bool Net_S2C_MsgType_IsValid(int value) {
   switch (value) {
     case 0:
+    case 1:
       return true;
     default:
       return false;

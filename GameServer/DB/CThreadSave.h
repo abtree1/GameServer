@@ -11,3 +11,5 @@ private:
 	bool CheckDBInit();
 	bool StructDB();
 };
+ 
+extern CThreadSave* gDBSaveMgr;

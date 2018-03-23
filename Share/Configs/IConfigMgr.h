@@ -110,3 +110,5 @@ protected:
 	//注册的配置文件类型
 	map<string, ThisFunc> mTypes;
 };
+
+extern IConfigMgr* gConfigMgr;

@@ -2,6 +2,9 @@
 
 typedef boost::filesystem::path Path;
 
+//考虑到时序问题 全局变量的定义在GameServer的Init中统一实例化
+IConfigMgr* gConfigMgr = nullptr;
+
 IConfigMgr::IConfigMgr() {
 	//注册所有配置文件类型和他们的处理函数
 	RegisterType(".conf", CLASS_FUNC(IConfigMgr, ReadConf));

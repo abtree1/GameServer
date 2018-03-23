@@ -108,9 +108,6 @@
     <ClInclude Include="Player\CPlayerMgr.h">
       <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="Player\Components\CBaseData.h">
-      <Filter>Player\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Share\CTime.h">
       <Filter>Share</Filter>
     </ClInclude>
@@ -195,8 +192,14 @@
     <ClInclude Include="..\Share\identity.h">
       <Filter>Share</Filter>
     </ClInclude>
-    <ClInclude Include="..\Share\MysqlTask.h">
+    <ClInclude Include="DB\Task\MysqlTask.h">
       <Filter>DB\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="configdef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Components\CVIPData.h">
+      <Filter>Player\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -232,9 +235,6 @@
     </ClCompile>
     <ClCompile Include="Player\CPlayerMgr.cpp">
       <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Player\Components\CBaseData.cpp">
-      <Filter>Player\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\Share\CTime.cpp">
       <Filter>Share</Filter>
@@ -299,8 +299,11 @@
     <ClCompile Include="..\Share\identity.cpp">
       <Filter>Share</Filter>
     </ClCompile>
-    <ClCompile Include="..\Share\MysqlTask.cpp">
+    <ClCompile Include="DB\Task\MysqlTask.cpp">
       <Filter>DB\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Components\CVIPData.cpp">
+      <Filter>Player\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

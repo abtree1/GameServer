@@ -10,7 +10,7 @@ enum class EThreadState : u8 {
 template<typename T>
 class IThread {
 public:
-	virtual void AddTask(shared_ptr<T>& t) {  //添加任务（主线程）
+	virtual void AddTask(T* t) {  //添加任务（主线程）
 		if (!t)
 			return;
 		std::lock_guard<std::mutex> lock(_mutex_task);
@@ -21,7 +21,7 @@ public:
 		std::lock_guard<std::mutex> lock1(_mutex_finishtask);
 		if (mTasks.empty())
 			return;
-		shared_ptr<IDBTask>& t = mTasks.front();
+		IDBTask* t = mTasks.front();
 		mTasks.pop();
 		if (t) {
 			t->Run();
@@ -32,10 +32,12 @@ public:
 		std::lock_guard<std::mutex> lock(_mutex_finishtask);
 		if (mFinishTasks.empty())
 			return;
-		shared_ptr<IDBTask>& t = mFinishTasks.front();
+		IDBTask* t = mFinishTasks.front();
 		mFinishTasks.pop();
-		if(t)
+		if (t) {
 			t->Finish();
+			delete t;
+		}
 	}
 	virtual void Close() {  //关闭线程（不再接收任务）
 		if (HasTask())
@@ -55,8 +57,8 @@ public:
 protected:
 	//是否退出
 	EThreadState mState{ EThreadState::ETS_None };
-	queue<shared_ptr<T>> mTasks;  //等待处理的任务
-	queue<shared_ptr<T>> mFinishTasks;  //处理完成 等待完成处理的任务
+	queue<T*> mTasks;  //等待处理的任务
+	queue<T*> mFinishTasks;  //处理完成 等待完成处理的任务
 	std::mutex _mutex_task; //用于线程的锁
 	std::mutex _mutex_finishtask; //用于线程的锁
 };
@@ -68,12 +70,16 @@ public:
 	virtual bool IsConnectDB() { return mbDBConnect; }
 public:
 	virtual void Run() override {
+		if (!IsConnectDB())
+			return;
 		std::lock_guard<std::mutex> lock(_mutex_task);
 		std::lock_guard<std::mutex> lock1(_mutex_finishtask);
 		if (mTasks.empty())
 			return;
-		shared_ptr<IDBTask>& t = mTasks.front();
+		IDBTask* t = mTasks.front();
 		mTasks.pop();
+		if (!t)
+			return;
 		t->RunDB(mpConn, mpStmt);
 		mFinishTasks.push(t);
 	}

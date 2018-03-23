@@ -12,6 +12,7 @@ namespace NetIOCP {
 	public:
 		virtual bool __stdcall OnSend(string&) = 0;
 		virtual bool __stdcall OnRecv(string&) = 0;
+		virtual int __stdcall GetSessionId() = 0;
 	};
 
 	//该类用于外部继承

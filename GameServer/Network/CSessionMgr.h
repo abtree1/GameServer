@@ -15,7 +15,7 @@ public:
 	void Update();
 private:
 	//保存所有连入的Client Session
-	vector<CSession*> mpSessionVec;
+	map<int, CSession*> mpSessionVec;
 	//保存传入net库的实例对象
 	CSessionHandle mpSessionHandle;
 	//保存net 库的对象
