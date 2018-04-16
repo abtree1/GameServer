@@ -87,13 +87,6 @@ class CSPNextData : public ::google::protobuf::Message /* @@protoc_insertion_poi
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const CSPNextData& default_instance();
 
@@ -183,8 +176,7 @@ class CSPNextData : public ::google::protobuf::Message /* @@protoc_insertion_poi
   const ::google::protobuf::RepeatedPtrField< ::std::string>& svalue_arr() const;
   ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_svalue_arr();
 
-  // optional string svalue = 3;
-  bool has_svalue() const;
+  // string svalue = 3;
   void clear_svalue();
   static const int kSvalueFieldNumber = 3;
   const ::std::string& svalue() const;
@@ -198,15 +190,13 @@ class CSPNextData : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::std::string* release_svalue();
   void set_allocated_svalue(::std::string* svalue);
 
-  // optional uint32 type = 1;
-  bool has_type() const;
+  // uint32 type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
   ::google::protobuf::uint32 type() const;
   void set_type(::google::protobuf::uint32 value);
 
-  // optional int32 ivalue = 2;
-  bool has_ivalue() const;
+  // int32 ivalue = 2;
   void clear_ivalue();
   static const int kIvalueFieldNumber = 2;
   ::google::protobuf::int32 ivalue() const;
@@ -214,21 +204,15 @@ class CSPNextData : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // @@protoc_insertion_point(class_scope:NetProto.CSPNextData)
  private:
-  void set_has_type();
-  void clear_has_type();
-  void set_has_ivalue();
-  void clear_has_ivalue();
-  void set_has_svalue();
-  void clear_has_svalue();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > ivalue_arr_;
+  mutable int _ivalue_arr_cached_byte_size_;
   ::google::protobuf::RepeatedPtrField< ::std::string> svalue_arr_;
   ::google::protobuf::internal::ArenaStringPtr svalue_;
   ::google::protobuf::uint32 type_;
   ::google::protobuf::int32 ivalue_;
+  mutable int _cached_size_;
   friend struct protobuf_msgserver_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -259,13 +243,6 @@ class CIdentifyKey : public ::google::protobuf::Message /* @@protoc_insertion_po
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const CIdentifyKey& default_instance();
 
@@ -321,15 +298,13 @@ class CIdentifyKey : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 type = 1;
-  bool has_type() const;
+  // uint32 type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
   ::google::protobuf::uint32 type() const;
   void set_type(::google::protobuf::uint32 value);
 
-  // optional int32 ivalue = 2;
-  bool has_ivalue() const;
+  // int32 ivalue = 2;
   void clear_ivalue();
   static const int kIvalueFieldNumber = 2;
   ::google::protobuf::int32 ivalue() const;
@@ -337,16 +312,11 @@ class CIdentifyKey : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // @@protoc_insertion_point(class_scope:NetProto.CIdentifyKey)
  private:
-  void set_has_type();
-  void clear_has_type();
-  void set_has_ivalue();
-  void clear_has_ivalue();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::uint32 type_;
   ::google::protobuf::int32 ivalue_;
+  mutable int _cached_size_;
   friend struct protobuf_msgserver_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -377,13 +347,6 @@ class CTimeTaskData : public ::google::protobuf::Message /* @@protoc_insertion_p
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const CTimeTaskData& default_instance();
 
@@ -473,8 +436,7 @@ class CTimeTaskData : public ::google::protobuf::Message /* @@protoc_insertion_p
   const ::google::protobuf::RepeatedPtrField< ::std::string>& svalue_arr() const;
   ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_svalue_arr();
 
-  // optional string svalue = 3;
-  bool has_svalue() const;
+  // string svalue = 3;
   void clear_svalue();
   static const int kSvalueFieldNumber = 3;
   const ::std::string& svalue() const;
@@ -488,15 +450,13 @@ class CTimeTaskData : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_svalue();
   void set_allocated_svalue(::std::string* svalue);
 
-  // optional uint32 type = 1;
-  bool has_type() const;
+  // uint32 type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
   ::google::protobuf::uint32 type() const;
   void set_type(::google::protobuf::uint32 value);
 
-  // optional int32 ivalue = 2;
-  bool has_ivalue() const;
+  // int32 ivalue = 2;
   void clear_ivalue();
   static const int kIvalueFieldNumber = 2;
   ::google::protobuf::int32 ivalue() const;
@@ -504,21 +464,15 @@ class CTimeTaskData : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // @@protoc_insertion_point(class_scope:NetProto.CTimeTaskData)
  private:
-  void set_has_type();
-  void clear_has_type();
-  void set_has_ivalue();
-  void clear_has_ivalue();
-  void set_has_svalue();
-  void clear_has_svalue();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > ivalue_arr_;
+  mutable int _ivalue_arr_cached_byte_size_;
   ::google::protobuf::RepeatedPtrField< ::std::string> svalue_arr_;
   ::google::protobuf::internal::ArenaStringPtr svalue_;
   ::google::protobuf::uint32 type_;
   ::google::protobuf::int32 ivalue_;
+  mutable int _cached_size_;
   friend struct protobuf_msgserver_2eproto::TableStruct;
 };
 // ===================================================================
@@ -533,80 +487,50 @@ class CTimeTaskData : public ::google::protobuf::Message /* @@protoc_insertion_p
 #endif  // __GNUC__
 // CSPNextData
 
-// optional uint32 type = 1;
-inline bool CSPNextData::has_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void CSPNextData::set_has_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void CSPNextData::clear_has_type() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// uint32 type = 1;
 inline void CSPNextData::clear_type() {
   type_ = 0u;
-  clear_has_type();
 }
 inline ::google::protobuf::uint32 CSPNextData::type() const {
   // @@protoc_insertion_point(field_get:NetProto.CSPNextData.type)
   return type_;
 }
 inline void CSPNextData::set_type(::google::protobuf::uint32 value) {
-  set_has_type();
+  
   type_ = value;
   // @@protoc_insertion_point(field_set:NetProto.CSPNextData.type)
 }
 
-// optional int32 ivalue = 2;
-inline bool CSPNextData::has_ivalue() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void CSPNextData::set_has_ivalue() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void CSPNextData::clear_has_ivalue() {
-  _has_bits_[0] &= ~0x00000004u;
-}
+// int32 ivalue = 2;
 inline void CSPNextData::clear_ivalue() {
   ivalue_ = 0;
-  clear_has_ivalue();
 }
 inline ::google::protobuf::int32 CSPNextData::ivalue() const {
   // @@protoc_insertion_point(field_get:NetProto.CSPNextData.ivalue)
   return ivalue_;
 }
 inline void CSPNextData::set_ivalue(::google::protobuf::int32 value) {
-  set_has_ivalue();
+  
   ivalue_ = value;
   // @@protoc_insertion_point(field_set:NetProto.CSPNextData.ivalue)
 }
 
-// optional string svalue = 3;
-inline bool CSPNextData::has_svalue() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void CSPNextData::set_has_svalue() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void CSPNextData::clear_has_svalue() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// string svalue = 3;
 inline void CSPNextData::clear_svalue() {
   svalue_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_svalue();
 }
 inline const ::std::string& CSPNextData::svalue() const {
   // @@protoc_insertion_point(field_get:NetProto.CSPNextData.svalue)
   return svalue_.GetNoArena();
 }
 inline void CSPNextData::set_svalue(const ::std::string& value) {
-  set_has_svalue();
+  
   svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.CSPNextData.svalue)
 }
 #if LANG_CXX11
 inline void CSPNextData::set_svalue(::std::string&& value) {
-  set_has_svalue();
+  
   svalue_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.CSPNextData.svalue)
@@ -614,31 +538,31 @@ inline void CSPNextData::set_svalue(::std::string&& value) {
 #endif
 inline void CSPNextData::set_svalue(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_svalue();
+  
   svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.CSPNextData.svalue)
 }
 inline void CSPNextData::set_svalue(const char* value, size_t size) {
-  set_has_svalue();
+  
   svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.CSPNextData.svalue)
 }
 inline ::std::string* CSPNextData::mutable_svalue() {
-  set_has_svalue();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.CSPNextData.svalue)
   return svalue_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* CSPNextData::release_svalue() {
   // @@protoc_insertion_point(field_release:NetProto.CSPNextData.svalue)
-  clear_has_svalue();
+  
   return svalue_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void CSPNextData::set_allocated_svalue(::std::string* svalue) {
   if (svalue != NULL) {
-    set_has_svalue();
+    
   } else {
-    clear_has_svalue();
+    
   }
   svalue_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), svalue);
   // @@protoc_insertion_point(field_set_allocated:NetProto.CSPNextData.svalue)
@@ -747,50 +671,30 @@ CSPNextData::mutable_svalue_arr() {
 
 // CIdentifyKey
 
-// optional uint32 type = 1;
-inline bool CIdentifyKey::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void CIdentifyKey::set_has_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void CIdentifyKey::clear_has_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// uint32 type = 1;
 inline void CIdentifyKey::clear_type() {
   type_ = 0u;
-  clear_has_type();
 }
 inline ::google::protobuf::uint32 CIdentifyKey::type() const {
   // @@protoc_insertion_point(field_get:NetProto.CIdentifyKey.type)
   return type_;
 }
 inline void CIdentifyKey::set_type(::google::protobuf::uint32 value) {
-  set_has_type();
+  
   type_ = value;
   // @@protoc_insertion_point(field_set:NetProto.CIdentifyKey.type)
 }
 
-// optional int32 ivalue = 2;
-inline bool CIdentifyKey::has_ivalue() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void CIdentifyKey::set_has_ivalue() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void CIdentifyKey::clear_has_ivalue() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// int32 ivalue = 2;
 inline void CIdentifyKey::clear_ivalue() {
   ivalue_ = 0;
-  clear_has_ivalue();
 }
 inline ::google::protobuf::int32 CIdentifyKey::ivalue() const {
   // @@protoc_insertion_point(field_get:NetProto.CIdentifyKey.ivalue)
   return ivalue_;
 }
 inline void CIdentifyKey::set_ivalue(::google::protobuf::int32 value) {
-  set_has_ivalue();
+  
   ivalue_ = value;
   // @@protoc_insertion_point(field_set:NetProto.CIdentifyKey.ivalue)
 }
@@ -799,80 +703,50 @@ inline void CIdentifyKey::set_ivalue(::google::protobuf::int32 value) {
 
 // CTimeTaskData
 
-// optional uint32 type = 1;
-inline bool CTimeTaskData::has_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void CTimeTaskData::set_has_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void CTimeTaskData::clear_has_type() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// uint32 type = 1;
 inline void CTimeTaskData::clear_type() {
   type_ = 0u;
-  clear_has_type();
 }
 inline ::google::protobuf::uint32 CTimeTaskData::type() const {
   // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.type)
   return type_;
 }
 inline void CTimeTaskData::set_type(::google::protobuf::uint32 value) {
-  set_has_type();
+  
   type_ = value;
   // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.type)
 }
 
-// optional int32 ivalue = 2;
-inline bool CTimeTaskData::has_ivalue() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void CTimeTaskData::set_has_ivalue() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void CTimeTaskData::clear_has_ivalue() {
-  _has_bits_[0] &= ~0x00000004u;
-}
+// int32 ivalue = 2;
 inline void CTimeTaskData::clear_ivalue() {
   ivalue_ = 0;
-  clear_has_ivalue();
 }
 inline ::google::protobuf::int32 CTimeTaskData::ivalue() const {
   // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.ivalue)
   return ivalue_;
 }
 inline void CTimeTaskData::set_ivalue(::google::protobuf::int32 value) {
-  set_has_ivalue();
+  
   ivalue_ = value;
   // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.ivalue)
 }
 
-// optional string svalue = 3;
-inline bool CTimeTaskData::has_svalue() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void CTimeTaskData::set_has_svalue() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void CTimeTaskData::clear_has_svalue() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// string svalue = 3;
 inline void CTimeTaskData::clear_svalue() {
   svalue_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_svalue();
 }
 inline const ::std::string& CTimeTaskData::svalue() const {
   // @@protoc_insertion_point(field_get:NetProto.CTimeTaskData.svalue)
   return svalue_.GetNoArena();
 }
 inline void CTimeTaskData::set_svalue(const ::std::string& value) {
-  set_has_svalue();
+  
   svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.CTimeTaskData.svalue)
 }
 #if LANG_CXX11
 inline void CTimeTaskData::set_svalue(::std::string&& value) {
-  set_has_svalue();
+  
   svalue_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.CTimeTaskData.svalue)
@@ -880,31 +754,31 @@ inline void CTimeTaskData::set_svalue(::std::string&& value) {
 #endif
 inline void CTimeTaskData::set_svalue(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_svalue();
+  
   svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.CTimeTaskData.svalue)
 }
 inline void CTimeTaskData::set_svalue(const char* value, size_t size) {
-  set_has_svalue();
+  
   svalue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.CTimeTaskData.svalue)
 }
 inline ::std::string* CTimeTaskData::mutable_svalue() {
-  set_has_svalue();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.CTimeTaskData.svalue)
   return svalue_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* CTimeTaskData::release_svalue() {
   // @@protoc_insertion_point(field_release:NetProto.CTimeTaskData.svalue)
-  clear_has_svalue();
+  
   return svalue_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void CTimeTaskData::set_allocated_svalue(::std::string* svalue) {
   if (svalue != NULL) {
-    set_has_svalue();
+    
   } else {
-    clear_has_svalue();
+    
   }
   svalue_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), svalue);
   // @@protoc_insertion_point(field_set_allocated:NetProto.CTimeTaskData.svalue)

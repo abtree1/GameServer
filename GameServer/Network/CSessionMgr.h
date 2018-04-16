@@ -11,6 +11,8 @@ public:
 	void Start(string ip, int port);
 	//注册新的连接
 	bool HandleConnect(NetIOCP::ISession* pSession);
+	//关闭已有连接
+	bool HandleDisconnect(NetIOCP::ISession* pSession);
 	//循环获取新收到的消息
 	void Update();
 private:

@@ -9,8 +9,8 @@ namespace NetIOCP {
 	}
 
 	void TcpSocketEventDispatcher::UpdateSocket(Socket& skt, IOBuffer& buffer) {
-		SOCKET sServer = CSessionMgr::GetInstance()->AsSocket();
-		int ret = setsockopt(skt.AsSocket(), SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT, (char*)&sServer, sizeof(sServer));
+		SOCKET sServer = CSessionMgr::GetInstance()->ServerSocket();
+		int ret = setsockopt(skt.GetSocket(), SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT, (char*)&sServer, sizeof(sServer));
 		if (SOCKET_ERROR == ret) {
 			throw std::exception("update socket error!");
 		}
@@ -40,8 +40,9 @@ namespace NetIOCP {
 		mbRunning = true;
 
 		while (true) {
+			//开始等待返回
 			bool isSuccess = CSessionMgr::GetInstance()->GetIOCompletionPort().GetQueuedCompletionStatus(&numberOfBytes, &socket, &buffer, INFINITE);
-
+			//发生错误
 			if (!isSuccess) {
 				// TODO: write log
 				DWORD err = ::GetLastError();
@@ -52,7 +53,7 @@ namespace NetIOCP {
 				}
 				break;
 			}
-
+			//已经关闭(用于系统关闭)
 			if (buffer->GetOperation() == IO_Operation::IO_Termination) {
 				break;
 			}
@@ -61,23 +62,23 @@ namespace NetIOCP {
 			case IO_Operation::IO_Accept_Completed:
 			{
 				if (CSessionMgr::GetInstance()->isShutting()) {
-					socket->DecreaseRef();
+					//socket->DecreaseRef();
 					delete buffer;
 					break;
 				}
 				socket = &buffer->GetSocket();
-				iocp.AssociateSocket(socket->AsSocket(), socket);
+				iocp.GetSociateSocket(socket->GetSocket(), socket);
 
 				if (0 == numberOfBytes) {
 					buffer->SetOperation(IO_Operation::IO_Disconnect_Completed);
-					int ret = WSAExtMethods::DisconnectEx(socket->AsSocket(), buffer, TF_REUSE_SOCKET, 0);
+					int ret = WSAExtMethods::DisconnectEx(socket->GetSocket(), buffer, TF_REUSE_SOCKET, 0);
 					if (TRUE == ret) {
 						monitor->OnDisconnected(socket, buffer);
 					}
 					else {
 						if (WSA_IO_PENDING != WSAGetLastError()) {
 							// TODO: write log
-							socket->DecreaseRef();
+							//socket->DecreaseRef();
 							delete buffer;
 						}
 					}
@@ -97,7 +98,8 @@ namespace NetIOCP {
 			case IO_Operation::IO_Read_Completed:
 			{
 				::InterlockedDecrement(&Statistics::PendingReads);
-				if (0 == numberOfBytes) {
+				//这里其实表示客户端已经断开了socket
+				if (0 == numberOfBytes) { 
 					socket->OnReadZeroByte(buffer);
 				}
 				else {
@@ -105,7 +107,7 @@ namespace NetIOCP {
 					buffer->SetUsed(numberOfBytes + buffer->GetUsed());
 #ifdef _DEBUG
 					char* buffRecv = new char[numberOfBytes];
-					memcpy(buffRecv, buffer->GetPointer(1), buffer->GetUsed());
+					memcpy(buffRecv, buffer->GetPointer(), buffer->GetUsed());
 					buffRecv[numberOfBytes - 1] = '\0';
 					printf("TcpSocketEventDispatcher recv data: %s \n", buffRecv);
 					delete[] buffRecv;
@@ -124,8 +126,8 @@ namespace NetIOCP {
 			default:
 			{
 				// TODO: write log
-				if (nullptr != socket)
-					socket->DecreaseRef();
+				//if (nullptr != socket)
+				//	socket->DecreaseRef();
 				delete buffer;
 			}
 			break;

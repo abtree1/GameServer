@@ -3,18 +3,22 @@
 #include <Windows.h>
 
 namespace NetIOCP {
+	/*
+	该类为IOCP操作的封装类
+	*/
 	class IOCompletionPort {
 	public:
 		IOCompletionPort(const IOCompletionPort&) = delete;
 		IOCompletionPort& operator=(const IOCompletionPort&) = delete;
 	public:
+		//用explicit关键字保证必须调用该构造函数
 		explicit IOCompletionPort(DWORD nConcurrentThreads = 0);
 		~IOCompletionPort() {
 			::CloseHandle(mHIocp);
 		}
-
+		//为完成端口绑定socket（完成端口在构造函数创建）
 		template<typename TCompletionKey>
-		bool AssociateSocket(SOCKET socket, TCompletionKey completionKey) {
+		bool GetSociateSocket(SOCKET socket, TCompletionKey completionKey) {
 			static_assert(sizeof(completionKey) == sizeof(ULONG_PTR),
 				"Can not convert completionKey to type ULONG_PTR");
 
@@ -27,6 +31,7 @@ namespace NetIOCP {
 				);
 		}
 
+		//让工作器线程在完成端口等待
 		template<typename TCompletionKey, typename TOverlapped>
 		bool GetQueuedCompletionStatus(
 			LPDWORD lpNumberOfBytes,
@@ -48,7 +53,7 @@ namespace NetIOCP {
 				dwMilliseconds
 			);
 		}
-
+		//发送结束消息 用于系统退出
 		template<typename TCompletionKey, typename TOverlapped>
 		bool PostQueuedCompletionStatus(
 			DWORD numberOfBytes,
@@ -69,6 +74,6 @@ namespace NetIOCP {
 			);
 		}
 	private:
-		HANDLE mHIocp;
+		HANDLE mHIocp;  //完成端口句柄
 	};
 }

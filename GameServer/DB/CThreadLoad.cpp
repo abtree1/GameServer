@@ -8,7 +8,7 @@ void thread_func(CThreadLoad* pMgr) {
 		return;
 	}
 	//如果还没退出
-	if (!pMgr->IsClose() || pMgr->HasTask()) {
+	while (!pMgr->IsClose() || pMgr->HasTask()) {
 		pMgr->Run();
 	}
 }

@@ -5,6 +5,9 @@
 #include <MSWSock.h>
 
 namespace NetIOCP {
+	/*
+	WinSock接口封装
+	*/
 	class WSAExtMethods {
 	public:
 		WSAExtMethods();
@@ -20,7 +23,9 @@ namespace NetIOCP {
 		static LPFN_WSARECVMSG WSARecvMsg;
 		static LPFN_WSASENDMSG WSASendMsg;
 	};
-
+	/*
+	WinSock初始化
+	*/
 	class WSAInitializor {
 	public:
 		WSAInitializor();
@@ -29,7 +34,11 @@ namespace NetIOCP {
 		int err{ 0 };
 	};
 
+	/*
+	该命名空间专门用于创建socket
+	*/
 	namespace WSAUtility {
+		/*
 		struct TCP {};
 		struct UDP {};
 
@@ -40,6 +49,8 @@ namespace NetIOCP {
 		SOCKET CreateOverlappedSocket<TCP>(TCP);
 		template<>
 		SOCKET CreateOverlappedSocket<UDP>(UDP);
+		*/
+		SOCKET CreateOverlappedSocket(int type = IPPROTO_TCP);
 
 		//这里将windows GetLastError()返回的错误码转化为字符串信息
 		DWORD FormatMessageToString(LPTSTR *ppBuffer, DWORD dwErrCode);

@@ -54,7 +54,7 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
 };
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetLogin, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetLogin, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -63,21 +63,16 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetLogin, platform_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetLogin, token_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetLogin, serverid_),
-  0,
-  2,
-  1,
-  3,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetCreateRole, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetCreateRole, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetCreateRole, name_),
-  0,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 9, sizeof(NetLogin)},
-  { 13, 19, sizeof(NetCreateRole)},
+  { 0, -1, sizeof(NetLogin)},
+  { 9, -1, sizeof(NetCreateRole)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -128,10 +123,10 @@ void AddDescriptorsImpl() {
       "\n\tmsg.proto\022\010NetProto\"N\n\010NetLogin\022\017\n\007acc"
       "ount\030\001 \001(\t\022\020\n\010platform\030\002 \001(\005\022\r\n\005token\030\003 "
       "\001(\t\022\020\n\010serverid\030\004 \001(\005\"\035\n\rNetCreateRole\022\014"
-      "\n\004name\030\001 \001(\t"
+      "\n\004name\030\001 \001(\tb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 132);
+      descriptor, 140);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg.proto", &protobuf_RegisterTypes);
 }
@@ -171,15 +166,14 @@ NetLogin::NetLogin()
 NetLogin::NetLogin(const NetLogin& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   account_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_account()) {
+  if (from.account().size() > 0) {
     account_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.account_);
   }
   token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_token()) {
+  if (from.token().size() > 0) {
     token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
   }
   ::memcpy(&platform_, &from.platform_,
@@ -189,12 +183,12 @@ NetLogin::NetLogin(const NetLogin& from)
 }
 
 void NetLogin::SharedCtor() {
-  _cached_size_ = 0;
   account_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&platform_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&serverid_) -
       reinterpret_cast<char*>(&platform_)) + sizeof(serverid_));
+  _cached_size_ = 0;
 }
 
 NetLogin::~NetLogin() {
@@ -236,23 +230,11 @@ void NetLogin::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
-    if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(!account_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-      (*account_.UnsafeRawStringPointer())->clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(!token_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-      (*token_.UnsafeRawStringPointer())->clear();
-    }
-  }
-  if (cached_has_bits & 12u) {
-    ::memset(&platform_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&serverid_) -
-        reinterpret_cast<char*>(&platform_)) + sizeof(serverid_));
-  }
-  _has_bits_.Clear();
+  account_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&platform_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&serverid_) -
+      reinterpret_cast<char*>(&platform_)) + sizeof(serverid_));
   _internal_metadata_.Clear();
 }
 
@@ -266,27 +248,27 @@ bool NetLogin::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string account = 1;
+      // string account = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_account()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->account().data(), static_cast<int>(this->account().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "NetProto.NetLogin.account");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "NetProto.NetLogin.account"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // optional int32 platform = 2;
+      // int32 platform = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          set_has_platform();
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &platform_)));
@@ -296,27 +278,27 @@ bool NetLogin::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string token = 3;
+      // string token = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_token()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->token().data(), static_cast<int>(this->token().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "NetProto.NetLogin.token");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "NetProto.NetLogin.token"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // optional int32 serverid = 4;
+      // int32 serverid = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          set_has_serverid();
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &serverid_)));
@@ -352,40 +334,39 @@ void NetLogin::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional string account = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string account = 1;
+  if (this->account().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->account().data(), static_cast<int>(this->account().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "NetProto.NetLogin.account");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->account(), output);
   }
 
-  // optional int32 platform = 2;
-  if (cached_has_bits & 0x00000004u) {
+  // int32 platform = 2;
+  if (this->platform() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->platform(), output);
   }
 
-  // optional string token = 3;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string token = 3;
+  if (this->token().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->token().data(), static_cast<int>(this->token().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "NetProto.NetLogin.token");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->token(), output);
   }
 
-  // optional int32 serverid = 4;
-  if (cached_has_bits & 0x00000008u) {
+  // int32 serverid = 4;
+  if (this->serverid() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->serverid(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:NetProto.NetLogin)
 }
@@ -397,42 +378,41 @@ void NetLogin::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional string account = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string account = 1;
+  if (this->account().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->account().data(), static_cast<int>(this->account().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "NetProto.NetLogin.account");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->account(), target);
   }
 
-  // optional int32 platform = 2;
-  if (cached_has_bits & 0x00000004u) {
+  // int32 platform = 2;
+  if (this->platform() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->platform(), target);
   }
 
-  // optional string token = 3;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string token = 3;
+  if (this->token().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->token().data(), static_cast<int>(this->token().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "NetProto.NetLogin.token");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         3, this->token(), target);
   }
 
-  // optional int32 serverid = 4;
-  if (cached_has_bits & 0x00000008u) {
+  // int32 serverid = 4;
+  if (this->serverid() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->serverid(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:NetProto.NetLogin)
   return target;
@@ -442,41 +422,39 @@ size_t NetLogin::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:NetProto.NetLogin)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  if (_has_bits_[0 / 32] & 15u) {
-    // optional string account = 1;
-    if (has_account()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->account());
-    }
-
-    // optional string token = 3;
-    if (has_token()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->token());
-    }
-
-    // optional int32 platform = 2;
-    if (has_platform()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->platform());
-    }
-
-    // optional int32 serverid = 4;
-    if (has_serverid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->serverid());
-    }
-
+  // string account = 1;
+  if (this->account().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->account());
   }
+
+  // string token = 3;
+  if (this->token().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->token());
+  }
+
+  // int32 platform = 2;
+  if (this->platform() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->platform());
+  }
+
+  // int32 serverid = 4;
+  if (this->serverid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->serverid());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -506,23 +484,19 @@ void NetLogin::MergeFrom(const NetLogin& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 15u) {
-    if (cached_has_bits & 0x00000001u) {
-      set_has_account();
-      account_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.account_);
-    }
-    if (cached_has_bits & 0x00000002u) {
-      set_has_token();
-      token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
-    }
-    if (cached_has_bits & 0x00000004u) {
-      platform_ = from.platform_;
-    }
-    if (cached_has_bits & 0x00000008u) {
-      serverid_ = from.serverid_;
-    }
-    _has_bits_[0] |= cached_has_bits;
+  if (from.account().size() > 0) {
+
+    account_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.account_);
+  }
+  if (from.token().size() > 0) {
+
+    token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
+  if (from.platform() != 0) {
+    set_platform(from.platform());
+  }
+  if (from.serverid() != 0) {
+    set_serverid(from.serverid());
   }
 }
 
@@ -554,7 +528,6 @@ void NetLogin::InternalSwap(NetLogin* other) {
   token_.Swap(&other->token_);
   swap(platform_, other->platform_);
   swap(serverid_, other->serverid_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -567,32 +540,22 @@ void NetLogin::InternalSwap(NetLogin* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // NetLogin
 
-// optional string account = 1;
-bool NetLogin::has_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void NetLogin::set_has_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void NetLogin::clear_has_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// string account = 1;
 void NetLogin::clear_account() {
   account_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_account();
 }
 const ::std::string& NetLogin::account() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.account)
   return account_.GetNoArena();
 }
 void NetLogin::set_account(const ::std::string& value) {
-  set_has_account();
+  
   account_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.account)
 }
 #if LANG_CXX11
 void NetLogin::set_account(::std::string&& value) {
-  set_has_account();
+  
   account_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetLogin.account)
@@ -600,86 +563,66 @@ void NetLogin::set_account(::std::string&& value) {
 #endif
 void NetLogin::set_account(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_account();
+  
   account_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetLogin.account)
 }
 void NetLogin::set_account(const char* value, size_t size) {
-  set_has_account();
+  
   account_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetLogin.account)
 }
 ::std::string* NetLogin::mutable_account() {
-  set_has_account();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetLogin.account)
   return account_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* NetLogin::release_account() {
   // @@protoc_insertion_point(field_release:NetProto.NetLogin.account)
-  clear_has_account();
+  
   return account_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void NetLogin::set_allocated_account(::std::string* account) {
   if (account != NULL) {
-    set_has_account();
+    
   } else {
-    clear_has_account();
+    
   }
   account_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), account);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetLogin.account)
 }
 
-// optional int32 platform = 2;
-bool NetLogin::has_platform() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-void NetLogin::set_has_platform() {
-  _has_bits_[0] |= 0x00000004u;
-}
-void NetLogin::clear_has_platform() {
-  _has_bits_[0] &= ~0x00000004u;
-}
+// int32 platform = 2;
 void NetLogin::clear_platform() {
   platform_ = 0;
-  clear_has_platform();
 }
 ::google::protobuf::int32 NetLogin::platform() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.platform)
   return platform_;
 }
 void NetLogin::set_platform(::google::protobuf::int32 value) {
-  set_has_platform();
+  
   platform_ = value;
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.platform)
 }
 
-// optional string token = 3;
-bool NetLogin::has_token() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void NetLogin::set_has_token() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void NetLogin::clear_has_token() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// string token = 3;
 void NetLogin::clear_token() {
   token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_token();
 }
 const ::std::string& NetLogin::token() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.token)
   return token_.GetNoArena();
 }
 void NetLogin::set_token(const ::std::string& value) {
-  set_has_token();
+  
   token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.token)
 }
 #if LANG_CXX11
 void NetLogin::set_token(::std::string&& value) {
-  set_has_token();
+  
   token_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetLogin.token)
@@ -687,56 +630,46 @@ void NetLogin::set_token(::std::string&& value) {
 #endif
 void NetLogin::set_token(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_token();
+  
   token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetLogin.token)
 }
 void NetLogin::set_token(const char* value, size_t size) {
-  set_has_token();
+  
   token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetLogin.token)
 }
 ::std::string* NetLogin::mutable_token() {
-  set_has_token();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetLogin.token)
   return token_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* NetLogin::release_token() {
   // @@protoc_insertion_point(field_release:NetProto.NetLogin.token)
-  clear_has_token();
+  
   return token_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void NetLogin::set_allocated_token(::std::string* token) {
   if (token != NULL) {
-    set_has_token();
+    
   } else {
-    clear_has_token();
+    
   }
   token_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), token);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetLogin.token)
 }
 
-// optional int32 serverid = 4;
-bool NetLogin::has_serverid() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-void NetLogin::set_has_serverid() {
-  _has_bits_[0] |= 0x00000008u;
-}
-void NetLogin::clear_has_serverid() {
-  _has_bits_[0] &= ~0x00000008u;
-}
+// int32 serverid = 4;
 void NetLogin::clear_serverid() {
   serverid_ = 0;
-  clear_has_serverid();
 }
 ::google::protobuf::int32 NetLogin::serverid() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.serverid)
   return serverid_;
 }
 void NetLogin::set_serverid(::google::protobuf::int32 value) {
-  set_has_serverid();
+  
   serverid_ = value;
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.serverid)
 }
@@ -760,19 +693,18 @@ NetCreateRole::NetCreateRole()
 NetCreateRole::NetCreateRole(const NetCreateRole& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_name()) {
+  if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   // @@protoc_insertion_point(copy_constructor:NetProto.NetCreateRole)
 }
 
 void NetCreateRole::SharedCtor() {
-  _cached_size_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _cached_size_ = 0;
 }
 
 NetCreateRole::~NetCreateRole() {
@@ -813,11 +745,7 @@ void NetCreateRole::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (has_name()) {
-    GOOGLE_DCHECK(!name_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-    (*name_.UnsafeRawStringPointer())->clear();
-  }
-  _has_bits_.Clear();
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -831,16 +759,16 @@ bool NetCreateRole::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string name = 1;
+      // string name = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "NetProto.NetCreateRole.name");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "NetProto.NetCreateRole.name"));
         } else {
           goto handle_unusual;
         }
@@ -873,20 +801,19 @@ void NetCreateRole::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional string name = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "NetProto.NetCreateRole.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->name(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:NetProto.NetCreateRole)
 }
@@ -898,21 +825,20 @@ void NetCreateRole::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional string name = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "NetProto.NetCreateRole.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->name(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:NetProto.NetCreateRole)
   return target;
@@ -922,13 +848,13 @@ size_t NetCreateRole::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:NetProto.NetCreateRole)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // optional string name = 1;
-  if (has_name()) {
+  // string name = 1;
+  if (this->name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
@@ -963,8 +889,8 @@ void NetCreateRole::MergeFrom(const NetCreateRole& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_name()) {
-    set_has_name();
+  if (from.name().size() > 0) {
+
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
 }
@@ -994,7 +920,6 @@ void NetCreateRole::Swap(NetCreateRole* other) {
 void NetCreateRole::InternalSwap(NetCreateRole* other) {
   using std::swap;
   name_.Swap(&other->name_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1007,32 +932,22 @@ void NetCreateRole::InternalSwap(NetCreateRole* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // NetCreateRole
 
-// optional string name = 1;
-bool NetCreateRole::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void NetCreateRole::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void NetCreateRole::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// string name = 1;
 void NetCreateRole::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
 }
 const ::std::string& NetCreateRole::name() const {
   // @@protoc_insertion_point(field_get:NetProto.NetCreateRole.name)
   return name_.GetNoArena();
 }
 void NetCreateRole::set_name(const ::std::string& value) {
-  set_has_name();
+  
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetCreateRole.name)
 }
 #if LANG_CXX11
 void NetCreateRole::set_name(::std::string&& value) {
-  set_has_name();
+  
   name_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetCreateRole.name)
@@ -1040,31 +955,31 @@ void NetCreateRole::set_name(::std::string&& value) {
 #endif
 void NetCreateRole::set_name(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_name();
+  
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetCreateRole.name)
 }
 void NetCreateRole::set_name(const char* value, size_t size) {
-  set_has_name();
+  
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetCreateRole.name)
 }
 ::std::string* NetCreateRole::mutable_name() {
-  set_has_name();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetCreateRole.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* NetCreateRole::release_name() {
   // @@protoc_insertion_point(field_release:NetProto.NetCreateRole.name)
-  clear_has_name();
+  
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void NetCreateRole::set_allocated_name(::std::string* name) {
   if (name != NULL) {
-    set_has_name();
+    
   } else {
-    clear_has_name();
+    
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetCreateRole.name)

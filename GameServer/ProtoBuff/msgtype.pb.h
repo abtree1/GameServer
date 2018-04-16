@@ -57,7 +57,9 @@ void InitDefaults();
 enum Net_C2S_MsgType {
   NET_C2S_Init = 0,
   NET_C2S_Login = 1,
-  NET_C2S_CreateRole = 2
+  NET_C2S_CreateRole = 2,
+  Net_C2S_MsgType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  Net_C2S_MsgType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool Net_C2S_MsgType_IsValid(int value);
 const Net_C2S_MsgType Net_C2S_MsgType_MIN = NET_C2S_Init;
@@ -76,7 +78,9 @@ inline bool Net_C2S_MsgType_Parse(
 }
 enum Net_S2C_MsgType {
   NET_S2C_Init = 0,
-  NET_S2C_CreateRole = 1
+  NET_S2C_CreateRole = 1,
+  Net_S2C_MsgType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  Net_S2C_MsgType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool Net_S2C_MsgType_IsValid(int value);
 const Net_S2C_MsgType Net_S2C_MsgType_MIN = NET_S2C_Init;
@@ -121,13 +125,6 @@ class NetMsgPack : public ::google::protobuf::Message /* @@protoc_insertion_poin
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const NetMsgPack& default_instance();
 
@@ -183,8 +180,7 @@ class NetMsgPack : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // optional string msg = 2;
-  bool has_msg() const;
+  // string msg = 2;
   void clear_msg();
   static const int kMsgFieldNumber = 2;
   const ::std::string& msg() const;
@@ -198,8 +194,7 @@ class NetMsgPack : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::std::string* release_msg();
   void set_allocated_msg(::std::string* msg);
 
-  // optional string code = 3;
-  bool has_code() const;
+  // string code = 3;
   void clear_code();
   static const int kCodeFieldNumber = 3;
   const ::std::string& code() const;
@@ -213,8 +208,7 @@ class NetMsgPack : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::std::string* release_code();
   void set_allocated_code(::std::string* code);
 
-  // optional int32 type = 1;
-  bool has_type() const;
+  // int32 type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
   ::google::protobuf::int32 type() const;
@@ -222,19 +216,12 @@ class NetMsgPack : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // @@protoc_insertion_point(class_scope:NetProto.NetMsgPack)
  private:
-  void set_has_type();
-  void clear_has_type();
-  void set_has_msg();
-  void clear_has_msg();
-  void set_has_code();
-  void clear_has_code();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr msg_;
   ::google::protobuf::internal::ArenaStringPtr code_;
   ::google::protobuf::int32 type_;
+  mutable int _cached_size_;
   friend struct protobuf_msgtype_2eproto::TableStruct;
 };
 // ===================================================================
@@ -249,56 +236,36 @@ class NetMsgPack : public ::google::protobuf::Message /* @@protoc_insertion_poin
 #endif  // __GNUC__
 // NetMsgPack
 
-// optional int32 type = 1;
-inline bool NetMsgPack::has_type() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void NetMsgPack::set_has_type() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void NetMsgPack::clear_has_type() {
-  _has_bits_[0] &= ~0x00000004u;
-}
+// int32 type = 1;
 inline void NetMsgPack::clear_type() {
   type_ = 0;
-  clear_has_type();
 }
 inline ::google::protobuf::int32 NetMsgPack::type() const {
   // @@protoc_insertion_point(field_get:NetProto.NetMsgPack.type)
   return type_;
 }
 inline void NetMsgPack::set_type(::google::protobuf::int32 value) {
-  set_has_type();
+  
   type_ = value;
   // @@protoc_insertion_point(field_set:NetProto.NetMsgPack.type)
 }
 
-// optional string msg = 2;
-inline bool NetMsgPack::has_msg() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void NetMsgPack::set_has_msg() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void NetMsgPack::clear_has_msg() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// string msg = 2;
 inline void NetMsgPack::clear_msg() {
   msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_msg();
 }
 inline const ::std::string& NetMsgPack::msg() const {
   // @@protoc_insertion_point(field_get:NetProto.NetMsgPack.msg)
   return msg_.GetNoArena();
 }
 inline void NetMsgPack::set_msg(const ::std::string& value) {
-  set_has_msg();
+  
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetMsgPack.msg)
 }
 #if LANG_CXX11
 inline void NetMsgPack::set_msg(::std::string&& value) {
-  set_has_msg();
+  
   msg_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetMsgPack.msg)
@@ -306,62 +273,52 @@ inline void NetMsgPack::set_msg(::std::string&& value) {
 #endif
 inline void NetMsgPack::set_msg(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_msg();
+  
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetMsgPack.msg)
 }
 inline void NetMsgPack::set_msg(const char* value, size_t size) {
-  set_has_msg();
+  
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetMsgPack.msg)
 }
 inline ::std::string* NetMsgPack::mutable_msg() {
-  set_has_msg();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetMsgPack.msg)
   return msg_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* NetMsgPack::release_msg() {
   // @@protoc_insertion_point(field_release:NetProto.NetMsgPack.msg)
-  clear_has_msg();
+  
   return msg_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void NetMsgPack::set_allocated_msg(::std::string* msg) {
   if (msg != NULL) {
-    set_has_msg();
+    
   } else {
-    clear_has_msg();
+    
   }
   msg_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), msg);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetMsgPack.msg)
 }
 
-// optional string code = 3;
-inline bool NetMsgPack::has_code() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void NetMsgPack::set_has_code() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void NetMsgPack::clear_has_code() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// string code = 3;
 inline void NetMsgPack::clear_code() {
   code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_code();
 }
 inline const ::std::string& NetMsgPack::code() const {
   // @@protoc_insertion_point(field_get:NetProto.NetMsgPack.code)
   return code_.GetNoArena();
 }
 inline void NetMsgPack::set_code(const ::std::string& value) {
-  set_has_code();
+  
   code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetMsgPack.code)
 }
 #if LANG_CXX11
 inline void NetMsgPack::set_code(::std::string&& value) {
-  set_has_code();
+  
   code_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetMsgPack.code)
@@ -369,31 +326,31 @@ inline void NetMsgPack::set_code(::std::string&& value) {
 #endif
 inline void NetMsgPack::set_code(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_code();
+  
   code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetMsgPack.code)
 }
 inline void NetMsgPack::set_code(const char* value, size_t size) {
-  set_has_code();
+  
   code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetMsgPack.code)
 }
 inline ::std::string* NetMsgPack::mutable_code() {
-  set_has_code();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetMsgPack.code)
   return code_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* NetMsgPack::release_code() {
   // @@protoc_insertion_point(field_release:NetProto.NetMsgPack.code)
-  clear_has_code();
+  
   return code_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void NetMsgPack::set_allocated_code(::std::string* code) {
   if (code != NULL) {
-    set_has_code();
+    
   } else {
-    clear_has_code();
+    
   }
   code_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), code);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetMsgPack.code)

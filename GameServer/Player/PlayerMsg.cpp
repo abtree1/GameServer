@@ -21,6 +21,8 @@ bool CPlayerMsg::OnHandleNET_C2S_Login(CSession* owner, ::google::protobuf::Mess
 	CPlayer* pPlayer = CPlayerMgr::GetInstance()->GetPlayerByAccount(account);
 	if (pPlayer != nullptr) {
 		//处理内存玩家上线流程
+		pPlayer->mpSession = owner;
+		owner->SetPlayer(pPlayer);
 		return true;
 	}
 	//玩家不再内存中 在数据库查找
@@ -63,8 +65,8 @@ bool CPlayerMsg::OnHandleNET_C2S_CreateRole(CSession* owner, ::google::protobuf:
 		, pMsg->name().c_str()			//name
 		, npdata->GetData<string>(3).c_str()  //account
 		, npdata->GetData<INT>(0)		//serverid
-		, npdata->GetData<INT>(1)
-		, owner));	//platform
+		, npdata->GetData<INT>(1)		//platform
+		, owner));	
 	//处理完成后执行清除操作
 	CNextDataMgr::GetInstance()->dirtyHandleTemp(key);
 }

@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package NetProto;
 
 enum Net_C2S_MsgType{
@@ -12,7 +14,7 @@ enum Net_S2C_MsgType{
 }
 
 message NetMsgPack{
-	optional int32 type = 1;   //消息类型
-	optional string msg = 2;	//消息内容
-	optional string code = 3;   //消息验证码
+	int32 type = 1;   //消息类型
+	string msg = 2;	//消息内容
+	string code = 3;   //消息验证码
 }

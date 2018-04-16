@@ -84,13 +84,6 @@ class NetLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const NetLogin& default_instance();
 
@@ -146,8 +139,7 @@ class NetLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   // accessors -------------------------------------------------------
 
-  // optional string account = 1;
-  bool has_account() const;
+  // string account = 1;
   void clear_account();
   static const int kAccountFieldNumber = 1;
   const ::std::string& account() const;
@@ -161,8 +153,7 @@ class NetLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_account();
   void set_allocated_account(::std::string* account);
 
-  // optional string token = 3;
-  bool has_token() const;
+  // string token = 3;
   void clear_token();
   static const int kTokenFieldNumber = 3;
   const ::std::string& token() const;
@@ -176,15 +167,13 @@ class NetLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_token();
   void set_allocated_token(::std::string* token);
 
-  // optional int32 platform = 2;
-  bool has_platform() const;
+  // int32 platform = 2;
   void clear_platform();
   static const int kPlatformFieldNumber = 2;
   ::google::protobuf::int32 platform() const;
   void set_platform(::google::protobuf::int32 value);
 
-  // optional int32 serverid = 4;
-  bool has_serverid() const;
+  // int32 serverid = 4;
   void clear_serverid();
   static const int kServeridFieldNumber = 4;
   ::google::protobuf::int32 serverid() const;
@@ -192,22 +181,13 @@ class NetLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   // @@protoc_insertion_point(class_scope:NetProto.NetLogin)
  private:
-  void set_has_account();
-  void clear_has_account();
-  void set_has_platform();
-  void clear_has_platform();
-  void set_has_token();
-  void clear_has_token();
-  void set_has_serverid();
-  void clear_has_serverid();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr account_;
   ::google::protobuf::internal::ArenaStringPtr token_;
   ::google::protobuf::int32 platform_;
   ::google::protobuf::int32 serverid_;
+  mutable int _cached_size_;
   friend struct protobuf_msg_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -238,13 +218,6 @@ class NetCreateRole : public ::google::protobuf::Message /* @@protoc_insertion_p
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const NetCreateRole& default_instance();
 
@@ -300,8 +273,7 @@ class NetCreateRole : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // optional string name = 1;
-  bool has_name() const;
+  // string name = 1;
   void clear_name();
   static const int kNameFieldNumber = 1;
   const ::std::string& name() const;
@@ -317,13 +289,10 @@ class NetCreateRole : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // @@protoc_insertion_point(class_scope:NetProto.NetCreateRole)
  private:
-  void set_has_name();
-  void clear_has_name();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  mutable int _cached_size_;
   friend struct protobuf_msg_2eproto::TableStruct;
 };
 // ===================================================================
@@ -338,32 +307,22 @@ class NetCreateRole : public ::google::protobuf::Message /* @@protoc_insertion_p
 #endif  // __GNUC__
 // NetLogin
 
-// optional string account = 1;
-inline bool NetLogin::has_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void NetLogin::set_has_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void NetLogin::clear_has_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// string account = 1;
 inline void NetLogin::clear_account() {
   account_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_account();
 }
 inline const ::std::string& NetLogin::account() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.account)
   return account_.GetNoArena();
 }
 inline void NetLogin::set_account(const ::std::string& value) {
-  set_has_account();
+  
   account_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.account)
 }
 #if LANG_CXX11
 inline void NetLogin::set_account(::std::string&& value) {
-  set_has_account();
+  
   account_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetLogin.account)
@@ -371,86 +330,66 @@ inline void NetLogin::set_account(::std::string&& value) {
 #endif
 inline void NetLogin::set_account(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_account();
+  
   account_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetLogin.account)
 }
 inline void NetLogin::set_account(const char* value, size_t size) {
-  set_has_account();
+  
   account_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetLogin.account)
 }
 inline ::std::string* NetLogin::mutable_account() {
-  set_has_account();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetLogin.account)
   return account_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* NetLogin::release_account() {
   // @@protoc_insertion_point(field_release:NetProto.NetLogin.account)
-  clear_has_account();
+  
   return account_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void NetLogin::set_allocated_account(::std::string* account) {
   if (account != NULL) {
-    set_has_account();
+    
   } else {
-    clear_has_account();
+    
   }
   account_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), account);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetLogin.account)
 }
 
-// optional int32 platform = 2;
-inline bool NetLogin::has_platform() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void NetLogin::set_has_platform() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void NetLogin::clear_has_platform() {
-  _has_bits_[0] &= ~0x00000004u;
-}
+// int32 platform = 2;
 inline void NetLogin::clear_platform() {
   platform_ = 0;
-  clear_has_platform();
 }
 inline ::google::protobuf::int32 NetLogin::platform() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.platform)
   return platform_;
 }
 inline void NetLogin::set_platform(::google::protobuf::int32 value) {
-  set_has_platform();
+  
   platform_ = value;
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.platform)
 }
 
-// optional string token = 3;
-inline bool NetLogin::has_token() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void NetLogin::set_has_token() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void NetLogin::clear_has_token() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// string token = 3;
 inline void NetLogin::clear_token() {
   token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_token();
 }
 inline const ::std::string& NetLogin::token() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.token)
   return token_.GetNoArena();
 }
 inline void NetLogin::set_token(const ::std::string& value) {
-  set_has_token();
+  
   token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.token)
 }
 #if LANG_CXX11
 inline void NetLogin::set_token(::std::string&& value) {
-  set_has_token();
+  
   token_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetLogin.token)
@@ -458,56 +397,46 @@ inline void NetLogin::set_token(::std::string&& value) {
 #endif
 inline void NetLogin::set_token(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_token();
+  
   token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetLogin.token)
 }
 inline void NetLogin::set_token(const char* value, size_t size) {
-  set_has_token();
+  
   token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetLogin.token)
 }
 inline ::std::string* NetLogin::mutable_token() {
-  set_has_token();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetLogin.token)
   return token_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* NetLogin::release_token() {
   // @@protoc_insertion_point(field_release:NetProto.NetLogin.token)
-  clear_has_token();
+  
   return token_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void NetLogin::set_allocated_token(::std::string* token) {
   if (token != NULL) {
-    set_has_token();
+    
   } else {
-    clear_has_token();
+    
   }
   token_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), token);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetLogin.token)
 }
 
-// optional int32 serverid = 4;
-inline bool NetLogin::has_serverid() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void NetLogin::set_has_serverid() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void NetLogin::clear_has_serverid() {
-  _has_bits_[0] &= ~0x00000008u;
-}
+// int32 serverid = 4;
 inline void NetLogin::clear_serverid() {
   serverid_ = 0;
-  clear_has_serverid();
 }
 inline ::google::protobuf::int32 NetLogin::serverid() const {
   // @@protoc_insertion_point(field_get:NetProto.NetLogin.serverid)
   return serverid_;
 }
 inline void NetLogin::set_serverid(::google::protobuf::int32 value) {
-  set_has_serverid();
+  
   serverid_ = value;
   // @@protoc_insertion_point(field_set:NetProto.NetLogin.serverid)
 }
@@ -516,32 +445,22 @@ inline void NetLogin::set_serverid(::google::protobuf::int32 value) {
 
 // NetCreateRole
 
-// optional string name = 1;
-inline bool NetCreateRole::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void NetCreateRole::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void NetCreateRole::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// string name = 1;
 inline void NetCreateRole::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
 }
 inline const ::std::string& NetCreateRole::name() const {
   // @@protoc_insertion_point(field_get:NetProto.NetCreateRole.name)
   return name_.GetNoArena();
 }
 inline void NetCreateRole::set_name(const ::std::string& value) {
-  set_has_name();
+  
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:NetProto.NetCreateRole.name)
 }
 #if LANG_CXX11
 inline void NetCreateRole::set_name(::std::string&& value) {
-  set_has_name();
+  
   name_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:NetProto.NetCreateRole.name)
@@ -549,31 +468,31 @@ inline void NetCreateRole::set_name(::std::string&& value) {
 #endif
 inline void NetCreateRole::set_name(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_name();
+  
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:NetProto.NetCreateRole.name)
 }
 inline void NetCreateRole::set_name(const char* value, size_t size) {
-  set_has_name();
+  
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:NetProto.NetCreateRole.name)
 }
 inline ::std::string* NetCreateRole::mutable_name() {
-  set_has_name();
+  
   // @@protoc_insertion_point(field_mutable:NetProto.NetCreateRole.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* NetCreateRole::release_name() {
   // @@protoc_insertion_point(field_release:NetProto.NetCreateRole.name)
-  clear_has_name();
+  
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void NetCreateRole::set_allocated_name(::std::string* name) {
   if (name != NULL) {
-    set_has_name();
+    
   } else {
-    clear_has_name();
+    
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
   // @@protoc_insertion_point(field_set_allocated:NetProto.NetCreateRole.name)

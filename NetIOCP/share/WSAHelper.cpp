@@ -133,6 +133,7 @@ namespace NetIOCP {
 	}
 
 	WSAInitializor::WSAInitializor() {
+		//winsock初始化
 		WORD wVersion = MAKEWORD(2, 2);
 		WSADATA wsData;
 		this->err = WSAStartup(wVersion, &wsData);
@@ -151,13 +152,16 @@ namespace NetIOCP {
 	}
 
 	namespace WSAUtility {
+		/*
 		template<typename TProtocol>
 		SOCKET CreateOverlappedSocket(TProtocol) {
+			//不能创建非TCP和UDP的socket
 			throw std::exception();
 		};
 
 		template<>
 		SOCKET CreateOverlappedSocket<TCP>(TCP) {
+			//创建TCP的带重叠IO标识的socket
 			return ::WSASocket(AF_INET,
 				SOCK_STREAM,
 				IPPROTO_TCP,
@@ -167,13 +171,44 @@ namespace NetIOCP {
 
 		template<>
 		SOCKET CreateOverlappedSocket<UDP>(UDP) {
+			//创建UDP的带重叠IO标识的socket
 			return ::WSASocket(AF_INET,
 				SOCK_DGRAM,
 				IPPROTO_UDP,
 				NULL, 0,
 				WSA_FLAG_OVERLAPPED);
 		};
-
+		*/
+		SOCKET CreateOverlappedSocket(int type) {
+			if (type == IPPROTO_TCP) {
+				//创建带重叠IO标识的socket
+				return ::WSASocket(AF_INET,
+					SOCK_STREAM,
+					IPPROTO_TCP,
+					NULL, 0,
+					WSA_FLAG_OVERLAPPED);
+			}
+			else if (type == IPPROTO_UDP) {
+				//创建UDP的带重叠IO标识的socket
+				return ::WSASocket(AF_INET,
+					SOCK_DGRAM,
+					IPPROTO_UDP,
+					NULL, 0,
+					WSA_FLAG_OVERLAPPED);
+			}
+			else {
+				throw std::exception();
+			}
+			//只能创建TCP和UDP的Socket
+			//if(type != IPPROTO_TCP && type != IPPROTO_UDP)
+			//	throw std::exception();
+			////创建带重叠IO标识的socket
+			//return ::WSASocket(AF_INET,
+			//	SOCK_DGRAM,
+			//	type,
+			//	NULL, 0,
+			//	WSA_FLAG_OVERLAPPED);
+		};
 		DWORD FormatMessageToString(LPTSTR *ppBuffer, DWORD dwErrCode) {
 			return FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
 				FORMAT_MESSAGE_FROM_SYSTEM |

@@ -68,9 +68,9 @@ namespace NetIOCP {
 	}
 
 	void Socket::OnReadZeroByte(IOBuffer* buffer) {
-		if (0 == ::InterlockedDecrement(&mPendingReads)) {
-			Close();
-		}
+		//if (0 == ::InterlockedDecrement(&mPendingReads)) {
+		Close();
+		//}
 		delete buffer;
 	}
 
@@ -79,7 +79,8 @@ namespace NetIOCP {
 			mDispatcher->TriggerPreClose(*this);
 			::closesocket(mSocket);
 			mStatus = Closed;
-			DecreaseRef();
+			//DecreaseRef();
+			mDispatcher->TriggerPostClose(*this);
 		}
 	}
 
@@ -88,11 +89,46 @@ namespace NetIOCP {
 	}*/
 
 	void Socket::pushInReads(IOBuffer* buffer) {
-		char* buffRecv = new char[buffer->GetUsed() + 1]{0};
-		memcpy(buffRecv, buffer->GetPointer(0), buffer->GetUsed());
-		buffRecv[buffer->GetUsed()] = '\0';
-		mPendingReadQueue.enqueue(buffRecv);
-		delete[] buffRecv;
+		//注意 底层并不会去验证数据的正确性 需要上层验证
+		if (mMaxSize == 0) { //表示收到一个新消息
+			if (buffer->GetUsed() < INT_SIZE)
+				return;  //新消息必须大于这个值
+			char* buffSize = new char[INT_SIZE]{ 0 };
+			memcpy(buffSize, buffer->GetPointer(), INT_SIZE);
+			mMaxSize = *buffSize;
+			//表示还有其它数据
+			if (buffer->GetUsed() > INT_SIZE) {
+				//读取剩余数据
+				char* buffRecv = new char[buffer->GetUsed() - INT_SIZE + 1]{ 0 };
+				memcpy(buffRecv, buffer->GetPointer(INT_SIZE), buffer->GetUsed());
+				buffRecv[buffer->GetUsed() - INT_SIZE] = '\0';
+				//加入到缓存
+				mCliDataTemp += buffRecv;
+				delete[] buffRecv;
+				//设置当前的数据进度
+				mCurSize += buffer->GetUsed() - INT_SIZE;
+			}
+		}
+		else {//表示上一个消息的补充部分
+			//读取整个数据包
+			char* buffRecv = new char[buffer->GetUsed() + 1]{ 0 };
+			memcpy(buffRecv, buffer->GetPointer(), buffer->GetUsed());
+			buffRecv[buffer->GetUsed()] = '\0';
+			//加入到缓存
+			mCliDataTemp += buffRecv;
+			//mPendingReadQueue.enqueue(buffRecv);
+			delete[] buffRecv;
+			//更新进度
+			mCurSize += buffer->GetUsed();
+		}
+		//此处表示已经完整接收了这个消息
+		if (mCurSize >= mMaxSize) {
+			//加进消息队列
+			mPendingReadQueue.enqueue(mCliDataTemp);
+			//还原数据
+			mCliDataTemp = "";
+			mMaxSize = mCurSize = 0;
+		}
 	}
 
 	bool Socket::Read(IOBuffer* buffer) {
@@ -134,10 +170,10 @@ namespace NetIOCP {
 		}
 
 		size_t sendsize = send.size();
-		IOBuffer* sendBuf = new (sendsize) IOBuffer(sendsize, *this);
-		//char base[1] = { '\x11' };
-		//sendBuf->Append(base, 1);
-		sendBuf->CopyFrom(0, send.c_str(), sendsize);
+		IOBuffer* sendBuf = new (sendsize + 1) IOBuffer(sendsize + 1, *this);
+		char base[1] = { '\x11' };
+		sendBuf->Append(base, 1);
+		sendBuf->CopyFrom(1, send.c_str(), sendsize);
 		//memcpy(sendBuf->GetPointer(1), send.c_str(), send.size());
 		//size_t sendsize = send.size();
 		//shared_ptr<IOBuffer> sendBuf = make_shared<IOBuffer>(sendsize, *this);

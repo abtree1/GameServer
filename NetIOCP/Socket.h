@@ -37,20 +37,20 @@ namespace NetIOCP {
 		bool __stdcall OnRecv(string& data) override;
 		int __stdcall GetSessionId() override { return mSocket; }
 	public:
-		SOCKET AsSocket() const { return mSocket; }
+		SOCKET GetSocket() const { return mSocket; }  //获取socket
 		void Close();
 		void OnReadZeroByte(IOBuffer* buffer);
 		sockaddr_in* GetPeerAddress() { return &mPeer; }
-		long IncreaseRef() {
+		/*long IncreaseRef() {
 			return ::InterlockedIncrement(&mPendingReads);
-		}
-		long DecreaseRef() {
+		}*/
+		/*long DecreaseRef() {
 			long ref = ::InterlockedDecrement(&mReference);
 			if (0 == ref) {
 				delete this;
 			}
 			return ref;
-		}
+		}*/
 		bool IsConnected(unsigned long& time);
 		void pushInReads(IOBuffer* buffer);
 		bool Read(IOBuffer* buffer);
@@ -68,12 +68,17 @@ namespace NetIOCP {
 	protected:
 		SocketStatus mStatus;
 		sockaddr_in mPeer;
-		SOCKET mSocket;
+		SOCKET mSocket;   //保存的客户端socket（用于通信）
 		ISocketEventDispatcher* mDispatcher;
 		moodycamel::ConcurrentQueue<string> mPendingWrites;
 		moodycamel::ConcurrentQueue<string> mPendingReadQueue;
-		long mPendingReads{ 0 };
-		long mReference{ 0 };
+		//long mPendingReads{ 0 };
+		//long mReference{ 0 };
 		long mIsClosed{ 0 };
+	protected:
+		//用于保存还没有接收完的数据
+		string mCliDataTemp{""}; //消息缓存
+		int mMaxSize{0}; //该消息的总长度
+		int mCurSize{0}; //当前已经接收的长度
 	};
 }

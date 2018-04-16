@@ -1,12 +1,14 @@
+syntax = "proto3";
+
 package NetProto;
 
 message NetLogin{
-	optional string account = 1;
-	optional int32 platform = 2;
-	optional string token = 3;
-	optional int32 serverid = 4;
+	string account = 1;
+	int32 platform = 2;
+	string token = 3;
+	int32 serverid = 4;
 }
 
 message NetCreateRole{
-	optional string name = 1;
+	string name = 1;
 }

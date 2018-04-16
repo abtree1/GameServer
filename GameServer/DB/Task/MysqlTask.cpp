@@ -82,6 +82,7 @@ void CPrepareLogin::Run() {
 void CPrepareLogin::Finish() {
 	//如果已经有玩家 执行玩家加载操作
 	if (mHasPlayer) {
+		gDBLoadMgr->AddTask(new CLoadPlayer(mPlayerId, mpSession));
 		return;
 	}
 	//如果还没有玩家 执行玩家创建操作
@@ -124,6 +125,10 @@ CLoadPlayer::CLoadPlayer(u32 pid, CSession* session){
 	mpPlayer->mId = pid;
 	mpPlayer->mpSession = session;
 	session->SetPlayer(mpPlayer);
+	//组装sqls
+	//char buff[1024];
+	//sprintf_s(buff, 1024, "SELECT * FROM userbase WHERE pid = %d;", mpPlayer->mId);
+	//mSqls.push_back(buff);
 }
 
 void CLoadPlayer::Run() {
@@ -132,13 +137,13 @@ void CLoadPlayer::Run() {
 	sprintf_s(buff, 1024, "SELECT * FROM userbase WHERE pid = %d;", mpPlayer->mId);
 	mpResult = mpStmt->executeQuery(buff);
 	if (mpResult && mpResult->next()) {
-		mpPlayer->mName = mpResult->getString("pname").asStdString();
-		mpPlayer->mAccount = mpResult->getString("paccount").asStdString();
+		mpPlayer->mName = mpResult->getString("pname").c_str();
+		mpPlayer->mAccount = mpResult->getString("paccount").c_str();
 		mpPlayer->mServerId = mpResult->getInt("pserverid");
 		mpPlayer->mPlatform = mpResult->getInt("pplatform");
-		mpPlayer->mCreateTime = mpResult->getString("timecreate").asStdString();
-		mpPlayer->mOfflineTime = mpResult->getString("timeoffline").asStdString();
-		mpPlayer->mOnlineTime = mpResult->getString("timeonline").asStdString();
+		mpPlayer->mCreateTime = mpResult->getString("timecreate").c_str();
+		mpPlayer->mOfflineTime = mpResult->getString("timeoffline").c_str();
+		mpPlayer->mOnlineTime = mpResult->getString("timeonline").c_str();
 	}
 	else {
 		return;  //加载数据失败退出
@@ -167,7 +172,7 @@ void CLoadPlayer::Run() {
 		pdata->mGem = mpResult->getUInt("pgem");
 		pdata->mTotalGems = mpResult->getUInt("ptotalgems");
 		pdata->mTotalCharge = mpResult->getUInt("ptotalcharge");
-		pdata->mLastChargeTime = mpResult->getString("timelastcharge").asStdString();
+		pdata->mLastChargeTime = mpResult->getString("timelastcharge").c_str();
 		//这里设置读取数据成功
 		mSuccess = true;
 	}

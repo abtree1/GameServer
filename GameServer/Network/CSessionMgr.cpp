@@ -14,6 +14,8 @@ CSessionMgr::~CSessionMgr() {
 			delete it.second;
 	}
 	
+	//先停止iocp
+	mpMgr->stop();
 	//销毁库实例
 	NetIOCP::gDestorySessionMgr();
 }
@@ -31,6 +33,12 @@ bool CSessionMgr::HandleConnect(NetIOCP::ISession* pSession) {
 		return false;
 
 	mpSessionVec[pSession->GetSessionId()] = session;
+	return true;
+}
+
+bool CSessionMgr::HandleDisconnect(NetIOCP::ISession* pSession) {
+	//目前只这样简单的处理 后面还有其它需要处理的东西
+	mpSessionVec.erase(pSession->GetSessionId());
 	return true;
 }
 

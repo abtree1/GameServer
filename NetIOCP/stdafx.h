@@ -29,6 +29,7 @@ using namespace std;
 #include "share/WSAHelper.h"
 
 #define BUFFER_SIZE 1024
+#define INT_SIZE 4
 
 #include "ISession.h"
 #include "IOCompletionPort.h"

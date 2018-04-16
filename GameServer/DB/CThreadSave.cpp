@@ -8,7 +8,7 @@ void thread_func(CThreadSave* pMgr) {
 		return;
 	}
 	//如果还没退出
-	if (!pMgr->IsClose() || pMgr->HasTask()) {
+	while (!pMgr->IsClose() || pMgr->HasTask()) {
 		pMgr->Run();
 	}
 }

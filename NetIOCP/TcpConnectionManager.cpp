@@ -18,8 +18,10 @@ namespace NetIOCP {
 	}
 
 	bool TcpConnectionManager::PostAcceptRequest() {
+		//预先为客户端创建一个socket
 		Socket* s = mFactory->Create(mDispatcher);
 		IOBuffer* buf = new (BUFFER_SIZE)IOBuffer(BUFFER_SIZE, *s);
+		//用这个socket开始等待客户端连入
 		return PostAcceptRequest(s, buf);
 	}
 
@@ -31,8 +33,8 @@ namespace NetIOCP {
 		do {
 			mDispatcher->TriggerPreAccept(*socket, *buffer);
 			isCompleted = WSAExtMethods::AcceptEx(
-				CSessionMgr::GetInstance()->AsSocket(),
-				socket->AsSocket(),
+				CSessionMgr::GetInstance()->ServerSocket(),
+				socket->GetSocket(),
 				buffer->GetPointer(),
 				buffer->GetSize() - ((sizeof(sockaddr_in) + 16) * 2),
 				sizeof(sockaddr_in) + 16,
@@ -54,7 +56,7 @@ namespace NetIOCP {
 				else {
 					// TODO: write log
 					int err = WSAGetLastError();
-					socket->DecreaseRef();
+					//socket->DecreaseRef();
 					delete buffer;
 				}
 			}

@@ -13,27 +13,39 @@ public:
 	virtual void AddTask(T* t) {  //添加任务（主线程）
 		if (!t)
 			return;
-		std::lock_guard<std::mutex> lock(_mutex_task);
+		//std::lock_guard<std::mutex> lock(_mutex_task);
+		_mutex_task.lock();
 		mTasks.push(t);
+		_mutex_task.unlock();
 	}
 	virtual void Run() {	//子线程（处理任务）
-		std::lock_guard<std::mutex> lock(_mutex_task);
-		std::lock_guard<std::mutex> lock1(_mutex_finishtask);
-		if (mTasks.empty())
+		//std::lock_guard<std::mutex> lock(_mutex_task);
+		//std::lock_guard<std::mutex> lock1(_mutex_finishtask);
+		_mutex_task.lock();
+		if (mTasks.empty()) {
+			_mutex_task.unlock();
 			return;
+		}
 		IDBTask* t = mTasks.front();
 		mTasks.pop();
+		_mutex_task.unlock();
 		if (t) {
 			t->Run();
+			_mutex_finishtask.lock();
 			mFinishTasks.push(t);
+			_mutex_finishtask.unlock();
 		}
 	}
 	virtual void Finish() {  //主线程 获取结果
-		std::lock_guard<std::mutex> lock(_mutex_finishtask);
-		if (mFinishTasks.empty())
+		//std::lock_guard<std::mutex> lock(_mutex_finishtask);
+		_mutex_finishtask.lock();
+		if (mFinishTasks.empty()) {
+			_mutex_finishtask.unlock();
 			return;
+		}
 		IDBTask* t = mFinishTasks.front();
 		mFinishTasks.pop();
+		_mutex_finishtask.unlock();
 		if (t) {
 			t->Finish();
 			delete t;

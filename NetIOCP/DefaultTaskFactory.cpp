@@ -17,8 +17,9 @@ namespace NetIOCP {
 
 	unsigned int DefaultTaskFactory::Create(ISocketEventDispatcher* dispatcher) {
 		for (int i = 0; i < mNumberOfTask; ++i) {
+			//创建线程
 			std::thread th(DefaultTaskFactory::RunDispatcher, dispatcher);
-			th.detach();
+			th.detach(); //detach不等待子线程执行完毕
 			//_beginthread(DefaultTaskFactory::RunDispatcher, 0, (void*)&dispatcher);
 		}
 		return mNumberOfTask;

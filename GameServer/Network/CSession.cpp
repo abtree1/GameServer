@@ -10,8 +10,6 @@ void CSession::Recv() {
 	string data = "";
 	bool hasData = mpSession->OnRecv(data);
 	if (hasData) {
-		//printf("recv data: %s \n", data.c_str());
-		//mpSession->OnSend(data);
 		NetMsgPack msg;
 		msg.ParseFromString(data);
 		//获取消息处理对象

@@ -26,10 +26,10 @@ namespace NetIOCP {
 		virtual void PostClose(Socket& socket);
 		virtual void PostRead(Socket& socket, IOBuffer& buffer);
 		virtual void PostWrite(Socket& socket, IOBuffer& buffer);
-		virtual void PreClose(Socket& socket) {};
+		virtual void PreClose(Socket& socket);
 		virtual void PreRead(Socket& socket, IOBuffer& buffer) {};
 		virtual void PreWrite(Socket& socket, IOBuffer& buffer) {};
-	private:
-		map<SOCKET, Socket*> mSocketSet;
+	//private:
+	//	map<SOCKET, Socket*> mSocketSet; //并没有用到
 	};
 }

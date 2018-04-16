@@ -34,7 +34,7 @@ public:
 private:
 	u32 mServerId{ 0 };			//玩家选择的服务器id
 	bool mHasPlayer{ false };	//是否已经创建角色
-	bool mPlayerId{ 0 };		//创建的角色的玩家id
+	u32 mPlayerId{ 0 };		//创建的角色的玩家id
 	CSession* mpSession{ nullptr }; //session（客户端）
 };
 //创建角色
