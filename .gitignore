@@ -7,6 +7,8 @@ x64/*
 *.opendb
 GameServer/Debug/*
 GameServer/x64/*
+FightServer/Debug/*
+FightServer/x64/*
 Dependences/*
 NetIOCP/Debug/*
 NetIOCP/x64/*

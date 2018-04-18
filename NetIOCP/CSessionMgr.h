@@ -18,6 +18,8 @@ namespace NetIOCP {
 		bool isShutting() override { return mbShutting; }
 		//停止
 		void stop() override;
+		//建立一个客户端socket去连接其它server
+		ISession* Connect(string ip, int port) override;
 	public:
 		//接收到新的client socket连接
 		void registerNewConn(ISession* netsession);

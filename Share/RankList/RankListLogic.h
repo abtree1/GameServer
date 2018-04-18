@@ -3,7 +3,9 @@
 //using CompareFunc = bool(*)(const T&, const T&);
 //template<typename T, typename U>
 //using GetValueFunc = U(*)(const T&);
-
+/************************************************************************
+	该类为实际修改排行榜数据的类
+************************************************************************/
 template<typename T, typename U>
 class CRankListLogic {
 public:

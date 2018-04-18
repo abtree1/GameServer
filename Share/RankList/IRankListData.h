@@ -1,5 +1,9 @@
 #pragma once
 
+/************************************************************************
+	RankList Data 为保存排行榜数据的结构 是构成特定排行榜的基础
+	每个排行榜数据结构都至少继承于IRankListBase或其子类
+************************************************************************/
 template<typename T, typename U>
 struct IRankListBase {
 	virtual T &operator=(const T &) = 0;
@@ -21,10 +25,11 @@ struct IRankListImpl : public IRankListBase<IRankListImpl, UINT>{
 	virtual UINT GetId() override;
 	virtual void SetRank(UINT rank) override { this->mRank = rank; };
 };
-
+#ifdef _DEBUG
 struct SRankListData :public IRankListImpl {
 	string tstr;  //测试数据
 	UINT tint;    //测试数据
 
 	SRankListData &operator=(const SRankListData &);
 };
+#endif

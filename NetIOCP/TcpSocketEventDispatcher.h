@@ -19,6 +19,7 @@ namespace NetIOCP {
 		virtual void TriggerPreRead(Socket& socket, IOBuffer& buffer) override;
 		virtual void TriggerPreWrite(Socket& socket, IOBuffer& buffer) override;
 	private:
+		//…Ë÷√socketµƒ‘∂∂Àµÿ÷∑
 		void UpdateSocket(Socket& skt, IOBuffer& buffer);
 	private:
 		vector<ISocketEvent*> mHandlers;

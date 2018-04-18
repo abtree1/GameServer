@@ -18,6 +18,8 @@ namespace NetIOCP {
 		virtual bool __stdcall OnRecv(string&) = 0;
 		//获取sessionid
 		virtual int __stdcall GetSessionId() = 0;
+		//断开连接
+		virtual bool __stdcall Disconnect() = 0;
 	};
 
 	//该类用于外部继承
@@ -46,6 +48,8 @@ namespace NetIOCP {
 		virtual void stop() = 0;
 		//是否iocp处于关闭状态
 		virtual bool isShutting() = 0;
+		//建立对一个server的连接
+		virtual ISession* Connect(string ip, int port) = 0;
 	};
 	//外部用于获取session manager的对象实例
 	extern DLL_CPP_API ISessionManager* __stdcall gGetSessionMgr();

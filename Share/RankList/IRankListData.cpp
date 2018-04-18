@@ -35,9 +35,11 @@ UINT IRankListImpl::GetId() {
 	return this->mId;
 }
 
+#ifdef _DEBUG
 SRankListData &SRankListData::operator=(const SRankListData &lcx) {
 	IRankListImpl::operator =(lcx);
 	this->tstr = lcx.tstr;
 	this->tint = lcx.tint;
 	return *this;
 }
+#endif

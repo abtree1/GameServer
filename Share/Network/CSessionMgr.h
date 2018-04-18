@@ -9,8 +9,12 @@ private:
 public:
 	//开启网络实例
 	void Start(string ip, int port);
+	//作为客户端连接server
+	int Connect(string ip, int port);
 	//注册新的连接
 	bool HandleConnect(NetIOCP::ISession* pSession);
+	//获取某个session
+	CSession* FindSession(int sessionid);
 	//关闭已有连接
 	bool HandleDisconnect(NetIOCP::ISession* pSession);
 	//循环获取新收到的消息

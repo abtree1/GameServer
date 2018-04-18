@@ -152,4 +152,18 @@ namespace NetIOCP {
 		if (mpHandle) //通知外部 这个连接已经断开
 			mpHandle->OnDesconnection(netsession);
 	}
+
+	ISession* CSessionMgr::Connect(string ip, int port) {
+		//创建 client socket 并连接服务器失败
+		Socket* cli = mMonitor->Connect(ip, port);
+		if (!cli)
+			return false;
+		//将socket与完成端口绑定
+		mIocp.GetSociateSocket(cli->GetSocket(), cli);
+		//注册读消息
+		IOBuffer* readBuf = new (BUFFER_SIZE) IOBuffer(BUFFER_SIZE, *cli);
+		cli->Read(readBuf);
+		//返回成功创建的client socket
+		return cli;
+	}
 }

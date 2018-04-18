@@ -29,6 +29,9 @@ namespace NetIOCP {
 	public:
 		virtual void OnDisconnected(Socket* socket, IOBuffer* buffer) override;
 		virtual void Process() override;
+	public:
+		//作为客户端连接服务器
+		virtual Socket* Connect(string ip, int port) override;
 	private:
 		bool PostAcceptRequest();
 		bool PostAcceptRequest(Socket* socket, IOBuffer* buffer);

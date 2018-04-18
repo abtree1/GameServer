@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetIOCP", "NetIOCP\NetIOCP.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmarks", "Dependences\UnlockQueue\build\msvc14\benchmarks.vcxproj", "{86870AC7-4A91-490A-A126-AFD6B0B24B7E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FightServer", "FightServer\FightServer.vcxproj", "{6AAD38B3-B0CB-4812-9599-E042419BBBF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -47,6 +49,14 @@ Global
 		{86870AC7-4A91-490A-A126-AFD6B0B24B7E}.Release|x64.Build.0 = Release|x64
 		{86870AC7-4A91-490A-A126-AFD6B0B24B7E}.Release|x86.ActiveCfg = Release|Win32
 		{86870AC7-4A91-490A-A126-AFD6B0B24B7E}.Release|x86.Build.0 = Release|Win32
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Debug|x64.ActiveCfg = Debug|x64
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Debug|x64.Build.0 = Debug|x64
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Debug|x86.ActiveCfg = Debug|Win32
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Debug|x86.Build.0 = Debug|Win32
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Release|x64.ActiveCfg = Release|x64
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Release|x64.Build.0 = Release|x64
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Release|x86.ActiveCfg = Release|Win32
+		{6AAD38B3-B0CB-4812-9599-E042419BBBF1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

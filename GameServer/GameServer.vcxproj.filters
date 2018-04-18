@@ -16,12 +16,6 @@
     <Filter Include="Share">
       <UniqueIdentifier>{0d1f47a5-c582-45d1-ac47-bda2f631176d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Network">
-      <UniqueIdentifier>{3f0060e8-8220-4857-9e47-3f6a13bca29a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ProtoBuff">
-      <UniqueIdentifier>{8bfd2abc-8869-49e4-b91c-5a5ed10ad53d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Player">
       <UniqueIdentifier>{8c70dfbe-ca55-4c30-87c1-a847205f99fe}</UniqueIdentifier>
     </Filter>
@@ -58,6 +52,15 @@
     <Filter Include="DB\Task">
       <UniqueIdentifier>{417b584f-aa84-44df-a7b6-f833f5aec044}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Share\ProtoBuff">
+      <UniqueIdentifier>{069b2a3f-b52d-4a65-b49d-96e71fe6ca20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\Network">
+      <UniqueIdentifier>{a2b34402-396b-4520-b420-0a734857839d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="msg">
+      <UniqueIdentifier>{26ca2184-2277-4e65-87de-18c5edae00de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -72,33 +75,6 @@
     <ClInclude Include="..\Share\Singleton.h">
       <Filter>Share</Filter>
     </ClInclude>
-    <ClInclude Include="Network\CSession.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network\CSessionMgr.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network\CSessionHandle.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtoBuff\msg.pb.h">
-      <Filter>ProtoBuff</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtoBuff\msgtype.pb.h">
-      <Filter>ProtoBuff</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtoBuff\pb.h">
-      <Filter>ProtoBuff</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtoBuff\ProtoMgr.h">
-      <Filter>ProtoBuff</Filter>
-    </ClInclude>
-    <ClInclude Include="Player\PlayerMsg.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtoBuff\IProto.h">
-      <Filter>ProtoBuff</Filter>
-    </ClInclude>
     <ClInclude Include="Player\Components\IPlayerData.h">
       <Filter>Player\Components</Filter>
     </ClInclude>
@@ -110,9 +86,6 @@
     </ClInclude>
     <ClInclude Include="..\Share\CTime.h">
       <Filter>Share</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtoBuff\msgserver.pb.h">
-      <Filter>ProtoBuff</Filter>
     </ClInclude>
     <ClInclude Include="..\Share\NextData\CNextData.h">
       <Filter>Share\NextData</Filter>
@@ -201,6 +174,42 @@
     <ClInclude Include="Player\Components\CVIPData.h">
       <Filter>Player\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\IProto.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\msg.pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\msgserver.pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\msgtype.pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\ProtoMgr.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Network\CSession.h">
+      <Filter>Share\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Network\CSessionHandle.h">
+      <Filter>Share\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Network\CSessionMgr.h">
+      <Filter>Share\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\msgtypeserver.pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="msg\PlayerMsg.h">
+      <Filter>msg</Filter>
+    </ClInclude>
+    <ClInclude Include="msg\FightServerMsg.h">
+      <Filter>msg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -208,27 +217,6 @@
     </ClCompile>
     <ClCompile Include="GameServer.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\CSession.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\CSessionMgr.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\CSessionHandle.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="ProtoBuff\msg.pb.cc">
-      <Filter>ProtoBuff</Filter>
-    </ClCompile>
-    <ClCompile Include="ProtoBuff\msgtype.pb.cc">
-      <Filter>ProtoBuff</Filter>
-    </ClCompile>
-    <ClCompile Include="ProtoBuff\ProtoMgr.cpp">
-      <Filter>ProtoBuff</Filter>
-    </ClCompile>
-    <ClCompile Include="Player\PlayerMsg.cpp">
-      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="Player\CPlayer.cpp">
       <Filter>Player</Filter>
@@ -238,9 +226,6 @@
     </ClCompile>
     <ClCompile Include="..\Share\CTime.cpp">
       <Filter>Share</Filter>
-    </ClCompile>
-    <ClCompile Include="ProtoBuff\msgserver.pb.cc">
-      <Filter>ProtoBuff</Filter>
     </ClCompile>
     <ClCompile Include="..\Share\NextData\CNextData.cpp">
       <Filter>Share\NextData</Filter>
@@ -305,16 +290,49 @@
     <ClCompile Include="Player\Components\CVIPData.cpp">
       <Filter>Player\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\msg.pb.cc">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\msgserver.pb.cc">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\msgtype.pb.cc">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\ProtoMgr.cpp">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Network\CSession.cpp">
+      <Filter>Share\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Network\CSessionHandle.cpp">
+      <Filter>Share\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Network\CSessionMgr.cpp">
+      <Filter>Share\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\msgtypeserver.pb.cc">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="msg\PlayerMsg.cpp">
+      <Filter>msg</Filter>
+    </ClCompile>
+    <ClCompile Include="msg\FightServerMsg.cpp">
+      <Filter>msg</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ProtoBuff\msg.proto">
-      <Filter>ProtoBuff</Filter>
+    <None Include="..\Share\ProtoBuff\msg.proto">
+      <Filter>Share\ProtoBuff</Filter>
     </None>
-    <None Include="ProtoBuff\msgtype.proto">
-      <Filter>ProtoBuff</Filter>
+    <None Include="..\Share\ProtoBuff\msgserver.proto">
+      <Filter>Share\ProtoBuff</Filter>
     </None>
-    <None Include="ProtoBuff\msgserver.proto">
-      <Filter>ProtoBuff</Filter>
+    <None Include="..\Share\ProtoBuff\msgtype.proto">
+      <Filter>Share\ProtoBuff</Filter>
+    </None>
+    <None Include="..\Share\ProtoBuff\msgtypeserver.proto">
+      <Filter>Share\ProtoBuff</Filter>
     </None>
   </ItemGroup>
 </Project>

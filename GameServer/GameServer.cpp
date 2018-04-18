@@ -7,6 +7,9 @@
 #include "tests/TestConfigs.h"
 #endif
 
+//临时保存在这里
+int gFightServerId = 0;
+
 //析构所有的单例对象
 void Destory() {
 	/************************************************************************
@@ -48,6 +51,12 @@ void Init() {
 	gIdentify->Load();
 	//开始socket监听
 	CSessionMgr::GetInstance()->Start("127.0.0.1", 8080);
+	//注册消息处理函数
+	CPlayerMsg::Register();
+	//连接其它服务器
+	gFightServerId = CSessionMgr::GetInstance()->Connect("127.0.0.1", 8090);
+	//注册消息处理函数
+	CFightServerMsg::Register();
 }
 
 int main()
@@ -57,7 +66,12 @@ int main()
 	//TestConfigs test;
 	//test.TestReadAuto();
 #endif
-	
+	//测试向FightServer发送消息
+	CSession* session = CSessionMgr::GetInstance()->FindSession(gFightServerId);
+	if (session) {
+		session->Send(NET_G2F_Init, nullptr);
+	}
+	//主循环
 	while (true) {
 		CSessionMgr::GetInstance()->Update();
 		CThreadSave::GetInstance()->Finish();

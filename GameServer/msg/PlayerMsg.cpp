@@ -1,13 +1,10 @@
 #include "stdafx.h"
 
-#define RegisterHandle(msg) \
-pInstance->RegisterProto(msg, OnCreate##msg, OnHandle##msg);
-
 //在这里注册所有玩家的消息
 void CPlayerMsg::Register() {
 	auto pInstance = CProtoMgr::GetInstance();
-	RegisterHandle(NET_C2S_Login);
-	RegisterHandle(NET_C2S_CreateRole);
+	M_RegisterHandle(NET_C2S_Login);
+	M_RegisterHandle(NET_C2S_CreateRole);
 	//pInstance->RegisterProto(NET_C2S_Login, OnCreateNET_C2S_Login, OnHandleNET_C2S_Login);
 }
 
@@ -69,4 +66,5 @@ bool CPlayerMsg::OnHandleNET_C2S_CreateRole(CSession* owner, ::google::protobuf:
 		, owner));	
 	//处理完成后执行清除操作
 	CNextDataMgr::GetInstance()->dirtyHandleTemp(key);
+	return true;
 }

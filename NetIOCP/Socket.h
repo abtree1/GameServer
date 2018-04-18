@@ -36,11 +36,13 @@ namespace NetIOCP {
 		bool __stdcall OnSend(string& data) override;
 		bool __stdcall OnRecv(string& data) override;
 		int __stdcall GetSessionId() override { return mSocket; }
+		bool __stdcall Disconnect() override;
 	public:
 		SOCKET GetSocket() const { return mSocket; }  //获取socket
 		void Close();
 		void OnReadZeroByte(IOBuffer* buffer);
 		sockaddr_in* GetPeerAddress() { return &mPeer; }
+		void SetPeerAddress(sockaddr_in& addr) { mPeer = addr; }
 		/*long IncreaseRef() {
 			return ::InterlockedIncrement(&mPendingReads);
 		}*/
@@ -67,11 +69,11 @@ namespace NetIOCP {
 		static char* mStatusDescription[];
 	protected:
 		SocketStatus mStatus;
-		sockaddr_in mPeer;
+		sockaddr_in mPeer; //一个socket地址，主要是做客户端时连接服务器的地址
 		SOCKET mSocket;   //保存的客户端socket（用于通信）
 		ISocketEventDispatcher* mDispatcher;
-		moodycamel::ConcurrentQueue<string> mPendingWrites;
-		moodycamel::ConcurrentQueue<string> mPendingReadQueue;
+		moodycamel::ConcurrentQueue<string> mPendingWrites;   //消息写的队列
+		moodycamel::ConcurrentQueue<string> mPendingReadQueue; //消息读的队列
 		//long mPendingReads{ 0 };
 		//long mReference{ 0 };
 		long mIsClosed{ 0 };

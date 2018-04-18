@@ -10,5 +10,7 @@ namespace NetIOCP {
 	public:
 		virtual void OnDisconnected(Socket* socket, IOBuffer* buffer) = 0;
 		virtual void Process() = 0;
+	public:
+		virtual Socket* Connect(string ip, int port) = 0;
 	};
 }

@@ -1,4 +1,10 @@
 #pragma once
+#define M_MsgHandle(msg,msgdata) \
+	static ::google::protobuf::Message* OnCreate##msg() { return msgdata; } \
+	static bool OnHandle##msg(CSession* owner, ::google::protobuf::Message* pBaseMsg); 
+
+#define M_RegisterHandle(msg) \
+pInstance->RegisterProto(msg, OnCreate##msg, OnHandle##msg);
 
 template<typename T, typename U>
 class IProto {

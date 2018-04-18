@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package NetProto;
+
+enum Net_G2F_MsgType{
+	NET_G2F_Init = 0;  //gameserver向fightserver发送的初始化消息
+	NET_G2F_CreateRole = 1;  //创建角色消息
+}
+
+enum Net_F2G_MsgType{
+	NET_F2G_Init = 0;  //服务器向客户端的初始化消息
+	NET_F2G_CreateRole = 1;  //创建角色消息
+}

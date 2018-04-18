@@ -21,10 +21,17 @@ CSessionMgr::~CSessionMgr() {
 }
 
 void CSessionMgr::Start(string ip, int port) {
-	//注册消息处理函数
-	CPlayerMsg::Register();
 	//开始网络监听
 	mpMgr->start(ip, port, 0);
+}
+
+int CSessionMgr::Connect(string ip, int port) {
+	auto* pSession = mpMgr->Connect(ip, port);
+	if (!pSession)
+		return 0;  //表示连接失败
+	if (!HandleConnect(pSession))
+		return 0; //表示连接失败
+	return pSession->GetSessionId();
 }
 
 bool CSessionMgr::HandleConnect(NetIOCP::ISession* pSession) {
@@ -34,6 +41,13 @@ bool CSessionMgr::HandleConnect(NetIOCP::ISession* pSession) {
 
 	mpSessionVec[pSession->GetSessionId()] = session;
 	return true;
+}
+
+CSession* CSessionMgr::FindSession(int sessionid) {
+	auto it = mpSessionVec.find(sessionid);
+	if (it != mpSessionVec.end())
+		return it->second;
+	return nullptr;
 }
 
 bool CSessionMgr::HandleDisconnect(NetIOCP::ISession* pSession) {

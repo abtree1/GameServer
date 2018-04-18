@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Share">
+      <UniqueIdentifier>{6d2a1942-bba9-4d25-9a46-f81f08bed8cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\Network">
+      <UniqueIdentifier>{b16aeebd-dd2c-46a0-91e9-ae15b08bcf7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\ProtoBuff">
+      <UniqueIdentifier>{9c038e9f-e2cf-44c3-9631-420db7bd9982}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="msg">
+      <UniqueIdentifier>{4569aa23-cddb-429d-839b-8546ad9f24ad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\CTime.h">
+      <Filter>Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Singleton.h">
+      <Filter>Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Util.h">
+      <Filter>Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Network\CSession.h">
+      <Filter>Share\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Network\CSessionHandle.h">
+      <Filter>Share\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Network\CSessionMgr.h">
+      <Filter>Share\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\IProto.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\msg.pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\msgserver.pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\msgtype.pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\pb.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\ProtoMgr.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="msg\GameServerMsgHandle.h">
+      <Filter>msg</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FightServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\CTime.cpp">
+      <Filter>Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Util.cpp">
+      <Filter>Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Network\CSession.cpp">
+      <Filter>Share\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Network\CSessionHandle.cpp">
+      <Filter>Share\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Network\CSessionMgr.cpp">
+      <Filter>Share\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\msg.pb.cc">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\msgserver.pb.cc">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\msgtype.pb.cc">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\ProtoBuff\ProtoMgr.cpp">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClCompile>
+    <ClCompile Include="msg\GameServerMsgHandle.cpp">
+      <Filter>msg</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Share\ProtoBuff\msg.proto">
+      <Filter>Share\ProtoBuff</Filter>
+    </None>
+    <None Include="..\Share\ProtoBuff\msgserver.proto">
+      <Filter>Share\ProtoBuff</Filter>
+    </None>
+    <None Include="..\Share\ProtoBuff\msgtype.proto">
+      <Filter>Share\ProtoBuff</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -35,15 +35,15 @@ using namespace std;
 //Time
 #include "../Share/CTime.h"
 //google proto buff
-#include "ProtoBuff/pb.h"
+#include "../Share/ProtoBuff/pb.h"
 using namespace NetProto;
-#include "ProtoBuff/IProto.h"
-#include "ProtoBuff/ProtoMgr.h"
+#include "../Share/ProtoBuff/IProto.h"
+#include "../Share/ProtoBuff/ProtoMgr.h"
 //NetIOCP
 #include "../NetIOCP/ISession.h"
-#include "Network/CSession.h"
-#include "Network/CSessionHandle.h"
-#include "Network/CSessionMgr.h"
+#include "../Share/Network/CSession.h"
+#include "../Share/Network/CSessionHandle.h"
+#include "../Share/Network/CSessionMgr.h"
 //Mysql
 #include "mysql_connection.h"
 #include "mysql_driver.h"
@@ -65,7 +65,8 @@ using namespace NetProto;
 #include "Player/Components/CVIPData.h"
 #include "Player/CPlayer.h"
 #include "Player/CPlayerMgr.h"
-#include "Player/PlayerMsg.h"
+#include "msg/PlayerMsg.h"
+#include "msg/FightServerMsg.h"
 //Next Data
 #include "../Share/NextData/CNextData.h"
 #include "../Share/NextData/CNextDataMgr.h"

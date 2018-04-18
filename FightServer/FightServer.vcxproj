@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9FC4BA50-D5BA-42DA-9863-4758BE224A32}</ProjectGuid>
+    <ProjectGuid>{6AAD38B3-B0CB-4812-9599-E042419BBBF1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>GameServer</RootNamespace>
+    <RootNamespace>FightServer</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -86,15 +86,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_GAME_SERVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1;..\Dependences\rapidxml_1_13</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_FIGHT_SERVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\..\boost_1_65_1</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;mysqlcppconn.lib;mysqlcppconn-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win32\Debug;..\Dependences\MysqlConnector\Win32\lib;..\..\boost_1_65_1\vc14x32\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\boost_1_65_1\vc14x32\lib;..\Dependences\GooglePB_3.4.1\Win32\Debug;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;NetIOCP.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,15 +101,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_GAME_SERVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Dependences\GooglePB_3.4.1\include;..\Dependences\MysqlConnector\include;..\..\boost_1_65_1;..\Dependences\rapidxml_1_13;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_FIGHT_SERVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\boost_1_65_1;..\Dependences\GooglePB_3.4.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;..\Dependences\GooglePB_3.4.1\Win64\Debug;..\Dependences\MysqlConnector\Win64\lib;..\..\boost_1_65_1\vc14x64\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NetIOCP.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;mysqlcppconn.lib;mysqlcppconn-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\boost_1_65_1\vc14x64\lib;..\Dependences\GooglePB_3.4.1\Win64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -121,7 +119,6 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,7 +135,6 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,103 +147,45 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Share\Configs\CDBConfig.h" />
-    <ClInclude Include="..\Share\Configs\CDWFile.h" />
-    <ClInclude Include="..\Share\Configs\CLanguageFile.h" />
-    <ClInclude Include="..\Share\Configs\ConfBlock.h" />
-    <ClInclude Include="..\Share\Configs\ConfigFile.h" />
-    <ClInclude Include="..\Share\Configs\IDWNode.h" />
-    <ClInclude Include="..\Share\Configs\IConfData.h" />
-    <ClInclude Include="..\Share\Configs\IConfigMgr.h" />
-    <ClInclude Include="..\Share\Configs\ILanguageFile.h" />
     <ClInclude Include="..\Share\CTime.h" />
-    <ClInclude Include="..\Share\identity.h" />
     <ClInclude Include="..\Share\Network\CSession.h" />
     <ClInclude Include="..\Share\Network\CSessionHandle.h" />
     <ClInclude Include="..\Share\Network\CSessionMgr.h" />
-    <ClInclude Include="..\Share\NextData\CNextData.h" />
-    <ClInclude Include="..\Share\NextData\CNextDataMgr.h" />
     <ClInclude Include="..\Share\ProtoBuff\IProto.h" />
     <ClInclude Include="..\Share\ProtoBuff\msg.pb.h" />
     <ClInclude Include="..\Share\ProtoBuff\msgserver.pb.h" />
     <ClInclude Include="..\Share\ProtoBuff\msgtype.pb.h" />
-    <ClInclude Include="..\Share\ProtoBuff\msgtypeserver.pb.h" />
     <ClInclude Include="..\Share\ProtoBuff\pb.h" />
     <ClInclude Include="..\Share\ProtoBuff\ProtoMgr.h" />
-    <ClInclude Include="..\Share\RankList\IRankListASync.h" />
-    <ClInclude Include="..\Share\RankList\IRankListData.h" />
-    <ClInclude Include="..\Share\RankList\IRankListSync.h" />
-    <ClInclude Include="..\Share\RankList\RankListLogic.h" />
     <ClInclude Include="..\Share\Singleton.h" />
-    <ClInclude Include="..\Share\TimerTask\CTimerTaskEvent.h" />
-    <ClInclude Include="..\Share\TimerTask\CTimerTaskHandle.h" />
-    <ClInclude Include="..\Share\TimerTask\CTimerTaskMgr.h" />
     <ClInclude Include="..\Share\Util.h" />
-    <ClInclude Include="configdef.h" />
-    <ClInclude Include="DB\CThreadLoad.h" />
-    <ClInclude Include="DB\CThreadSave.h" />
-    <ClInclude Include="DB\IDBTask.h" />
-    <ClInclude Include="DB\IThread.h" />
-    <ClInclude Include="DB\Task\MysqlTask.h" />
-    <ClInclude Include="Logic\TimerTask\TimerTask.h" />
-    <ClInclude Include="msg\FightServerMsg.h" />
-    <ClInclude Include="msg\PlayerMsg.h" />
-    <ClInclude Include="Player\Components\CVIPData.h" />
-    <ClInclude Include="Player\Components\IPlayerData.h" />
-    <ClInclude Include="Player\CPlayer.h" />
-    <ClInclude Include="Player\CPlayerMgr.h" />
+    <ClInclude Include="msg\GameServerMsgHandle.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Tests\TestConfigs.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Share\Configs\CDBConfig.cpp" />
-    <ClCompile Include="..\Share\Configs\CDWFile.cpp" />
-    <ClCompile Include="..\Share\Configs\CLanguageFile.cpp" />
-    <ClCompile Include="..\Share\Configs\ConfBlock.cpp" />
-    <ClCompile Include="..\Share\Configs\ConfigFile.cpp" />
-    <ClCompile Include="..\Share\Configs\IConfigMgr.cpp" />
-    <ClCompile Include="..\Share\Configs\ILanguageFile.cpp" />
     <ClCompile Include="..\Share\CTime.cpp" />
-    <ClCompile Include="..\Share\identity.cpp" />
     <ClCompile Include="..\Share\Network\CSession.cpp" />
     <ClCompile Include="..\Share\Network\CSessionHandle.cpp" />
     <ClCompile Include="..\Share\Network\CSessionMgr.cpp" />
-    <ClCompile Include="..\Share\NextData\CNextData.cpp" />
-    <ClCompile Include="..\Share\NextData\CNextDataMgr.cpp" />
     <ClCompile Include="..\Share\ProtoBuff\msg.pb.cc" />
     <ClCompile Include="..\Share\ProtoBuff\msgserver.pb.cc" />
     <ClCompile Include="..\Share\ProtoBuff\msgtype.pb.cc" />
-    <ClCompile Include="..\Share\ProtoBuff\msgtypeserver.pb.cc" />
     <ClCompile Include="..\Share\ProtoBuff\ProtoMgr.cpp" />
-    <ClCompile Include="..\Share\RankList\IRankListData.cpp" />
-    <ClCompile Include="..\Share\TimerTask\CTimerTaskEvent.cpp" />
-    <ClCompile Include="..\Share\TimerTask\CTimerTaskHandle.cpp" />
-    <ClCompile Include="..\Share\TimerTask\CTimerTaskMgr.cpp" />
     <ClCompile Include="..\Share\Util.cpp" />
-    <ClCompile Include="DB\CThreadLoad.cpp" />
-    <ClCompile Include="DB\CThreadSave.cpp" />
-    <ClCompile Include="DB\Task\MysqlTask.cpp" />
-    <ClCompile Include="GameServer.cpp" />
-    <ClCompile Include="Logic\TimerTask\TimerTask.cpp" />
-    <ClCompile Include="msg\FightServerMsg.cpp" />
-    <ClCompile Include="msg\PlayerMsg.cpp" />
-    <ClCompile Include="Player\Components\CVIPData.cpp" />
-    <ClCompile Include="Player\CPlayer.cpp" />
-    <ClCompile Include="Player\CPlayerMgr.cpp" />
+    <ClCompile Include="FightServer.cpp" />
+    <ClCompile Include="msg\GameServerMsgHandle.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Tests\TestConfigs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Share\ProtoBuff\msg.proto" />
     <None Include="..\Share\ProtoBuff\msgserver.proto" />
     <None Include="..\Share\ProtoBuff\msgtype.proto" />
-    <None Include="..\Share\ProtoBuff\msgtypeserver.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

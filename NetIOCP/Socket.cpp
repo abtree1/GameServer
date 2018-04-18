@@ -163,28 +163,24 @@ namespace NetIOCP {
 	}
 
 	bool Socket::DoWrite(string& send) {
+		//检查状态
 		if (mStatus == Closed || mStatus == DenySend || mStatus == DenySendnReceive) {
 			//throw std::exception(mStatusDescription[mStatus]);
 			mPendingWrites.enqueue(send);
 			return false;
 		}
 
-		size_t sendsize = send.size();
-		IOBuffer* sendBuf = new (sendsize + 1) IOBuffer(sendsize + 1, *this);
-		char base[1] = { '\x11' };
-		sendBuf->Append(base, 1);
-		sendBuf->CopyFrom(1, send.c_str(), sendsize);
-		//memcpy(sendBuf->GetPointer(1), send.c_str(), send.size());
-		//size_t sendsize = send.size();
-		//shared_ptr<IOBuffer> sendBuf = make_shared<IOBuffer>(sendsize, *this);
-		//memcpy(sendBuf->GetPointer(), send.c_str(), sendsize);
-		sendBuf->SetUsed(sendBuf->GetUsed() + sendsize);
+		int sendsize = send.size();
+		IOBuffer* sendBuf = new (sendsize + INT_SIZE) IOBuffer(sendsize + INT_SIZE, *this);
+		sendBuf->CopyFrom(0, &sendsize, INT_SIZE);  //先将长度加进去
+		sendBuf->CopyFrom(INT_SIZE, send.c_str(), sendsize); //在将内容加进去
+		sendBuf->SetUsed(INT_SIZE + sendsize); 
 		sendBuf->SetOperation(IO_Operation::IO_Write_Completed);
 		mDispatcher->TriggerPreWrite(*this, *sendBuf);
 
 		DWORD sentBytes;
 		WSABUF buf = { sendBuf->GetUsed(), (char*)sendBuf->GetPointer() };
-
+		//发送数据
 		int ret = WSASend(mSocket, &buf, 1, &sentBytes, 0, static_cast<WSAOVERLAPPED*>(sendBuf), NULL);
 		if (SOCKET_ERROR == ret && WSA_IO_PENDING != WSAGetLastError()) {
 			//throw std::exception("send error !");
@@ -225,6 +221,26 @@ namespace NetIOCP {
 		bool hasFind = mPendingWrites.try_dequeue(sendItem);
 		if (hasFind)
 			DoWrite(sendItem);
+	}
+
+	bool Socket::Disconnect() {
+		IOBuffer* buf = new (BUFFER_SIZE)IOBuffer(BUFFER_SIZE, *this);
+		buf->SetOperation(IO_Operation::IO_Termination);
+		//这里退出后socket留待复用
+		int ret = WSAExtMethods::DisconnectEx(mSocket, buf, TF_REUSE_SOCKET, 0);
+		if (TRUE == ret) {
+			CSessionMgr::GetInstance()->GetMonitor()->OnDisconnected(this, buf);
+			return true;
+		}
+		else {
+			delete buf; //先删除重叠对象
+			if (WSA_IO_PENDING == WSAGetLastError()) {
+				//此时需要等待完成 但可以算断开成功
+				return true;
+			}
+		}
+		//表示失败
+		return false;
 	}
 
 	//void Socket::Write(IOBuffer* buffer) {
