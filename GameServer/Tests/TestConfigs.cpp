@@ -5,7 +5,7 @@
 using namespace rapidxml;
 
 bool TestConfigs::TestConf() {
-	ConfigFile* file = IConfigMgr::GetInstance()->GetConfFile("test");
+	ConfigFile* file = CConfigMgr::GetInstance()->GetConfFile("test");
 	if (file) {
 		ConfDataBlock* block = file->GetCfg(3);
 		if (block) {
@@ -28,15 +28,15 @@ bool TestConfigs::TestConf() {
 }
 
 bool TestConfigs::TestProp() {
-	INT zoneid = IConfigMgr::GetInstance()->GetSettingValue<INT>("serverzeroid");
-	INT serverid = IConfigMgr::GetInstance()->GetSettingValue<INT>("serverid");
+	INT zoneid = CConfigMgr::GetInstance()->GetSettingValue<INT>("serverzeroid");
+	INT serverid = CConfigMgr::GetInstance()->GetSettingValue<INT>("serverid");
 
-	string dbip = IConfigMgr::GetInstance()->GetSettingValue<string>("dbip");
-	string dbuser = IConfigMgr::GetInstance()->GetSettingValue<string>("dbuser");
-	string dbpasswd = IConfigMgr::GetInstance()->GetSettingValue<string>("dbpasswd");
-	string dbname = IConfigMgr::GetInstance()->GetSettingValue<string>("dbname");
-	INT dbport = IConfigMgr::GetInstance()->GetSettingValue<INT>("dbport");
-	string dbalter = IConfigMgr::GetInstance()->GetSettingValue<string>("dblogtable");
+	string dbip = CConfigMgr::GetInstance()->GetSettingValue<string>("dbip");
+	string dbuser = CConfigMgr::GetInstance()->GetSettingValue<string>("dbuser");
+	string dbpasswd = CConfigMgr::GetInstance()->GetSettingValue<string>("dbpasswd");
+	string dbname = CConfigMgr::GetInstance()->GetSettingValue<string>("dbname");
+	INT dbport = CConfigMgr::GetInstance()->GetSettingValue<INT>("dbport");
+	string dbalter = CConfigMgr::GetInstance()->GetSettingValue<string>("dblogtable");
 	cout << zoneid << " " << serverid << endl;
 	cout << dbip.c_str() << " " << dbuser << " "
 		<< dbpasswd.c_str() << " " << dbname.c_str() << " "
@@ -47,7 +47,7 @@ bool TestConfigs::TestProp() {
 bool TestConfigs::TestDirtyWord() {
 	string str = "asd2wrsdvcwdqadbdc";
 	string out = "";
-	INT pos = IConfigMgr::GetInstance()->MatchDWDef(str, out);
+	INT pos = CConfigMgr::GetInstance()->MatchDWDef(str, out);
 	if (pos > 0) {
 		cout << "Matched word \"" << out.c_str()
 			<< "\" in string \"" << str.c_str()
@@ -61,7 +61,7 @@ bool TestConfigs::TestDirtyWord() {
 }
 
 bool TestConfigs::TestLanguage() {
-	ILanguage* pLan = IConfigMgr::GetInstance()->GetLanConf();
+	ILanguage* pLan = CConfigMgr::GetInstance()->GetLanConf();
 	string str1 = pLan->GetDefData(1);
 	string str2 = pLan->GetDefData(3);
 	string str3 = pLan->GetDefData(6, "default");
@@ -72,7 +72,7 @@ bool TestConfigs::TestLanguage() {
 }
 
 bool TestConfigs::TestReadAuto() {
-	IConfigMgr::GetInstance()->ReadFile<TestConfigs>("Regions/r1001", this, CLASS_FUNC(TestConfigs, ReadXML), true);
+	CConfigMgr::GetInstance()->ReadFile<TestConfigs>("Regions/r1001", this, CLASS_FUNC(TestConfigs, ReadXML), true);
 	return true;
 }
 

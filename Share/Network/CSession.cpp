@@ -14,16 +14,24 @@ void CSession::Recv() {
 		msg.ParseFromString(data);
 		//获取消息处理对象
 		//return type => IProto::SMsgHandle*
-		auto handle = CProtoMgr::GetInstance()->GetProtoHandle(msg.type());
-		if (handle) {
+		//auto handle = CProtoMgr::GetInstance()->GetProtoHandle(msg.type());
+		//找到处理该消息的handle类对象
+		auto handle = CProtoMgr::GetInstance()->GetProtoHandle(mpSession->GetSessionId());
+		if (!handle) {
+			printf("msg not find a handle! \n");
+			return;
+		}
+		//在handle类对象中找到处理该消息的对象
+		auto phandle = handle->GetProtoHandle(msg.type());
+		if (phandle) {
 			//return type => ::google::protobuf::Message*
-			auto recvMsg = handle->mFunCreate();
+			auto recvMsg = phandle->mFunCreate();
 			if (recvMsg) {
 				//解析消息参数
 				recvMsg->ParseFromString(msg.msg());
 			}
 			//处理消息
-			handle->mFunHandle(this, recvMsg);
+			phandle->mFunHandle(this, recvMsg);
 			if (recvMsg)
 				delete recvMsg;
 		}

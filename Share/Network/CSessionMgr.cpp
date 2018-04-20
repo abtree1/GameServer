@@ -50,6 +50,13 @@ CSession* CSessionMgr::FindSession(int sessionid) {
 	return nullptr;
 }
 
+bool CSessionMgr::SendToSession(int sessionid, UINT type, ::google::protobuf::Message* msg) {
+	CSession* pSession = FindSession(sessionid);
+	if (!pSession)
+		return false;
+	pSession->Send(type, msg);
+}
+
 bool CSessionMgr::HandleDisconnect(NetIOCP::ISession* pSession) {
 	//目前只这样简单的处理 后面还有其它需要处理的东西
 	mpSessionVec.erase(pSession->GetSessionId());

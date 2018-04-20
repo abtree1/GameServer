@@ -7,9 +7,6 @@
 #include "tests/TestConfigs.h"
 #endif
 
-//临时保存在这里
-int gFightServerId = 0;
-
 //析构所有的单例对象
 void Destory() {
 	/************************************************************************
@@ -22,7 +19,7 @@ void Destory() {
 	CNextDataMgr::DestroyInstance();
 	CSessionMgr::DestroyInstance();
 	CThreadSave::DestroyInstance();
-	IConfigMgr::DestroyInstance();
+	CConfigMgr::DestroyInstance();
 }
 
 void Init() {
@@ -32,7 +29,7 @@ void Init() {
 		DBSaveMgr 由于负责检查数据库结构 故需要在DBLoadMgr前完成
 	************************************************************************/
 	//读取配置文件
-	gConfigMgr = IConfigMgr::GetInstance();
+	gConfigMgr = CConfigMgr::GetInstance();
 	if (!gConfigMgr->Read(CONFIGPATH))
 		return;
 	//开启数据库进程
@@ -49,28 +46,33 @@ void Init() {
 	gDBLoadMgr->IsConnectDB();
 	//加载id
 	gIdentify->Load();
+	
+	//注册消息处理函数
+	CProtoMgr::GetInstance()->RegisterDefHandle(CPlayerMsg::GetInstance());
 	//开始socket监听
 	CSessionMgr::GetInstance()->Start("127.0.0.1", 8080);
-	//注册消息处理函数
-	CPlayerMsg::Register();
+
 	//连接其它服务器
-	gFightServerId = CSessionMgr::GetInstance()->Connect("127.0.0.1", 8090);
+	auto fightServerId = CSessionMgr::GetInstance()->Connect("127.0.0.1", 8090);
 	//注册消息处理函数
-	CFightServerMsg::Register();
+	CFightServerMsg::GetInstance()->mSessionId = fightServerId;
+	CProtoMgr::GetInstance()->RegisterHandle(fightServerId, CFightServerMsg::GetInstance());
+	//CFightServerMsg::Register(fightServerId);
 }
 
 int main()
 {
 	Init();
-#ifdef _DEBUG
+//#ifdef _DEBUG
 	//TestConfigs test;
-	//test.TestReadAuto();
-#endif
+	//test.TestConf();
+	//test.TestProp();
+//#endif
 	//测试向FightServer发送消息
-	CSession* session = CSessionMgr::GetInstance()->FindSession(gFightServerId);
+	/*CSession* session = CSessionMgr::GetInstance()->FindSession(gFightServerId);
 	if (session) {
 		session->Send(NET_G2F_Init, nullptr);
-	}
+	}*/
 	//主循环
 	while (true) {
 		CSessionMgr::GetInstance()->Update();

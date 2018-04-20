@@ -1,4 +1,7 @@
-本项目本为我个人学习所写的一个项目
+<div>
+	本项目为我个人学习所写的一个项目,
+	里面包含了作为一个游戏服务器所需要实现的许多功能（其中部分功能还在构思或开发中）。
+</div>
 依赖的库包括
 <ul>
 	<li>https://github.com/cameron314/concurrentqueue.git (一个多线程的容器) </li>
@@ -7,4 +10,4 @@
 	<li>MysqlConnector => https://dev.mysql.com/downloads/connector/cpp/ </li>
 	<li>RapidXml 1.13 => http://rapidxml.sourceforge.net/ </li>
 </ul>
-IOCP的网络库的server部分是在（https://github.com/xinsuiyuer/IOCompletionPort.git）的基础上修改的
+IOCP的网络库的server部分是在<p>(https://github.com/xinsuiyuer/IOCompletionPort)</p>的基础上修改的

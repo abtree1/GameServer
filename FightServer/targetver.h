@@ -6,3 +6,8 @@
 // 将 _WIN32_WINNT 宏设置为要支持的平台，然后再包括 SDKDDKVer.h。
 
 #include <SDKDDKVer.h>
+
+//默认配置文件存放路径
+#define CONFIGPATH	"../FightConfigs"
+//默认设置文件
+#define DEFSETTING "Setting"

@@ -25,6 +25,18 @@
     <Filter Include="msg">
       <UniqueIdentifier>{4569aa23-cddb-429d-839b-8546ad9f24ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fight">
+      <UniqueIdentifier>{e042fd19-106e-4349-92bb-8faa94cc8a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fight\Fighter">
+      <UniqueIdentifier>{e6f97915-5de8-418b-a1f9-1535870098fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share\Configs">
+      <UniqueIdentifier>{e63082ff-6efe-43ee-a131-2e89f58bff7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configs">
+      <UniqueIdentifier>{5a75c7ad-4bed-45c1-89e5-85c8eaf53ff3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,6 +87,42 @@
     <ClInclude Include="msg\GameServerMsgHandle.h">
       <Filter>msg</Filter>
     </ClInclude>
+    <ClInclude Include="Fight\Fighter\FightAttr.h">
+      <Filter>Fight\Fighter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\IMsgHandle.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\CDBConfig.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\CDWFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\CLanguageFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\ConfBlock.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\ConfigFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\IConfData.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\IConfigMgr.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\IDWNode.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Configs\ILanguageFile.h">
+      <Filter>Share\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="Configs\ConfigMgr.h">
+      <Filter>Configs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -112,6 +160,30 @@
     </ClCompile>
     <ClCompile Include="msg\GameServerMsgHandle.cpp">
       <Filter>msg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\CDBConfig.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\CDWFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\CLanguageFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\ConfBlock.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\ConfigFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\IConfigMgr.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Configs\ILanguageFile.cpp">
+      <Filter>Share\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="Configs\ConfigMgr.cpp">
+      <Filter>Configs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

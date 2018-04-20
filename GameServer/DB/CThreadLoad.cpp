@@ -41,10 +41,10 @@ void CThreadLoad::ConnectDB() {
 		mpDriver = sql::mysql::get_mysql_driver_instance();
 		//获取数据库连接
 		char buff[1024];
-		ConfDataBlock* block = IConfigMgr::GetInstance()->GetPropFile("Setting");
+		ConfDataBlock* block = CConfigMgr::GetInstance()->GetPropFile("Setting");
 		string dbip = block->GetStringValue("dbip");
 		INT dbport = block->GetIntValue("dbport");
-		CDBConfig& dbConf = IConfigMgr::GetInstance()->GetDBConf();
+		CDBConfig& dbConf = CConfigMgr::GetInstance()->GetDBConf();
 		string connStr = dbConf.GetConnStr();
 		sprintf_s(buff, 1024, connStr.c_str(), dbip.c_str(), dbport);
 		mpConn = mpDriver->connect(buff, block->GetStringValue("dbuser").c_str(), block->GetStringValue("dbpasswd").c_str());

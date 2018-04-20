@@ -54,7 +54,7 @@ bool CThreadSave::CheckDBInit() {
 		ConfDataBlock* block = gConfigMgr->GetPropFile("Setting");
 		string dbip = block->GetStringValue("dbip");
 		INT dbport = block->GetIntValue("dbport");
-		CDBConfig& dbConf = IConfigMgr::GetInstance()->GetDBConf();
+		CDBConfig& dbConf = CConfigMgr::GetInstance()->GetDBConf();
 		string connStr = dbConf.GetConnStr();
 		sprintf_s(buff, 1024, connStr.c_str(), dbip.c_str(), dbport);
 		mpConn = mpDriver->connect(buff, block->GetStringValue("dbuser").c_str(), block->GetStringValue("dbpasswd").c_str());
@@ -93,8 +93,8 @@ bool CThreadSave::CheckDBInit() {
 
 bool CThreadSave::StructDB() {
 	//查询所有的已经更新的记录
-	CDBConfig& conf = IConfigMgr::GetInstance()->GetDBConf();
-	string dbalter = IConfigMgr::GetInstance()->GetSettingValue<string>("dblogtable");
+	CDBConfig& conf = CConfigMgr::GetInstance()->GetDBConf();
+	string dbalter = CConfigMgr::GetInstance()->GetSettingValue<string>("dblogtable");
 	char buff[1024];
 	sprintf_s(buff, 1024, conf.GetQueryAlter().c_str(), dbalter.c_str());
 	try {

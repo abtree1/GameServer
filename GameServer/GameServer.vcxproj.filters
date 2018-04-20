@@ -210,6 +210,12 @@
     <ClInclude Include="msg\FightServerMsg.h">
       <Filter>msg</Filter>
     </ClInclude>
+    <ClInclude Include="..\Share\ProtoBuff\IMsgHandle.h">
+      <Filter>Share\ProtoBuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Configs\ConfigMgr.h">
+      <Filter>Configs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -319,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="msg\FightServerMsg.cpp">
       <Filter>msg</Filter>
+    </ClCompile>
+    <ClCompile Include="Configs\ConfigMgr.cpp">
+      <Filter>Configs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

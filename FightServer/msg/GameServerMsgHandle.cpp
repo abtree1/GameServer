@@ -1,12 +1,9 @@
 #include "stdafx.h"
 
-#define RegisterHandle(msg) \
-pInstance->RegisterProto(msg, OnCreate##msg, OnHandle##msg);
-
-void CGameServerMsgHandle::Register() {
-	auto pInstance = CProtoMgr::GetInstance();
-	RegisterHandle(NET_G2F_Init);
-	RegisterHandle(NET_G2F_CreateRole);
+CGameServerMsgHandle::CGameServerMsgHandle() {
+	//在这里注册所有玩家的消息
+	M_RegisterHandle(NET_G2F_Init);
+	M_RegisterHandle(NET_G2F_CreateRole);
 }
 
 bool CGameServerMsgHandle::OnHandleNET_G2F_Init(CSession* owner, ::google::protobuf::Message* pBaseMsg) {

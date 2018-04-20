@@ -1,0 +1,9 @@
+﻿	prop类配置由 配置项功能描述 配置项key:type 配置项内容组成
+	type支持 int string float double char bool
+	Setting 为默认特殊的配置文件 做最基础的设置
+	
+	描述	key:valuetype	value
+#	服务器区	serverzeroid:int	1
+#	服务器id	serverid:int	1	
+#	GameServerIP	GSIP:string	127.0.0.1
+#	GameServerPort	GSPort:int	8089	

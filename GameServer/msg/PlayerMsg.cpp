@@ -1,12 +1,18 @@
 #include "stdafx.h"
 
-//在这里注册所有玩家的消息
-void CPlayerMsg::Register() {
-	auto pInstance = CProtoMgr::GetInstance();
+CPlayerMsg::CPlayerMsg() {
+	//在这里注册所有玩家的消息
 	M_RegisterHandle(NET_C2S_Login);
 	M_RegisterHandle(NET_C2S_CreateRole);
-	//pInstance->RegisterProto(NET_C2S_Login, OnCreateNET_C2S_Login, OnHandleNET_C2S_Login);
 }
+
+
+//void CPlayerMsg::Register() {
+//	auto pInstance = CProtoMgr::GetInstance();
+//	M_RegisterHandle(NET_C2S_Login);
+//	M_RegisterHandle(NET_C2S_CreateRole);
+//	//pInstance->RegisterProto(NET_C2S_Login, OnCreateNET_C2S_Login, OnHandleNET_C2S_Login);
+//}
 
 bool CPlayerMsg::OnHandleNET_C2S_Login(CSession* owner, ::google::protobuf::Message* pBaseMsg) {
 	NetLogin* pMsg = dynamic_cast<NetLogin*>(pBaseMsg);

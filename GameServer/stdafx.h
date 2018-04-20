@@ -37,6 +37,7 @@ using namespace std;
 //google proto buff
 #include "../Share/ProtoBuff/pb.h"
 using namespace NetProto;
+#include "../Share/ProtoBuff/IMsgHandle.h"
 #include "../Share/ProtoBuff/IProto.h"
 #include "../Share/ProtoBuff/ProtoMgr.h"
 //NetIOCP
@@ -60,6 +61,7 @@ using namespace NetProto;
 #include "../Share/Configs/CLanguageFile.h"
 #include "../Share/Configs/CDBConfig.h"
 #include "../Share/Configs/IConfigMgr.h"
+#include "Configs/ConfigMgr.h"
 //Player
 #include "Player/Components/IPlayerData.h"
 #include "Player/Components/CVIPData.h"

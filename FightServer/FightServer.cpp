@@ -12,10 +12,14 @@ void Destory(){
 
 //初始化函数
 void Init() {
+	//读取配置文件
+	gConfigMgr = CConfigMgr::GetInstance();
+	if (!gConfigMgr->Read(CONFIGPATH))
+		return;
+	//注册消息处理函数
+	CProtoMgr::GetInstance()->RegisterDefHandle(CGameServerMsgHandle::GetInstance());
 	//开始服务器监听
 	CSessionMgr::GetInstance()->Start("127.0.0.1", 8090);
-	//注册消息处理函数
-	CGameServerMsgHandle::Register();
 }
 
 int main()

@@ -15,6 +15,8 @@ public:
 	bool HandleConnect(NetIOCP::ISession* pSession);
 	//获取某个session
 	CSession* FindSession(int sessionid);
+	//向指定Session发送消息
+	bool SendToSession(int sessionid, UINT type, ::google::protobuf::Message* msg);
 	//关闭已有连接
 	bool HandleDisconnect(NetIOCP::ISession* pSession);
 	//循环获取新收到的消息

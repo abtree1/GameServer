@@ -167,6 +167,7 @@
     <ClInclude Include="..\Share\Network\CSessionMgr.h" />
     <ClInclude Include="..\Share\NextData\CNextData.h" />
     <ClInclude Include="..\Share\NextData\CNextDataMgr.h" />
+    <ClInclude Include="..\Share\ProtoBuff\IMsgHandle.h" />
     <ClInclude Include="..\Share\ProtoBuff\IProto.h" />
     <ClInclude Include="..\Share\ProtoBuff\msg.pb.h" />
     <ClInclude Include="..\Share\ProtoBuff\msgserver.pb.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="..\Share\TimerTask\CTimerTaskMgr.h" />
     <ClInclude Include="..\Share\Util.h" />
     <ClInclude Include="configdef.h" />
+    <ClInclude Include="Configs\ConfigMgr.h" />
     <ClInclude Include="DB\CThreadLoad.h" />
     <ClInclude Include="DB\CThreadSave.h" />
     <ClInclude Include="DB\IDBTask.h" />
@@ -225,6 +227,7 @@
     <ClCompile Include="..\Share\TimerTask\CTimerTaskHandle.cpp" />
     <ClCompile Include="..\Share\TimerTask\CTimerTaskMgr.cpp" />
     <ClCompile Include="..\Share\Util.cpp" />
+    <ClCompile Include="Configs\ConfigMgr.cpp" />
     <ClCompile Include="DB\CThreadLoad.cpp" />
     <ClCompile Include="DB\CThreadSave.cpp" />
     <ClCompile Include="DB\Task\MysqlTask.cpp" />

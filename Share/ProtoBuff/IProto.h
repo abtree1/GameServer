@@ -1,27 +1,17 @@
 #pragma once
-#define M_MsgHandle(msg,msgdata) \
-	static ::google::protobuf::Message* OnCreate##msg() { return msgdata; } \
-	static bool OnHandle##msg(CSession* owner, ::google::protobuf::Message* pBaseMsg); 
 
-#define M_RegisterHandle(msg) \
-pInstance->RegisterProto(msg, OnCreate##msg, OnHandle##msg);
-
-template<typename T, typename U>
+//template<typename T, typename U>
 class IProto {
 public:
-	typedef T* (*msg_create)();
-	typedef bool(*msg_handle)(U* owner, T* pMsg);
-public:
-	struct SMsgHandle {
-		msg_create mFunCreate;  //保存消息所带参数的结构信息，用于解析消息参数
-		msg_handle mFunHandle;  //保存消息的处理函数指针
-	};
-public:
 	//注册所有的消息和对应的处理函数
-	virtual bool RegisterProto(UINT, msg_create, msg_handle) = 0;
+	virtual bool RegisterHandle(s32, IMsgHandle*) = 0;
+	//注册默认消息操作类
+	virtual bool RegisterDefHandle(IMsgHandle*) = 0;
 	//获取消息对应的处理函数
-	virtual SMsgHandle* GetProtoHandle(UINT) = 0;
+	virtual IMsgHandle* GetProtoHandle(s32) = 0;
 protected:
+	map<s32, IMsgHandle*> mRegisterMsgHandles;
+	IMsgHandle* mDefaultMsgHandle;
 	//这里注册所有的消息 和对应的 处理函数
-	map<UINT, shared_ptr<SMsgHandle>> mMsgHandles;
+	//map<UINT, shared_ptr<SMsgHandle>> mMsgHandles;
 };
